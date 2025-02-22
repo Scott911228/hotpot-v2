@@ -57,7 +57,7 @@ public class BuildManager : MonoBehaviour
                 return;
             }
             if (builtCount == 0 &&
-                GameObject.Find("GameControl").GetComponent<GameManager>().StageName == "第二關")
+                GameObject.Find("LevelSettings").GetComponent<LevelSettings>().StageName == "第二關")
             {
                 if (node.name != "Cube (105)")
                 {
@@ -67,7 +67,7 @@ public class BuildManager : MonoBehaviour
                 }
             }
             if (builtCount < 2 &&
-                GameObject.Find("GameControl").GetComponent<GameManager>().StageName == "第二關")
+                GameObject.Find("LevelSettings").GetComponent<LevelSettings>().StageName == "第二關")
             {
                 if(rotation.eulerAngles.y != 270){
                     FloatTipsScript.DisplayTips("嘗試使角色面向右側吧。");
@@ -85,7 +85,7 @@ public class BuildManager : MonoBehaviour
 
             //////// 關卡事件 ////////
             {
-                if (GameObject.Find("GameControl").GetComponent<GameManager>().StageName == "第一關")
+                if (GameObject.Find("LevelSettings").GetComponent<LevelSettings>().StageName == "第一關")
                 {
                     if (builtCount == 0)
                     {
@@ -97,7 +97,7 @@ public class BuildManager : MonoBehaviour
                         WaitForFullBuild = false;
                     }
                 }
-                else if (GameObject.Find("GameControl").GetComponent<GameManager>().StageName == "第二關")
+                else if (GameObject.Find("LevelSettings").GetComponent<LevelSettings>().StageName == "第二關")
                 {
                     if (builtCount == 0)
                     {

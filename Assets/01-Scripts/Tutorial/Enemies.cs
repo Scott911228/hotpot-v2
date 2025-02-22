@@ -189,7 +189,7 @@ public class Enemies : MonoBehaviour
 
     void EndPath()
     {
-        if (PlayerStats.Lives > 0) PlayerStats.Lives--;
+        if (PlayerStats.Life > 0) PlayerStats.Life--;
         WaveSpawn.EnemiesAlive--;
         Destroy(gameObject);
 

@@ -7,19 +7,18 @@ public class WaveSpawn : MonoBehaviour
 {
     public static int EnemiesAlive = 0;
     public Transform enemyPrefab;
-    private int spawnedCount = 0;
-
-    public Wave[] waves;
     public Transform spawnPoint;
     public GameManager gameManager;
 
     public float timeBetweenWaves = 5f;
     public float countdown = 5f;
-    private int TotalEnemyCount = 0;
     public static int KilledEnemyCount = 0;
     public GameObject BroadcastMessagePanel;
     public Animator BroadcastMessageAnimator;
     public Animator Animator;
+    private Wave[] EnemyWaves;
+    private int spawnedCount = 0;
+    private int TotalEnemyCount = 0;
     [Header("敵人總數文字")]
 
     public string enemyTag = "Enemy";
@@ -35,13 +34,10 @@ public class WaveSpawn : MonoBehaviour
 
     void Start()
     {
+        EnemyWaves = GameObject.Find("LevelSettings").GetComponent<LevelSettings>().EnemyWaves;
         EnemiesAlive = 0;
         waveNumber = 0;
         InvokeRepeating("UpdateEnemyCountText", 0f, 0.1f);
-        //foreach (Wave wave in waves)
-        //{
-        //    TotalEnemyCount += wave.count;
-        //}
     }
 
     public void Update()
@@ -55,7 +51,7 @@ public class WaveSpawn : MonoBehaviour
             return;
         }
         //if(!BroadcastMessagePanel.activeSelf && waveNumber > 0) BroadcastMessagePanel.SetActive(true);
-        if (waveNumber == waves.Length)
+        if (waveNumber == EnemyWaves.Length)
         {
             gameManager.WinLevel();
             this.enabled = false;
@@ -86,17 +82,17 @@ public class WaveSpawn : MonoBehaviour
             Animator.enabled = true;
             Animator.Play("Start", 0, 0f);
         }
-        if (waveNumber > 0) WaveCountText.text = "第 " + waveNumber.ToString() + " / " + waves.Length.ToString() + " 波";
+        if (waveNumber > 0) WaveCountText.text = "第 " + waveNumber.ToString() + " / " + EnemyWaves.Length.ToString() + " 波";
     }
 
     IEnumerator SpawnWave()
     {
-        Wave wave = waves[waveNumber];
+        Wave wave = EnemyWaves[waveNumber];
         waveNumber++;
         KilledEnemyCount = 0;
         TotalEnemyCount = wave.count;
         Debug.Log("下一波敵人即將來襲!");
-        if (GameObject.Find("GameControl").GetComponent<GameManager>().StageName == "第二關")
+        if (GameObject.Find("LevelSettings").GetComponent<LevelSettings>().StageName == "第二關")
         {
             if (waveNumber == 2)
             {

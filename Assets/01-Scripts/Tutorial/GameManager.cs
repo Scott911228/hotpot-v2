@@ -6,7 +6,6 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    public string StageName = "";
     public static bool isGameOver;
     public static bool isBuilding;
     public GameObject SpeedControl;
@@ -55,7 +54,7 @@ public class GameManager : MonoBehaviour
         {
             return;
         }
-        if (PlayerStats.Lives <= 0)
+        if (PlayerStats.Life <= 0)
         {
             EndGame();
             GameObject[] Enemies = GameObject.FindGameObjectsWithTag(enemyTag);
@@ -173,7 +172,7 @@ public class GameManager : MonoBehaviour
             isGameOver = true;
             isGamePlaying = false;
             SpeedControl.GetComponent<SpeedControl>().isForceNoSpeed = true;
-            if (PlayerStats.Lives <= 0)
+            if (PlayerStats.Life <= 0)
             {
                 GameOverUI.SetActive(true);
             }
