@@ -42,7 +42,7 @@ public class WaveSpawn : MonoBehaviour
 
     public void Update()
     {
-        if (EnemiesAlive > 0)
+        if (TotalEnemyCount - KilledEnemyCount > 0)
         {
             return;
         }
@@ -50,6 +50,7 @@ public class WaveSpawn : MonoBehaviour
         {
             return;
         }
+
         //if(!BroadcastMessagePanel.activeSelf && waveNumber > 0) BroadcastMessagePanel.SetActive(true);
         if (waveNumber == EnemyWaves.Length)
         {
@@ -87,11 +88,10 @@ public class WaveSpawn : MonoBehaviour
 
     IEnumerator SpawnWave()
     {
-        Wave wave = EnemyWaves[waveNumber];
-        waveNumber++;
-        KilledEnemyCount = 0;
-        TotalEnemyCount = wave.count;
         Debug.Log("下一波敵人即將來襲!");
+        Wave wave = EnemyWaves[waveNumber];
+        EnemyContent[] enemyContent = wave.Enemy;
+        GameObject.Find("GameControl").GetComponent<PlayerStats>().Rounds++;
         if (GameObject.Find("LevelSettings").GetComponent<LevelSettings>().StageName == "第二關")
         {
             if (waveNumber == 2)
@@ -103,21 +103,52 @@ public class WaveSpawn : MonoBehaviour
                 TextControl.BroadcastControlMessage("tutorial2/text5");
             }
         }
-        for (int i = 0; i < wave.count; i++)
+        waveNumber++;
+        KilledEnemyCount = 0;
+        // ===== 計算敵人總數 =====
+        foreach (var e in enemyContent)
         {
-            while (!GameObject.Find("GameControl").GetComponent<GameManager>().isGamePlaying)
-            {
-                yield return new WaitForSeconds(0.1f);
-            }
-            SpawnEnemy(wave.Enemy);
-            yield return new WaitForSeconds(1f / wave.rate);
+            TotalEnemyCount += e.spawnCount;
         }
-
-        GameObject.Find("GameControl").GetComponent<PlayerStats>().Rounds++;
+        // ===== 開始生成敵人 =====
+        foreach (var e in enemyContent)
+        {
+            for (int i = 0; i < e.spawnCount; i++)
+            {
+                while (!GameObject.Find("GameControl").GetComponent<GameManager>().isGamePlaying)
+                {
+                    yield return new WaitForSeconds(0.1f);
+                }
+                SpawnEnemy(e);
+                yield return new WaitForSeconds(1f / e.spawnRate);
+            }
+            yield return new WaitForSeconds(e.delayToNextContent);
+        }
     }
-    void SpawnEnemy(GameObject enemies)
+    void SpawnEnemy(EnemyContent enemyContent)
     {
-        Instantiate(enemies, spawnPoint.position, Quaternion.Euler(new Vector3(0, 270, 0)));
+        GameObject enemy = Instantiate(enemyContent.Enemy, spawnPoint.position, Quaternion.Euler(new Vector3(0, 270, 0)));
+        Enemies enemyStatus = enemy.GetComponent<Enemies>();
+        EnemyAttack enemyAttackScript = enemy.GetComponent<EnemyAttack>();
+        // ===== 血量加成 =====
+        if (enemyContent.healthMultiplier != 0)
+        {
+            enemyStatus.StartHealth = (int)(enemyStatus.StartHealth * enemyContent.healthMultiplier);
+            enemyStatus.Health = enemyStatus.StartHealth;
+        }
+        // ===== 傷害加成 =====
+        if (enemyContent.damageMultiplier != 0)
+        {
+            Debug.Log(enemyContent.damageMultiplier);
+            GameObject bullet = enemyAttackScript.bulletPrefab;
+            EnemyBullets enemyBullets = bullet.GetComponent<EnemyBullets>();
+            enemyBullets.damageMultiplier = enemyContent.damageMultiplier;
+        }
+        // ===== 速度加成 =====
+        if (enemyContent.speedMultiplier != 0)
+        {
+            enemyStatus.initSpeed *= enemyContent.speedMultiplier;
+        }
         EnemiesAlive++;
         spawnedCount++;
         if (spawnedCount == 2)

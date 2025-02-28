@@ -74,6 +74,7 @@ public class EnemyAttack : MonoBehaviour
     void Shoot()
     {
         GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        Debug.Log(bulletGO.GetComponent<EnemyBullets>().damage);
         EnemyBullets Bullets = bulletGO.GetComponent<EnemyBullets>();
 
         if (Bullets != null)

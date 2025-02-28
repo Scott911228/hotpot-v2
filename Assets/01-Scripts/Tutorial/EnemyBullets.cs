@@ -6,7 +6,8 @@ public class EnemyBullets : MonoBehaviour
 
     public float speed = 70f;
 
-    public int damage = 200;
+    public float damage = 200;
+    public float damageMultiplier = 1.0f;
     public GameObject ParticlesEffect;
 
     public void Seek(Transform _target)
@@ -49,7 +50,7 @@ public class EnemyBullets : MonoBehaviour
         CharacterHP e = Enemies.GetComponent<CharacterHP>();
 
 
-        e.TakeDamage(damage);
+        e.TakeDamage(damage*damageMultiplier);
         
 
 

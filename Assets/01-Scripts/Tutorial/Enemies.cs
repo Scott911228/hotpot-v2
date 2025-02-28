@@ -13,7 +13,7 @@ public class Enemies : MonoBehaviour
     private bool isBlocked = false; // 敵人是否被角色阻擋
 
     public int StartHealth = 100;
-    private float Health;
+    public float Health;
 
     public int GetMoney = 50;
 
@@ -191,6 +191,7 @@ public class Enemies : MonoBehaviour
     {
         if (PlayerStats.Life > 0) PlayerStats.Life--;
         WaveSpawn.EnemiesAlive--;
+        WaveSpawn.KilledEnemyCount++;
         Destroy(gameObject);
 
     }

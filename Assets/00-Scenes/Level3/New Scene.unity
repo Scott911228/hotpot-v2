@@ -11958,7 +11958,7 @@ MonoBehaviour:
   - _gameObject: {fileID: 395401203}
     _prefab: Assets/02-Prefabs/GameElements/ShopDraggableButton.prefab
   - _gameObject: {fileID: 183083456}
-    _prefab: Assets/02-Prefabs/Tutorial/metal spoon.blend
+    _prefab: 
 --- !u!4 &1046611508
 Transform:
   m_ObjectHideFlags: 11
@@ -26854,6 +26854,27 @@ PrefabInstance:
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: EnemyWaves.Array.data[0].count
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: EnemyWaves.Array.data[0].Enemy.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: EnemyWaves.Array.data[0].Enemy.Array.data[0].Enemy
+      value: 
+      objectReference: {fileID: 3235380681236260573, guid: 21a5d51227f0ed34fad74c455ff0ade6,
+        type: 3}
+    - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: EnemyWaves.Array.data[0].Enemy.Array.data[0].spawnRate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: EnemyWaves.Array.data[0].Enemy.Array.data[0].spawnCount
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7967493723987147999, guid: 2200e26108a0af044a17b619e36318f9,
