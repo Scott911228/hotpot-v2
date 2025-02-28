@@ -19,6 +19,9 @@ public class EnemyAttack : MonoBehaviour
     public Transform firePoint;
     void Start()
     {
+        // ======= 湯底效果 =======
+        fireRate *= GameObject.Find("LevelSettings").GetComponent<LevelSettings>().EnemyAttackSpeedMultiplier;
+        // =======================
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
     }
 

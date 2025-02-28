@@ -8,11 +8,12 @@ public class Enemies : MonoBehaviour
     public HealthBar HealthBar;
     private Transform blocker;
     public float initSpeed;
+    public float speedMultiplier = 1.0f;
     private float currentSpeed;
     public bool isPaused = false;
     private bool isBlocked = false; // 敵人是否被角色阻擋
 
-    public int StartHealth = 100;
+    public float StartHealth = 100;
     public float Health;
 
     public int GetMoney = 50;
@@ -41,6 +42,10 @@ public class Enemies : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         Target = Paths.points[0];
+        // ======= 湯底效果 =======
+        StartHealth *= GameObject.Find("LevelSettings").GetComponent<LevelSettings>().EnemyHealthMultiplier;
+        speedMultiplier *= GameObject.Find("LevelSettings").GetComponent<LevelSettings>().EnemyMovementMultiplier;
+        // =======================
         Health = StartHealth;
         InvokeRepeating("UpdateBlocker", 0f, 0.01f);
         InvokeRepeating("DamageEffectCheck", 0f, 0.4f);
@@ -52,7 +57,7 @@ public class Enemies : MonoBehaviour
         {
             if (slowTime > 0.5f)
             {
-                currentSpeed = initSpeed * slowMultiplier;
+                currentSpeed = initSpeed * speedMultiplier * slowMultiplier;
                 slowTime -= 0.4f;
             }
             else
@@ -62,7 +67,7 @@ public class Enemies : MonoBehaviour
         }
         else
         {
-            currentSpeed = initSpeed;
+            currentSpeed = initSpeed * speedMultiplier;
         }
     }
     void DamageEffectCheck()

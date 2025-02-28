@@ -6,7 +6,7 @@ public class CharacterHP : MonoBehaviour
 {
     public HealthBar HealthBar; // 健康條的參考
     Animator myAnimator; // 動畫控制器
-    public int StartHealth = 200; // 初始生命值
+    public float StartHealth = 200; // 初始生命值
     private float Health; // 當前生命值
     public bool isDead = false; // 是否死亡
     private static bool hasEverDied = false; // 紀錄是否已經死亡過
@@ -16,6 +16,13 @@ public class CharacterHP : MonoBehaviour
     void Start()
     {
         myAnimator = GetComponent<Animator>();
+        // ======= 湯底效果 ======= 
+        if (myAnimator.gameObject.activeSelf)
+        {
+            myAnimator.SetFloat("runMultiplier", GameObject.Find("LevelSettings").GetComponent<LevelSettings>().CharacterAttackSpeedMultiplier);
+        }
+        StartHealth *= GameObject.Find("LevelSettings").GetComponent<LevelSettings>().CharacterHealthMultiplier;
+        // ====================== 
         Health = StartHealth; // 初始化生命值
         HealthBar.UpdateHealthBar(StartHealth, Health); // 更新健康條
         InvokeRepeating("ProtectEffectCheck", 0f, 0.5f);

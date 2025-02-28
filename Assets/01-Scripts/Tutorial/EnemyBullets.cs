@@ -14,7 +14,11 @@ public class EnemyBullets : MonoBehaviour
     {
         target = _target;
     }
-
+    void Start()
+    {
+        // ======= 湯底效果 =======
+        damageMultiplier *= GameObject.Find("LevelSettings").GetComponent<LevelSettings>().EnemyDamageMultiplier;
+    }
 
     void Update()
     {

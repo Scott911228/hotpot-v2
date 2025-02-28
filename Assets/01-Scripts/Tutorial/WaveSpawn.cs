@@ -142,12 +142,12 @@ public class WaveSpawn : MonoBehaviour
             Debug.Log(enemyContent.damageMultiplier);
             GameObject bullet = enemyAttackScript.bulletPrefab;
             EnemyBullets enemyBullets = bullet.GetComponent<EnemyBullets>();
-            enemyBullets.damageMultiplier = enemyContent.damageMultiplier;
+            enemyBullets.damageMultiplier *= enemyContent.damageMultiplier;
         }
         // ===== 速度加成 =====
         if (enemyContent.speedMultiplier != 0)
         {
-            enemyStatus.initSpeed *= enemyContent.speedMultiplier;
+            enemyStatus.speedMultiplier = enemyContent.speedMultiplier;
         }
         EnemiesAlive++;
         spawnedCount++;

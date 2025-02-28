@@ -40,6 +40,9 @@ public class Character : MonoBehaviour
     void Start()
     {
         myAnimator = GetComponent<Animator>();
+        // ======= 湯底效果 =======
+        fireCooldown /= GameObject.Find("LevelSettings").GetComponent<LevelSettings>().CharacterAttackSpeedMultiplier;
+        // =======================
         InvokeRepeating("UpdateTarget", 0.05f, 0.05f);
         fixedCharacterRotation = CharacterTransform.rotation; // 初始化固定朝向
     }

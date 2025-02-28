@@ -8,7 +8,8 @@ public class Bullets : MonoBehaviour
     public float speed = 70f;
     public bool isPoison = false;
     public bool isSlowing = false;
-    public int damage = 50;
+    public float damage = 50;
+    public float damageMultiplier = 1.0f;
     public GameObject ParticlesEffect;
 
     public void Seek(Transform _target)
@@ -16,6 +17,12 @@ public class Bullets : MonoBehaviour
         target = _target;
     }
 
+    void Start()
+    {
+        // ======= 湯底效果 =======
+        damageMultiplier *= GameObject.Find("LevelSettings").GetComponent<LevelSettings>().CharacterDamageMultiplier;
+    }
+    
     void Update()
     {
         if (target == null)
@@ -59,12 +66,12 @@ public class Bullets : MonoBehaviour
 
         ///// 造成傷害
         e.TakeDamage(
-            Convert.ToInt32(damage * (0.75 + HeatLevel * 0.25)),
+            Convert.ToInt32(damage * damageMultiplier * (0.75 + HeatLevel * 0.25)),
             40,
             new Color(0.09411757f, 0.05882348f, 0.05882348f, 0.8705882f), "");
         
         ///// 毒子彈的話給效果
-        if (isPoison) e.AddPoison(Convert.ToInt32(damage * (0.75 + HeatLevel * 0.25) / 8), 5f);
+        if (isPoison) e.AddPoison(Convert.ToInt32(damage * damageMultiplier * (0.75 + HeatLevel * 0.25) / 8), 5f);
         
         ///// 減速子彈的話給效果
         if (isSlowing) e.AddSlow(0.3f, 4f);

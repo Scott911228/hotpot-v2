@@ -12,4 +12,16 @@ public class LevelSettings : MonoBehaviour
     public int Life = 1;
     [Header("關卡敵人內容")]
     public Wave[] EnemyWaves;
+    // ======= 湯底效果 ======= 
+    [Header("湯底效果")]
+    public string FlavorName;
+    public string FlavorDescription;
+    public Color FlavorColor = Color.white;
+    public float CharacterDamageMultiplier = 1.0f;
+    public float CharacterAttackSpeedMultiplier = 1.0f;
+    public float CharacterHealthMultiplier = 1.0f;
+    public float EnemyDamageMultiplier = 1.0f;
+    public float EnemyAttackSpeedMultiplier = 1.0f;
+    public float EnemyHealthMultiplier = 1.0f;
+    public float EnemyMovementMultiplier = 1.0f;
 }
