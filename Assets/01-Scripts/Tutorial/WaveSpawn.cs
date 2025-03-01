@@ -109,6 +109,7 @@ public class WaveSpawn : MonoBehaviour
         {
             TotalEnemyCount += e.spawnCount;
         }
+        waveNumber++;
         // ===== 開始生成敵人 =====
         foreach (var e in enemyContent)
         {
@@ -123,7 +124,6 @@ public class WaveSpawn : MonoBehaviour
             }
             yield return new WaitForSeconds(e.delayToNextContent);
         }
-        waveNumber++;
     }
     void SpawnEnemy(EnemyContent enemyContent)
     {
