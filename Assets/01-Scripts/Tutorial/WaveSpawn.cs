@@ -88,23 +88,22 @@ public class WaveSpawn : MonoBehaviour
 
     IEnumerator SpawnWave()
     {
-        Debug.Log("下一波敵人即將來襲!");
+        Debug.Log("下一波敵人即將來襲!" + waveNumber);
         Wave wave = EnemyWaves[waveNumber];
         EnemyContent[] enemyContent = wave.Enemy;
         GameObject.Find("GameControl").GetComponent<PlayerStats>().Rounds++;
         if (GameObject.Find("LevelSettings").GetComponent<LevelSettings>().StageName == "第二關")
         {
-            if (waveNumber == 2)
+            if (waveNumber == 1)
             {
                 TextControl.BroadcastControlMessage("tutorial2/text3");
             }
-            if (waveNumber == 3)
+            if (waveNumber == 2)
             {
                 TextControl.BroadcastControlMessage("tutorial2/text5");
             }
         }
-        waveNumber++;
-        KilledEnemyCount = 0;
+        //KilledEnemyCount = 0;
         // ===== 計算敵人總數 =====
         foreach (var e in enemyContent)
         {
@@ -124,6 +123,7 @@ public class WaveSpawn : MonoBehaviour
             }
             yield return new WaitForSeconds(e.delayToNextContent);
         }
+        waveNumber++;
     }
     void SpawnEnemy(EnemyContent enemyContent)
     {
@@ -139,10 +139,9 @@ public class WaveSpawn : MonoBehaviour
         // ===== 傷害加成 =====
         if (enemyContent.damageMultiplier != 0)
         {
-            Debug.Log(enemyContent.damageMultiplier);
             GameObject bullet = enemyAttackScript.bulletPrefab;
             EnemyBullets enemyBullets = bullet.GetComponent<EnemyBullets>();
-            enemyBullets.damageMultiplier *= enemyContent.damageMultiplier;
+            enemyBullets.damageMultiplier = enemyContent.damageMultiplier;
         }
         // ===== 速度加成 =====
         if (enemyContent.speedMultiplier != 0)

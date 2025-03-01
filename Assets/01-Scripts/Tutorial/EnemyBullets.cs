@@ -17,7 +17,7 @@ public class EnemyBullets : MonoBehaviour
     void Start()
     {
         // ======= 湯底效果 =======
-        damageMultiplier *= GameObject.Find("LevelSettings").GetComponent<LevelSettings>().EnemyDamageMultiplier;
+        //damageMultiplier *= GameObject.Find("LevelSettings").GetComponent<LevelSettings>().EnemyDamageMultiplier;
     }
 
     void Update()
@@ -54,8 +54,8 @@ public class EnemyBullets : MonoBehaviour
         CharacterHP e = Enemies.GetComponent<CharacterHP>();
 
 
-        e.TakeDamage(damage*damageMultiplier);
-        
+        e.TakeDamage(damage * damageMultiplier * GameObject.Find("LevelSettings").GetComponent<LevelSettings>().EnemyDamageMultiplier);
+
 
 
     }
