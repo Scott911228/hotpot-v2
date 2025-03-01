@@ -52,5 +52,5 @@
         "Temp/": true
     },
     "dotnet.preferCSharpExtension": true,
-    "dotnet.defaultSolution": "hotpot-v2.sln"
+    "dotnet.defaultSolution": "hotpot v2.sln"
 }

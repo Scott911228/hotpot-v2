@@ -759,6 +759,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2065999691095668025}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &75948845 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6969039130706590907, guid: 94a76ed5aa7ab364abcb8245df0ae858,
+    type: 3}
+  m_PrefabInstance: {fileID: 2065999691095668025}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &76077006
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2810,8 +2816,7 @@ PrefabInstance:
         type: 3}
       propertyPath: spawnPoint
       value: 
-      objectReference: {fileID: 6969039130706590907, guid: 94a76ed5aa7ab364abcb8245df0ae858,
-        type: 3}
+      objectReference: {fileID: 75948845}
     - target: {fileID: 541459240808562593, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: waves.Array.size
@@ -3111,7 +3116,7 @@ PrefabInstance:
     - target: {fileID: 6499869828535564823, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: selectedBlocks.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6499869828535564823, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
@@ -3211,6 +3216,48 @@ PrefabInstance:
         type: 3}
       propertyPath: EnemyWaves.Array.data[3].count
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: EnemyWaves.Array.data[0].Enemy.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: EnemyWaves.Array.data[1].Enemy.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: EnemyWaves.Array.data[0].Enemy.Array.data[0].Enemy
+      value: 
+      objectReference: {fileID: 3235380681236260573, guid: 21a5d51227f0ed34fad74c455ff0ade6,
+        type: 3}
+    - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: EnemyWaves.Array.data[1].Enemy.Array.data[0].Enemy
+      value: 
+      objectReference: {fileID: 3235380681236260573, guid: a4265f8a0122e094495864ae5f53d91d,
+        type: 3}
+    - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: EnemyWaves.Array.data[0].Enemy.Array.data[0].spawnRate
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: EnemyWaves.Array.data[1].Enemy.Array.data[0].spawnRate
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: EnemyWaves.Array.data[0].Enemy.Array.data[0].spawnCount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: EnemyWaves.Array.data[1].Enemy.Array.data[0].spawnCount
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7967493723987147999, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
@@ -3964,7 +4011,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -331.59512
     y: 10.29599
-    width: 110
+    width: 110.009995
     height: 40
   tint: {r: 0.54457563, g: 1, b: 0.08018869, a: 1}
   useCustomTint: 1
@@ -4506,7 +4553,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -74.2128
     y: 5.1489334
-    width: 62
+    width: 62.010002
     height: 40
   tint: {r: 0.54457563, g: 1, b: 0.08018869, a: 1}
   useCustomTint: 1
@@ -7057,7 +7104,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 17.787231
     y: 21.148926
-    width: 98
+    width: 98.009995
     height: 40
   tint: {r: 0.54457563, g: 1, b: 0.08018869, a: 1}
   useCustomTint: 1
@@ -7112,7 +7159,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -203.59512
     y: 6.29599
-    width: 110
+    width: 110.009995
     height: 40
   tint: {r: 0.54457563, g: 1, b: 0.08018869, a: 1}
   useCustomTint: 1
@@ -7996,7 +8043,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 156.78723
     y: 7.1489334
-    width: 74
+    width: 74.01
     height: 40
   tint: {r: 0.54457563, g: 1, b: 0.08018869, a: 1}
   useCustomTint: 1
@@ -8231,7 +8278,7 @@ Transform:
   m_GameObject: {fileID: 351330127}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10209,7 +10256,7 @@ PrefabInstance:
     - target: {fileID: 1863736358722405305, guid: c1d496dc91842ad4a9e25d0eef8e7d6d,
         type: 3}
       propertyPath: m_Name
-      value: roadcube
+      value: roadcube(1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12474,6 +12521,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 27604d480d99e584ba50a1826a9834e6,
+        type: 3}
+      propertyPath: m_Name
+      value: Storycube1
       objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: 27604d480d99e584ba50a1826a9834e6,
         type: 3}

@@ -59,7 +59,7 @@ public class BuildManager : MonoBehaviour
             if (builtCount == 0 &&
                 GameObject.Find("LevelSettings").GetComponent<LevelSettings>().StageName == "第二關")
             {
-                if (node.name != "Cube (105)")
+                if (node.name != "Storycube1")
                 {
                     FloatTipsScript.DisplayTips("無法放置在這裡！");
                     speedControl.isForceSlowdown = false;
