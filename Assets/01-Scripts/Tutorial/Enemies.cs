@@ -1,6 +1,7 @@
 ﻿using Fungus;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class Enemies : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class Enemies : MonoBehaviour
     private float currentSpeed;
     public bool isPaused = false;
     private bool isBlocked = false; // 敵人是否被角色阻擋
+    private bool EnteredBase = false; //是否進入我方保護點
+    private SpriteRenderer spriteRenderer; //用來調控敵人透明度用的
 
     public float StartHealth = 100;
     public float Health;
@@ -194,10 +197,61 @@ public class Enemies : MonoBehaviour
 
     void EndPath()
     {
-        if (PlayerStats.Life > 0) PlayerStats.Life--;
+        if (EnteredBase) return; //防止重複進入基地扣血
+        EnteredBase = true;
+
+        if (PlayerStats.Life > 0) PlayerStats.Life--; 
         WaveSpawn.EnemiesAlive--;
         WaveSpawn.KilledEnemyCount++;
-        Destroy(gameObject);
 
+        StartCoroutine(FadeOutAndDestroy()); //開始淡出消失
     }
+
+    IEnumerator FadeOutAndDestroy()
+    {
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        HealthBar healthBar = GetComponentInChildren<HealthBar>();
+
+        if (spriteRenderer == null)
+        {
+            Destroy(gameObject);
+            yield break;
+        }
+
+        Image healthBarImage = null;
+        if (healthBar != null)
+        {
+            healthBarImage = healthBar.GetComponent<Image>(); 
+        }
+
+        float fadeDuration = 1.0f;
+        float elapsedTime = 0f;
+        
+        Color startColor = spriteRenderer.color;
+        Color endColor = new Color(startColor.r, startColor.g, startColor.b, 0f); 
+
+        Color startHealthColor = Color.white;
+        if (healthBarImage != null)
+        {
+            startHealthColor = healthBarImage.color;
+        }
+        Color endHealthColor = new Color(startHealthColor.r, startHealthColor.g, startHealthColor.b, 0f);
+
+        while (elapsedTime < fadeDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            float alpha = 1f - (elapsedTime / fadeDuration);
+            spriteRenderer.color = Color.Lerp(startColor, endColor, elapsedTime / fadeDuration);
+            
+            if (healthBarImage != null)
+            {
+                healthBarImage.color = Color.Lerp(startHealthColor, endHealthColor, elapsedTime / fadeDuration);
+            }
+
+            yield return null;
+        }
+
+        Destroy(gameObject);
+    }
+
 }

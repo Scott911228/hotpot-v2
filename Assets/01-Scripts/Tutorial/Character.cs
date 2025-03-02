@@ -70,7 +70,6 @@ public class Character : MonoBehaviour
 
             foreach (Collider hitCollider in hitColliderSphere)
             {
-                Debug.Log(hitCollider);
                 if (hitCollider.gameObject.GetComponent<Enemies>())
                 {
 

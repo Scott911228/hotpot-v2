@@ -236,7 +236,6 @@ public class Node : MonoBehaviour
         }
         if (turretBlueprint?.prefab == null)
         {
-            Debug.Log("No turret blueprint found for " + buildingTurretname + ". Cancelling build.");
             return;
         }
         if (string.IsNullOrEmpty(turretBlueprint.prefab.name))
