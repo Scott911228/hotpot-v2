@@ -15,13 +15,14 @@ public class Enemies : MonoBehaviour
     private bool EnteredBase = false; //是否進入我方保護點
     private SpriteRenderer spriteRenderer; //用來調控敵人透明度用的
 
+
     public float StartHealth = 100;
     public float Health;
 
     public int GetMoney = 50;
 
     [Header("Attributes")]
-    public float range = 6f; // 受角色阻擋的距離
+    public float range = 6f; 
 
     [Header("Unity Setup Fields")]
     public string characterTag = "Character";
@@ -265,5 +266,16 @@ public class Enemies : MonoBehaviour
         }
 
         Destroy(gameObject);
+    }
+    
+    public void InitializePath(Transform[] path)
+    {
+        // 設定當前路徑
+        Paths.points = path;
+        wavepointIndex = 0;
+        if (Paths.points.Length > 0)
+        {
+            Target = Paths.points[wavepointIndex];
+        }
     }
 }

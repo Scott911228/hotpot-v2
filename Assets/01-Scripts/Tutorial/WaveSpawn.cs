@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 
 public class WaveSpawn : MonoBehaviour
 {
     public static int EnemiesAlive = 0;
     public GameManager gameManager;
+    private Transform Target; 
     public float timeBetweenWaves = 5f;
     public float countdown = 5f;
     public static int KilledEnemyCount = 0;
@@ -31,6 +32,7 @@ public class WaveSpawn : MonoBehaviour
 
     [Header("路徑管理")]
     public PathsManager pathsManager; // 路徑管理器
+    public GameObject enemyPrefab; // 敵人預製物
 
     void Start()
     {
@@ -39,7 +41,6 @@ public class WaveSpawn : MonoBehaviour
         waveNumber = 0;
         InvokeRepeating("UpdateEnemyCountText", 0f, 0.1f);
         pathsManager = GameObject.Find("PathsManager").GetComponent<PathsManager>(); // 取得 PathsManager
-        SpawnEnemy();
     }
 
     void Update()
@@ -61,7 +62,7 @@ public class WaveSpawn : MonoBehaviour
 
         if (countdown <= 0f)
         {
-            StartCoroutine(SpawnWave());
+            StartCoroutine(SpawnWaveEnemies());  // 使用協程生成敵人
             countdown = timeBetweenWaves;
             return;
         }
@@ -84,85 +85,68 @@ public class WaveSpawn : MonoBehaviour
         if (waveNumber > 0) WaveCountText.text = "第 " + waveNumber.ToString() + " / " + EnemyWaves.Length.ToString() + " 波";
     }
 
-    IEnumerator SpawnWave()
+    // 協程控制每波敵人生成
+    IEnumerator SpawnWaveEnemies()
     {
-        Wave wave = EnemyWaves[waveNumber];
-        EnemyContent[] enemyContent = wave.Enemy;
-        GameObject.Find("GameControl").GetComponent<PlayerStats>().Rounds++;
+        Wave currentWave = EnemyWaves[waveNumber];
+        TotalEnemyCount = 0;
 
-        // ===== 計算敵人總數 =====
-        foreach (var e in enemyContent)
+        foreach (EnemyContent content in currentWave.Enemy)
         {
-            TotalEnemyCount += e.spawnCount;
-        }
-        waveNumber++;
+            TotalEnemyCount += content.spawnCount;
 
-        // ===== 開始生成敵人 =====
-        for (int i = 0; i < enemyContent.Length; i++)
-        {
-            EnemyContent e = enemyContent[i];
-
-            // 取得對應的出生點和路徑
-            if (i < pathsManager.GetPathCount())
+            for (int i = 0; i < content.spawnCount; i++)
             {
-                PathsManager.PathData pathData = pathsManager.GetPathData(i); // 每個spawn point有自己獨立的路徑
-                Transform spawnPoint = pathData.spawnPoint;
-
-                for (int j = 0; j < e.spawnCount; j++)
-                {
-                    while (!GameObject.Find("GameControl").GetComponent<GameManager>().isGamePlaying)
-                    {
-                        yield return new WaitForSeconds(0.1f);
-                    }
-                    SpawnEnemy(e, spawnPoint, pathData.path); // 把spawn point和path傳遞給SpawnEnemy
-                    yield return new WaitForSeconds(1f / e.spawnRate);
-                }
+                SpawnEnemy(content);  // 生成敵人
+                yield return new WaitForSeconds(content.spawnRate);  // 控制敵人生成的頻率
             }
 
-            yield return new WaitForSeconds(e.delayToNextContent);
+            yield return new WaitForSeconds(content.delayToNextContent);  // 延遲下一個敵人生成
         }
+
+        waveNumber++;  
+        countdown = timeBetweenWaves;  
     }
 
-    void SpawnEnemy()
+    // 生成敵人的邏輯
+    void SpawnEnemy(EnemyContent content)
+{
+    if (pathsManager != null)
     {
-        if (pathsManager != null)
+        // 根據路徑資料生成敵人並初始化路徑
+        for (int i = 0; i < pathsManager.GetPathCount(); i++)
         {
-            // 根據路徑資料生成敵人並初始化路徑
-            for (int i = 0; i < pathsManager.GetPathCount(); i++)
+            PathsManager.PathData pathData = pathsManager.GetPathData(i);
+            GameObject enemy = Instantiate(content.Enemy, pathData.spawnPoint.position, Quaternion.identity);
+
+            // 確保敵人有正確的路徑初始化方法
+            Enemies enemyScript = enemy.GetComponent<Enemies>();
+            Target = Paths.points[0];
+        /*
+            // 血量加成
+            if (content.healthMultiplier != 0)
             {
-                PathsManager.PathData pathData = pathsManager.GetPathData(i);
-                GameObject enemy = Instantiate(enemyPrefab, pathData.spawnPoint.position, Quaternion.identity);
-                
-                // 假設 Enemies 類別內有移動邏輯，可以直接初始化
-                Enemies enemyScript = enemy.GetComponent<Enemies>();
-                enemyScript.InitializePath(pathData.path);  // 設定敵人的路徑
+                enemyScript.StartHealth = (int)(enemyScript.StartHealth * content.healthMultiplier);
+                enemyScript.Health = enemyScript.StartHealth;
             }
-        }
-        // 設置敵人的路徑
-        enemy.GetComponent<EnemyMovement>().SetPath(path); // 假設有一個EnemyMovement腳本負責移動，並設置路徑
 
-        // ===== 血量加成 =====
-        if (enemyContent.healthMultiplier != 0)
-        {
-            enemyStatus.StartHealth = (int)(enemyStatus.StartHealth * enemyContent.healthMultiplier);
-            enemyStatus.Health = enemyStatus.StartHealth;
-        }
+            // 傷害加成
+            if (content.damageMultiplier != 0)
+            {
+                EnemyBullets enemyBullets = bullet.GetComponent<EnemyBullets>();
+                enemyBullets.damageMultiplier = content.damageMultiplier;
+            }
 
-        // ===== 傷害加成 =====
-        if (enemyContent.damageMultiplier != 0)
-        {
-            GameObject bullet = enemyAttackScript.bulletPrefab;
-            EnemyBullets enemyBullets = bullet.GetComponent<EnemyBullets>();
-            enemyBullets.damageMultiplier = enemyContent.damageMultiplier;
+            // 速度加成
+            if (content.speedMultiplier != 0)
+            {
+                enemyScript.speedMultiplier = content.speedMultiplier;
+            }
+        */
+            EnemiesAlive++;
+            spawnedCount++;
         }
-
-        // ===== 速度加成 =====
-        if (enemyContent.speedMultiplier != 0)
-        {
-            enemyStatus.speedMultiplier = enemyContent.speedMultiplier;
-        }
-
-        EnemiesAlive++;
-        spawnedCount++;
     }
+}
+
 }
