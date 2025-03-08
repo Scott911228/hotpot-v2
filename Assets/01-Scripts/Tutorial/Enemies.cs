@@ -1,7 +1,6 @@
-﻿using Fungus;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;  
 
 public class Enemies : MonoBehaviour
 {
@@ -12,7 +11,7 @@ public class Enemies : MonoBehaviour
     public float speedMultiplier = 1.0f;
     private float currentSpeed;
     public bool isPaused = false;
-    private bool isBlocked = false; // 敵人是否被角色阻擋
+    private bool isBlocked = false; //敵人是否被角色阻擋
     private bool EnteredBase = false; //是否進入我方保護點
     private SpriteRenderer spriteRenderer; //用來調控敵人透明度用的
 
@@ -32,7 +31,6 @@ public class Enemies : MonoBehaviour
     private bool isDead = false;
 
     private Transform Target;
-
     private int wavepointIndex = 0;
 
     private bool isSlowed = false;
@@ -41,10 +39,21 @@ public class Enemies : MonoBehaviour
     private int poisonDamage;
     private float poisonTime;
     private float slowTime;
+
+    // 路徑管理
+    public PathsManager pathsManager;
+    private PathsManager.PathData currentPathData;
+
     void Start()
     {
         animator = GetComponent<Animator>();
-        Target = Paths.points[0];
+        // 取得對應的路徑資料
+        currentPathData = pathsManager.GetPathData(Random.Range(0, pathsManager.GetPathCount()));
+        if (currentPathData != null)
+        {
+            Target = Paths.points[0];
+        }
+
         // ======= 湯底效果 =======
         StartHealth *= GameObject.Find("LevelSettings").GetComponent<LevelSettings>().EnemyHealthMultiplier;
         speedMultiplier *= GameObject.Find("LevelSettings").GetComponent<LevelSettings>().EnemyMovementMultiplier;
@@ -54,6 +63,7 @@ public class Enemies : MonoBehaviour
         InvokeRepeating("DamageEffectCheck", 0f, 0.4f);
         InvokeRepeating("MovementEffectCheck", 0f, 0.5f);
     }
+
     void MovementEffectCheck() // 更新阻擋此敵人的角色
     {
         if (isSlowed)
@@ -73,11 +83,11 @@ public class Enemies : MonoBehaviour
             currentSpeed = initSpeed * speedMultiplier;
         }
     }
+
     void DamageEffectCheck()
     {
         if (isPoisoned)
         {
-            //gameObject.GetComponent<SpriteRenderer>().color = Color.green;
             if (poisonTime > 0.4f)
             {
                 TakeDamage(poisonDamage, 25f, new Color(0.2460261f, 0.1361694f, 0.6415094f, 1f), "中毒! ");
@@ -86,13 +96,10 @@ public class Enemies : MonoBehaviour
             else
             {
                 isPoisoned = false;
-                //gameObject.GetComponent<SpriteRenderer>().color = Color.white;
             }
         }
-        else
-        {
-        }
     }
+
     void UpdateBlocker() // 更新阻擋此敵人的角色
     {
         GameObject[] characters = GameObject.FindGameObjectsWithTag(characterTag);
@@ -141,12 +148,14 @@ public class Enemies : MonoBehaviour
         slowMultiplier = _slowMultiplier;
         slowTime = effectLength;
     }
+
     public void AddPoison(int damage, float effectLength)
     {
         isPoisoned = true;
         poisonDamage = damage;
         poisonTime = effectLength;
     }
+
     public void TakeDamage(int amount, float size, Color color, string prefix)
     {
         Health -= amount;
@@ -165,6 +174,7 @@ public class Enemies : MonoBehaviour
             Die();
         }
     }
+
     void Die()
     {
         isDead = true;
@@ -173,9 +183,12 @@ public class Enemies : MonoBehaviour
         WaveSpawn.EnemiesAlive--;
         WaveSpawn.KilledEnemyCount++;
     }
+
     void Update()
     {
         if (isPaused) return;
+
+        // 移動邏輯
         Vector3 dir = Target.position - transform.position;
         transform.Translate(dir.normalized * currentSpeed * Time.deltaTime * (isBlocked ? 0 : 1), Space.World);
         if (Vector3.Distance(transform.position, Target.position) <= 0.2f)
@@ -253,5 +266,4 @@ public class Enemies : MonoBehaviour
 
         Destroy(gameObject);
     }
-
 }

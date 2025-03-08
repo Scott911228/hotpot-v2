@@ -2,14 +2,11 @@
 using System.Collections;
 using UnityEngine.UI;
 using TMPro;
-using System;
+
 public class WaveSpawn : MonoBehaviour
 {
     public static int EnemiesAlive = 0;
-    public Transform enemyPrefab;
-    public Transform spawnPoint;
     public GameManager gameManager;
-
     public float timeBetweenWaves = 5f;
     public float countdown = 5f;
     public static int KilledEnemyCount = 0;
@@ -19,8 +16,8 @@ public class WaveSpawn : MonoBehaviour
     private Wave[] EnemyWaves;
     private int spawnedCount = 0;
     private int TotalEnemyCount = 0;
-    [Header("敵人總數文字")]
 
+    [Header("敵人總數文字")]
     public string enemyTag = "Enemy";
     public string prefix = "";
     public string suffix = "";
@@ -32,15 +29,20 @@ public class WaveSpawn : MonoBehaviour
 
     public static int waveNumber = 0;
 
+    [Header("路徑管理")]
+    public PathsManager pathsManager; // 路徑管理器
+
     void Start()
     {
         EnemyWaves = GameObject.Find("LevelSettings").GetComponent<LevelSettings>().EnemyWaves;
         EnemiesAlive = 0;
         waveNumber = 0;
         InvokeRepeating("UpdateEnemyCountText", 0f, 0.1f);
+        pathsManager = GameObject.Find("PathsManager").GetComponent<PathsManager>(); // 取得 PathsManager
+        SpawnEnemy();
     }
 
-    public void Update()
+    void Update()
     {
         if (TotalEnemyCount - KilledEnemyCount > 0)
         {
@@ -51,17 +53,12 @@ public class WaveSpawn : MonoBehaviour
             return;
         }
 
-        //if(!BroadcastMessagePanel.activeSelf && waveNumber > 0) BroadcastMessagePanel.SetActive(true);
         if (waveNumber == EnemyWaves.Length)
         {
             gameManager.WinLevel();
             this.enabled = false;
         }
 
-        if (countdown <= 1f)
-        {
-            //BroadcastMessageAnimator.Play("BroadcastMessagePanelFadeOut",0,0f);
-        }
         if (countdown <= 0f)
         {
             StartCoroutine(SpawnWave());
@@ -73,6 +70,7 @@ public class WaveSpawn : MonoBehaviour
         countdown = Mathf.Clamp(countdown, 0f, Mathf.Infinity);
         waveCountdownText.text = "第 " + (waveNumber + 1).ToString() + " 波 ... " + string.Format("{0:00.00}", countdown);
     }
+
     public void UpdateEnemyCountText()
     {
         string EnemyCountString = (TotalEnemyCount - KilledEnemyCount).ToString();
@@ -88,54 +86,68 @@ public class WaveSpawn : MonoBehaviour
 
     IEnumerator SpawnWave()
     {
-        Debug.Log("下一波敵人即將來襲!" + waveNumber);
         Wave wave = EnemyWaves[waveNumber];
         EnemyContent[] enemyContent = wave.Enemy;
         GameObject.Find("GameControl").GetComponent<PlayerStats>().Rounds++;
-        if (GameObject.Find("LevelSettings").GetComponent<LevelSettings>().StageName == "第二關")
-        {
-            if (waveNumber == 1)
-            {
-                TextControl.BroadcastControlMessage("tutorial2/text3");
-            }
-            if (waveNumber == 2)
-            {
-                TextControl.BroadcastControlMessage("tutorial2/text5");
-            }
-        }
-        //KilledEnemyCount = 0;
+
         // ===== 計算敵人總數 =====
         foreach (var e in enemyContent)
         {
             TotalEnemyCount += e.spawnCount;
         }
         waveNumber++;
+
         // ===== 開始生成敵人 =====
-        foreach (var e in enemyContent)
+        for (int i = 0; i < enemyContent.Length; i++)
         {
-            for (int i = 0; i < e.spawnCount; i++)
+            EnemyContent e = enemyContent[i];
+
+            // 取得對應的出生點和路徑
+            if (i < pathsManager.GetPathCount())
             {
-                while (!GameObject.Find("GameControl").GetComponent<GameManager>().isGamePlaying)
+                PathsManager.PathData pathData = pathsManager.GetPathData(i); // 每個spawn point有自己獨立的路徑
+                Transform spawnPoint = pathData.spawnPoint;
+
+                for (int j = 0; j < e.spawnCount; j++)
                 {
-                    yield return new WaitForSeconds(0.1f);
+                    while (!GameObject.Find("GameControl").GetComponent<GameManager>().isGamePlaying)
+                    {
+                        yield return new WaitForSeconds(0.1f);
+                    }
+                    SpawnEnemy(e, spawnPoint, pathData.path); // 把spawn point和path傳遞給SpawnEnemy
+                    yield return new WaitForSeconds(1f / e.spawnRate);
                 }
-                SpawnEnemy(e);
-                yield return new WaitForSeconds(1f / e.spawnRate);
             }
+
             yield return new WaitForSeconds(e.delayToNextContent);
         }
     }
-    void SpawnEnemy(EnemyContent enemyContent)
+
+    void SpawnEnemy()
     {
-        GameObject enemy = Instantiate(enemyContent.Enemy, spawnPoint.position, Quaternion.Euler(new Vector3(0, 270, 0)));
-        Enemies enemyStatus = enemy.GetComponent<Enemies>();
-        EnemyAttack enemyAttackScript = enemy.GetComponent<EnemyAttack>();
+        if (pathsManager != null)
+        {
+            // 根據路徑資料生成敵人並初始化路徑
+            for (int i = 0; i < pathsManager.GetPathCount(); i++)
+            {
+                PathsManager.PathData pathData = pathsManager.GetPathData(i);
+                GameObject enemy = Instantiate(enemyPrefab, pathData.spawnPoint.position, Quaternion.identity);
+                
+                // 假設 Enemies 類別內有移動邏輯，可以直接初始化
+                Enemies enemyScript = enemy.GetComponent<Enemies>();
+                enemyScript.InitializePath(pathData.path);  // 設定敵人的路徑
+            }
+        }
+        // 設置敵人的路徑
+        enemy.GetComponent<EnemyMovement>().SetPath(path); // 假設有一個EnemyMovement腳本負責移動，並設置路徑
+
         // ===== 血量加成 =====
         if (enemyContent.healthMultiplier != 0)
         {
             enemyStatus.StartHealth = (int)(enemyStatus.StartHealth * enemyContent.healthMultiplier);
             enemyStatus.Health = enemyStatus.StartHealth;
         }
+
         // ===== 傷害加成 =====
         if (enemyContent.damageMultiplier != 0)
         {
@@ -143,16 +155,14 @@ public class WaveSpawn : MonoBehaviour
             EnemyBullets enemyBullets = bullet.GetComponent<EnemyBullets>();
             enemyBullets.damageMultiplier = enemyContent.damageMultiplier;
         }
+
         // ===== 速度加成 =====
         if (enemyContent.speedMultiplier != 0)
         {
             enemyStatus.speedMultiplier = enemyContent.speedMultiplier;
         }
+
         EnemiesAlive++;
         spawnedCount++;
-        if (spawnedCount == 2)
-        {
-            TextControl.BroadcastControlMessage("tutorial/text1");
-        }
     }
 }

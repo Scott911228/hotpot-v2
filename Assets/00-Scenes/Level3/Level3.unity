@@ -26431,6 +26431,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb9a3013cf9ff2442a4a625115a8fe28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1406181170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1406181167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 747d2de12a7ba9a428e5fb9d02d09d48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pathData:
+  - spawnPoint: {fileID: 0}
+    path: {fileID: 0}
+  - spawnPoint: {fileID: 0}
+    path: {fileID: 0}
+  - spawnPoint: {fileID: 0}
+    path: {fileID: 0}
 --- !u!1001 &1431054989
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27219,7 +27238,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
+      propertyPath: EnemyWaves.Array.data[1].Enemy.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
       propertyPath: EnemyWaves.Array.data[0].Enemy.Array.data[0].Enemy
+      value: 
+      objectReference: {fileID: 3235380681236260573, guid: 21a5d51227f0ed34fad74c455ff0ade6,
+        type: 3}
+    - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: EnemyWaves.Array.data[1].Enemy.Array.data[0].Enemy
       value: 
       objectReference: {fileID: 3235380681236260573, guid: 21a5d51227f0ed34fad74c455ff0ade6,
         type: 3}
@@ -27230,7 +27260,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
+      propertyPath: EnemyWaves.Array.data[1].Enemy.Array.data[0].spawnRate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
       propertyPath: EnemyWaves.Array.data[0].Enemy.Array.data[0].spawnCount
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: EnemyWaves.Array.data[1].Enemy.Array.data[0].spawnCount
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7967493723987147999, guid: 2200e26108a0af044a17b619e36318f9,
@@ -27252,6 +27292,10 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 541459240808562584, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 1406181170}
     - targetCorrespondingSourceObject: {fileID: 5237553912724401908, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       insertIndex: -1
