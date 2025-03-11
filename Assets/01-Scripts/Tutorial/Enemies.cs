@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.UI;  
+using UnityEngine.UI;
+using System.IO;
 
 public class Enemies : MonoBehaviour
 {
@@ -14,8 +15,6 @@ public class Enemies : MonoBehaviour
     private bool isBlocked = false; //敵人是否被角色阻擋
     private bool EnteredBase = false; //是否進入我方保護點
     private SpriteRenderer spriteRenderer; //用來調控敵人透明度用的
-
-
     public float StartHealth = 100;
     public float Health;
 
@@ -31,7 +30,7 @@ public class Enemies : MonoBehaviour
     [Header("Unity Stuff")]
     private bool isDead = false;
 
-    private Transform Target;
+    public Transform Target;
     private int wavepointIndex = 0;
 
     private bool isSlowed = false;
@@ -40,21 +39,11 @@ public class Enemies : MonoBehaviour
     private int poisonDamage;
     private float poisonTime;
     private float slowTime;
-
+    public int pathIndex;
     // 路徑管理
-    public PathsManager pathsManager;
-    private PathsManager.PathData currentPathData;
-
     void Start()
     {
         animator = GetComponent<Animator>();
-        // 取得對應的路徑資料
-        currentPathData = pathsManager.GetPathData(Random.Range(0, pathsManager.GetPathCount()));
-        if (currentPathData != null)
-        {
-            Target = Paths.points[0];
-        }
-
         // ======= 湯底效果 =======
         StartHealth *= GameObject.Find("LevelSettings").GetComponent<LevelSettings>().EnemyHealthMultiplier;
         speedMultiplier *= GameObject.Find("LevelSettings").GetComponent<LevelSettings>().EnemyMovementMultiplier;

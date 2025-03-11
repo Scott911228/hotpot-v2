@@ -734,6 +734,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 6158094572391975918}
   - {fileID: 1591062562030982425}
   - {fileID: 6160779270371370150}
   - {fileID: 541459241698789165}
@@ -758,17 +759,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ac8f8818748cba47900c7f2bba7fc07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 6160258050823828704, guid: 900bfc4e414318e4b92f7985b3b1dc05,
-    type: 3}
-  waves:
-  - Enemy: {fileID: 3235380681236260573, guid: 900bfc4e414318e4b92f7985b3b1dc05, type: 3}
-    count: 2
-    rate: 1
-  - Enemy: {fileID: 3235380681236260573, guid: 900bfc4e414318e4b92f7985b3b1dc05, type: 3}
-    count: 4
-    rate: 1
-  spawnPoint: {fileID: 8943277977966457202, guid: 136bb74825ddf0a429ff873cba37ac4f,
-    type: 3}
   gameManager: {fileID: 541459240808562599}
   timeBetweenWaves: 3
   countdown: 1
@@ -781,6 +771,9 @@ MonoBehaviour:
   EnemyCountText: {fileID: 3644631950621673095}
   WaveCountText: {fileID: 541459242513294798}
   waveCountdownText: {fileID: 541459242513294798}
+  pathSettings: {fileID: 0}
+  enemyPrefab: {fileID: 6160258050823828704, guid: 900bfc4e414318e4b92f7985b3b1dc05,
+    type: 3}
 --- !u!114 &541459240808562594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -829,8 +822,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5f91bd8d1cc6174bb507cb65c27b061, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartMoney: 100000
-  StartLives: 1
   Rounds: 0
 --- !u!114 &541459240808562599
 MonoBehaviour:
@@ -844,7 +835,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb9a3013cf9ff2442a4a625115a8fe28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StageName: 
   SpeedControl: {fileID: 541459242267512807}
   GameOverUI: {fileID: 541459242177742313}
   CompleteLevelUI: {fileID: 541459241545843489}
@@ -17632,8 +17622,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28223b21e75e0a741a73f71f4d5244e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartMoney: 0
-  StartLives: 0
+  StageName: 
+  Money: 100
+  Life: 1
+  EnemyWaves: []
+  FlavorName: 
+  FlavorDescription: 
+  FlavorColor: {r: 1, g: 1, b: 1, a: 1}
+  CharacterDamageMultiplier: 1
+  CharacterAttackSpeedMultiplier: 1
+  CharacterHealthMultiplier: 1
+  EnemyDamageMultiplier: 1
+  EnemyAttackSpeedMultiplier: 1
+  EnemyHealthMultiplier: 1
+  EnemyMovementMultiplier: 1
 --- !u!1 &3625874849730528204
 GameObject:
   m_ObjectHideFlags: 0
@@ -18963,6 +18965,68 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: "\u5C0F\u706B"
+--- !u!1 &6741854379030407502
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6158094572391975918}
+  - component: {fileID: 6522493728350851578}
+  m_Layer: 0
+  m_Name: PathSettings
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6158094572391975918
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6741854379030407502}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 541459240808562592}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6522493728350851578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6741854379030407502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 747d2de12a7ba9a428e5fb9d02d09d48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pathData:
+  - spawnPoint: {fileID: 0}
+    pathIndex: 0
+    points:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  - spawnPoint: {fileID: 0}
+    pathIndex: 1
+    points:
+    - {fileID: 0}
+    - {fileID: 0}
+  - spawnPoint: {fileID: 0}
+    pathIndex: 2
+    points:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
 --- !u!1 &6750087130616300340
 GameObject:
   m_ObjectHideFlags: 0

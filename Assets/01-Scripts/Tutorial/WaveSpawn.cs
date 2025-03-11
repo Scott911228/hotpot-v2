@@ -7,7 +7,7 @@ public class WaveSpawn : MonoBehaviour
 {
     public static int EnemiesAlive = 0;
     public GameManager gameManager;
-    private Transform Target; 
+    private Transform Target;
     public float timeBetweenWaves = 5f;
     public float countdown = 5f;
     public static int KilledEnemyCount = 0;
@@ -31,16 +31,16 @@ public class WaveSpawn : MonoBehaviour
     public static int waveNumber = 0;
 
     [Header("路徑管理")]
-    public PathsManager pathsManager; // 路徑管理器
+    public PathSettings pathSettings; // 路徑管理器
     public GameObject enemyPrefab; // 敵人預製物
 
     void Start()
     {
+        pathSettings = GameObject.Find("PathSettings")?.GetComponent<PathSettings>(); // 取得 PathSettings
         EnemyWaves = GameObject.Find("LevelSettings").GetComponent<LevelSettings>().EnemyWaves;
         EnemiesAlive = 0;
         waveNumber = 0;
         InvokeRepeating("UpdateEnemyCountText", 0f, 0.1f);
-        pathsManager = GameObject.Find("PathsManager").GetComponent<PathsManager>(); // 取得 PathsManager
     }
 
     void Update()
@@ -88,6 +88,19 @@ public class WaveSpawn : MonoBehaviour
     // 協程控制每波敵人生成
     IEnumerator SpawnWaveEnemies()
     {
+
+        if (GameObject.Find("LevelSettings").GetComponent<LevelSettings>().StageName == "第二關")
+        {
+            if (waveNumber == 1)
+            {
+                TextControl.BroadcastControlMessage("tutorial2/text3");
+            }
+            if (waveNumber == 2)
+            {
+                TextControl.BroadcastControlMessage("tutorial2/text5");
+            }
+        }
+        //KilledEnemyCount = 0;
         Wave currentWave = EnemyWaves[waveNumber];
         TotalEnemyCount = 0;
 
@@ -104,49 +117,48 @@ public class WaveSpawn : MonoBehaviour
             yield return new WaitForSeconds(content.delayToNextContent);  // 延遲下一個敵人生成
         }
 
-        waveNumber++;  
-        countdown = timeBetweenWaves;  
+        waveNumber++;
+        countdown = timeBetweenWaves;
     }
 
     // 生成敵人的邏輯
     void SpawnEnemy(EnemyContent content)
-{
-    if (pathsManager != null)
     {
-        // 根據路徑資料生成敵人並初始化路徑
-        for (int i = 0; i < pathsManager.GetPathCount(); i++)
+        PathSettings.PathData pathData = pathSettings.GetPathData(content.pathIndex);
+        GameObject enemy = Instantiate(content.Enemy, pathData.spawnPoint.position, Quaternion.Euler(0, -90, 0));
+        EnemyAttack enemyAttackScript = enemy.GetComponent<EnemyAttack>();
+        // 確保敵人有正確的路徑初始化方法
+        Enemies enemyScript = enemy.GetComponent<Enemies>();
+        Transform[] points = pathSettings.GetPoints(content.pathIndex);
+        enemyScript.InitializePath(points);
+        Target = Paths.points[0];
+        // 血量加成
+        if (content.healthMultiplier != 0)
         {
-            PathsManager.PathData pathData = pathsManager.GetPathData(i);
-            GameObject enemy = Instantiate(content.Enemy, pathData.spawnPoint.position, Quaternion.identity);
+            enemyScript.StartHealth = (int)(enemyScript.StartHealth * content.healthMultiplier);
+            enemyScript.Health = enemyScript.StartHealth;
+        }
 
-            // 確保敵人有正確的路徑初始化方法
-            Enemies enemyScript = enemy.GetComponent<Enemies>();
-            Target = Paths.points[0];
-        /*
-            // 血量加成
-            if (content.healthMultiplier != 0)
-            {
-                enemyScript.StartHealth = (int)(enemyScript.StartHealth * content.healthMultiplier);
-                enemyScript.Health = enemyScript.StartHealth;
-            }
+        // 傷害加成
+        if (content.damageMultiplier != 0)
+        {
+            GameObject bullet = enemyAttackScript.bulletPrefab;
+            EnemyBullets enemyBullets = bullet.GetComponent<EnemyBullets>();
+            enemyBullets.damageMultiplier = content.damageMultiplier;
+        }
 
-            // 傷害加成
-            if (content.damageMultiplier != 0)
-            {
-                EnemyBullets enemyBullets = bullet.GetComponent<EnemyBullets>();
-                enemyBullets.damageMultiplier = content.damageMultiplier;
-            }
+        // 速度加成
+        if (content.speedMultiplier != 0)
+        {
+            enemyScript.speedMultiplier = content.speedMultiplier;
+        }
 
-            // 速度加成
-            if (content.speedMultiplier != 0)
-            {
-                enemyScript.speedMultiplier = content.speedMultiplier;
-            }
-        */
-            EnemiesAlive++;
-            spawnedCount++;
+        EnemiesAlive++;
+        spawnedCount++;
+        if (spawnedCount == 2)
+        {
+            TextControl.BroadcastControlMessage("tutorial/text1");
         }
     }
-}
 
 }
