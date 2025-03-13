@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
+using System.IO;
 
 public class WaveSpawn : MonoBehaviour
 {
@@ -27,7 +28,6 @@ public class WaveSpawn : MonoBehaviour
 
     [Header("下一波倒數")]
     public Text waveCountdownText;
-
     public static int waveNumber = 0;
 
     [Header("路徑管理")]
@@ -124,39 +124,39 @@ public class WaveSpawn : MonoBehaviour
     // 生成敵人的邏輯
     void SpawnEnemy(EnemyContent content)
     {
-        PathSettings.PathData pathData = pathSettings.GetPathData(content.pathIndex);
-        GameObject enemy = Instantiate(content.Enemy, pathData.spawnPoint.position, Quaternion.Euler(0, -90, 0));
-        EnemyAttack enemyAttackScript = enemy.GetComponent<EnemyAttack>();
-        // 確保敵人有正確的路徑初始化方法
-        Enemies enemyScript = enemy.GetComponent<Enemies>();
-        Transform[] points = pathSettings.GetPoints(content.pathIndex);
-        enemyScript.InitializePath(points);
-        // 血量加成
-        if (content.healthMultiplier != 0)
         {
-            enemyScript.StartHealth = (int)(enemyScript.StartHealth * content.healthMultiplier);
-            enemyScript.Health = enemyScript.StartHealth;
-        }
+            PathSettings.PathData pathData = pathSettings.GetPathData(content.pathIndex);
+            if (pathData == null)
+            {
+                Debug.LogError($"找不到路徑索引 {content.pathIndex}，請檢查 PathSettings 設置！");
+                return;
+            }
 
-        // 傷害加成
-        if (content.damageMultiplier != 0)
-        {
-            GameObject bullet = enemyAttackScript.bulletPrefab;
-            EnemyBullets enemyBullets = bullet.GetComponent<EnemyBullets>();
-            enemyBullets.damageMultiplier = content.damageMultiplier;
-        }
+            GameObject enemy = Instantiate(content.Enemy, pathData.spawnPoint.position, Quaternion.Euler(0, -90, 0));
+            Enemies enemyScript = enemy.GetComponent<Enemies>();
 
-        // 速度加成
-        if (content.speedMultiplier != 0)
-        {
-            enemyScript.speedMultiplier = content.speedMultiplier;
-        }
+            // 確保敵人使用自己的路徑
+            Transform[] points = pathSettings.GetPoints(content.pathIndex);
+            if (points == null || points.Length == 0)
+            {
+                Debug.LogError($"敵人 {enemy.name} 的路徑為空，請檢查 PathSettings 是否設置正確！");
+                return;
+            }
 
-        EnemiesAlive++;
-        spawnedCount++;
-        if (spawnedCount == 2)
-        {
-            TextControl.BroadcastControlMessage("tutorial/text1");
+            enemyScript.InitializePath(points);
+
+            // 設定速度、血量、傷害
+            if (content.healthMultiplier != 0)
+            {
+                enemyScript.StartHealth = (int)(enemyScript.StartHealth * content.healthMultiplier);
+                enemyScript.Health = enemyScript.StartHealth;
+            }
+            if (content.speedMultiplier != 0)
+            {
+                enemyScript.speedMultiplier = content.speedMultiplier;
+            }
+
+            EnemiesAlive++;
         }
     }
 

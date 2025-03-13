@@ -21,7 +21,7 @@ public class Enemies : MonoBehaviour
     public int GetMoney = 50;
 
     [Header("Attributes")]
-    public float range = 6f; 
+    public float range = 6f;
 
     [Header("Unity Setup Fields")]
     public string characterTag = "Character";
@@ -39,8 +39,9 @@ public class Enemies : MonoBehaviour
     private int poisonDamage;
     private float poisonTime;
     private float slowTime;
-    public int pathIndex;
     // 路徑管理
+    private Transform[] movingPath;
+    public int pathIndex;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -173,29 +174,47 @@ public class Enemies : MonoBehaviour
         WaveSpawn.EnemiesAlive--;
         WaveSpawn.KilledEnemyCount++;
     }
-
     void Update()
     {
         if (isPaused) return;
 
-        // 移動邏輯
+        if (Target == null)
+        {
+            Debug.LogError($"敵人 {gameObject.name} 沒有有效的目標點！");
+            return;
+        }
+
+        // 計算方向並移動
         Vector3 dir = Target.position - transform.position;
-        transform.Translate(dir.normalized * currentSpeed * Time.deltaTime * (isBlocked ? 0 : 1), Space.World);
-        if (Vector3.Distance(transform.position, Target.position) <= 0.2f)
+        float moveDistance = currentSpeed * Time.deltaTime * (isBlocked ? 0 : 1);
+
+        if (dir.magnitude <= Mathf.Max(0.2f, moveDistance * 2))
         {
             GetNextWaypoint();
         }
+        else
+        {
+            transform.Translate(dir.normalized * moveDistance, Space.World);
+        }
     }
-
     void GetNextWaypoint()
     {
-        if (wavepointIndex >= Paths.points.Length - 1)
+        if (movingPath == null || movingPath.Length == 0)
         {
-            EndPath();
+            Debug.LogError($"敵人 {gameObject.name} 的路徑無效！");
             return;
         }
-        wavepointIndex++;
-        Target = Paths.points[wavepointIndex];
+
+        if (wavepointIndex < movingPath.Length - 1)
+        {
+            wavepointIndex++;
+            Target = movingPath[wavepointIndex];
+            Debug.Log($"敵人 {gameObject.name} 移動到下一個節點: {Target.name}");
+        }
+        else
+        {
+            EndPath();
+        }
     }
 
     void EndPath()
@@ -203,7 +222,7 @@ public class Enemies : MonoBehaviour
         if (EnteredBase) return; //防止重複進入基地扣血
         EnteredBase = true;
 
-        if (PlayerStats.Life > 0) PlayerStats.Life--; 
+        if (PlayerStats.Life > 0) PlayerStats.Life--;
         WaveSpawn.EnemiesAlive--;
         WaveSpawn.KilledEnemyCount++;
 
@@ -224,14 +243,14 @@ public class Enemies : MonoBehaviour
         Image healthBarImage = null;
         if (healthBar != null)
         {
-            healthBarImage = healthBar.GetComponent<Image>(); 
+            healthBarImage = healthBar.GetComponent<Image>();
         }
 
         float fadeDuration = 1.0f;
         float elapsedTime = 0f;
-        
+
         Color startColor = spriteRenderer.color;
-        Color endColor = new Color(startColor.r, startColor.g, startColor.b, 0f); 
+        Color endColor = new Color(startColor.r, startColor.g, startColor.b, 0f);
 
         Color startHealthColor = Color.white;
         if (healthBarImage != null)
@@ -245,7 +264,7 @@ public class Enemies : MonoBehaviour
             elapsedTime += Time.deltaTime;
             float alpha = 1f - (elapsedTime / fadeDuration);
             spriteRenderer.color = Color.Lerp(startColor, endColor, elapsedTime / fadeDuration);
-            
+
             if (healthBarImage != null)
             {
                 healthBarImage.color = Color.Lerp(startHealthColor, endHealthColor, elapsedTime / fadeDuration);
@@ -256,24 +275,23 @@ public class Enemies : MonoBehaviour
 
         Destroy(gameObject);
     }
-    
     public void InitializePath(Transform[] path)
-{
-    if (path == null || path.Length == 0)
     {
-        Debug.LogError("Path is invalid or empty!");
-        return;
-    }
+        if (path == null || path.Length == 0)
+        {
+            Debug.LogError("Path is invalid or empty!");
+            return;
+        }
 
-    Paths.points = path;
-    wavepointIndex = 0;
+        movingPath = path; // 讓敵人使用自己的路徑，而不是全局靜態變數
+        wavepointIndex = 0;
 
-    if (Paths.points.Length > 0)
-    {
-        Target = Paths.points[wavepointIndex];
-        Debug.Log($"Target set to: {Target.position}");
+        if (movingPath.Length > 0)
+        {
+            Target = movingPath[wavepointIndex];
+            Debug.Log($"敵人 {gameObject.name} 鎖定到下一個節點: {Target.name}");
+        }
     }
-}
 
 
 }
