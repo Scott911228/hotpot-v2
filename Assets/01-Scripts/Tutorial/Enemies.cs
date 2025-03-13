@@ -258,13 +258,22 @@ public class Enemies : MonoBehaviour
     }
     
     public void InitializePath(Transform[] path)
+{
+    if (path == null || path.Length == 0)
     {
-        // 設定當前路徑
-        Paths.points = path;
-        wavepointIndex = 0;
-        if (Paths.points.Length > 0)
-        {
-            Target = Paths.points[wavepointIndex];
-        }
+        Debug.LogError("Path is invalid or empty!");
+        return;
     }
+
+    Paths.points = path;
+    wavepointIndex = 0;
+
+    if (Paths.points.Length > 0)
+    {
+        Target = Paths.points[wavepointIndex];
+        Debug.Log($"Target set to: {Target.position}");
+    }
+}
+
+
 }

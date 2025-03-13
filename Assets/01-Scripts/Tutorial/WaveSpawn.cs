@@ -131,7 +131,6 @@ public class WaveSpawn : MonoBehaviour
         Enemies enemyScript = enemy.GetComponent<Enemies>();
         Transform[] points = pathSettings.GetPoints(content.pathIndex);
         enemyScript.InitializePath(points);
-        Target = Paths.points[0];
         // 血量加成
         if (content.healthMultiplier != 0)
         {
