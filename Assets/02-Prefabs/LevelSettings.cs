@@ -10,10 +10,15 @@ public class LevelSettings : MonoBehaviour
     public double Money = 100;
     // ======= 基地生命 ======= 
     public int Life = 1;
+    // ======= 角色內容 ======= 
+    [Header("角色內容")]
+    public CharacterSet[] characterSets;
+
+    // ======= 關卡敵人內容 =======
     [Header("關卡敵人內容")]
     public Wave[] EnemyWaves;
     // ======= 湯底效果 ======= 
-    [Header("放置數量上限")]
+    [Header("湯底效果")]
     public CharacterDispatchLimit[] characterDispatchLimits;
     // ======= 湯底效果 ======= 
     [Header("湯底效果")]

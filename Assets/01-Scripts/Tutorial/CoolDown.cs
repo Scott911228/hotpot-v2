@@ -15,8 +15,7 @@ public class CoolDown : MonoBehaviour
     public float CoolDownTime = 2;
 
     public float timer = 0;
-
-    public static bool isBuildable = true;
+    public bool isBuildable = true;
     private UnityEngine.UI.Image MaskImage;
 
     public KeyCode keyCode;
@@ -52,26 +51,25 @@ public class CoolDown : MonoBehaviour
         if (!isBuildable)
         {
             timer += Time.deltaTime;
-            MaskImage.fillAmount = (CoolDownTime - timer) / CoolDownTime;
-        }
-        else
-        {
-            timer = 0;
-            MaskImage.fillAmount = 0;
-        }
-        if (timer >= CoolDownTime)
-        {
-            isBuildable = true;
-            MaskImage.fillAmount = 0;
-            timer = 0;
+            MaskImage.fillAmount = Mathf.Clamp01((CoolDownTime - timer) / CoolDownTime);
+
+            if (timer >= CoolDownTime)
+            {
+                isBuildable = true;
+                MaskImage.fillAmount = 0;
+                timer = 0;
+            }
         }
     }
 
     public void OnClick()
     {
+        if (!isBuildable) return; // 若仍在冷卻中，則無法點擊
+
         GameManager.isBuilding = true;
         Time.timeScale = 0.2f;
         string turretToBuild = GameObject.Find("GameControl").GetComponent<BuildManager>().turretToBuild.prefab.name;
+
         GameObject[] Items = GameObject.FindGameObjectsWithTag("Shop");
         foreach (GameObject Item in Items)
         {
@@ -79,5 +77,13 @@ public class CoolDown : MonoBehaviour
             move = new Vector3(move.x, baseY + (turretToBuild == Item.name ? 20f : 0f), move.z);
             Item.transform.position = move;
         }
+
+        // 角色派遣後，開始冷卻
+    }
+    public void StartCoolDown()
+    {
+        isBuildable = false;
+        timer = 0;
+        MaskImage.fillAmount = 1;
     }
 }

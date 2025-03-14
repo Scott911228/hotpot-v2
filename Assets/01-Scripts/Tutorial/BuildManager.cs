@@ -80,7 +80,14 @@ public class BuildManager : MonoBehaviour
                 }
             }
         }
-        if (CoolDown.isBuildable)
+        CoolDown assignedCoolDown = FindCooldownForCharacter(turretToBuild.prefab);
+        if (assignedCoolDown != null && !assignedCoolDown.isBuildable)
+        {
+            FloatTipsScript.DisplayTips("冷卻時間尚未結束！");
+            speedControl.isForceSlowdown = false;
+            return;
+        }
+        else
         {
             if (buildingPrefab?.GetComponent<Character>().characterType != node.tag)
             {
@@ -149,7 +156,7 @@ public class BuildManager : MonoBehaviour
                 }
             }
             ////////////////////////
-            CoolDown.isBuildable = false;
+            ///
             GameManager.isBuilding = false;
             speedControl.isForceSlowdown = false;
             // 只有在成功建造後才將 DraggingCharacter 設為 null
@@ -157,14 +164,9 @@ public class BuildManager : MonoBehaviour
             builtCount++;
             // **加入角色清單**
             activeCharacters.Add(turret);
-
+            assignedCoolDown.StartCoolDown();
             // 更新 UI
             UpdateAllCharacterCountUI();
-        }
-        else
-        {
-            FloatTipsScript.DisplayTips("冷卻時間尚未結束！");
-            speedControl.isForceSlowdown = false;
         }
     }
     public void RemoveCharacterFromList(GameObject character)
@@ -174,14 +176,26 @@ public class BuildManager : MonoBehaviour
             activeCharacters.Remove(character);
             UpdateAllCharacterCountUI(); // 角色死亡時更新 UI
         }
-    }    
+    }
     public void UpdateAllCharacterCountUI()
     {
-        CoolDown[] allCooldowns = FindObjectsOfType<CoolDown>();
+        CoolDown[] allCooldowns = FindObjectsByType<CoolDown>(FindObjectsSortMode.None);
         foreach (CoolDown cooldown in allCooldowns)
         {
             cooldown.UpdateCharacterCountUI();
         }
+    }
+    private CoolDown FindCooldownForCharacter(GameObject characterPrefab)
+    {
+        CoolDown[] allCooldowns = FindObjectsByType<CoolDown>(FindObjectsSortMode.None);
+        foreach (CoolDown cooldown in allCooldowns)
+        {
+            if (cooldown.assignedCharacterPrefab == characterPrefab)
+            {
+                return cooldown;
+            }
+        }
+        return null;
     }
     public void BuildByName(string turretName)
     {
