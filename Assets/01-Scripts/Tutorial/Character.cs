@@ -253,6 +253,13 @@ public class Character : MonoBehaviour
             }
         }
     }
+    void OnDestroy()
+    {
+        if (BuildManager.instance != null)
+        {
+            BuildManager.instance.RemoveCharacterFromList(gameObject);
+        }
+    }
     void PlayAttackAnim() // 播放攻擊動畫
     {
         myAnimator.SetTrigger("attack");

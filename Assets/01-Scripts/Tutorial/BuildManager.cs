@@ -1,4 +1,7 @@
-﻿using Unity.Mathematics;
+﻿
+using System.Collections.Generic;
+using System.Linq;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class BuildManager : MonoBehaviour
@@ -17,10 +20,29 @@ public class BuildManager : MonoBehaviour
     public int builtCount = 0;
     public static bool WaitForFullBuild = false;
     public TurretBlueprint turretToBuild;
+    private CharacterDispatchLimit[] characterDispatchLimits;
+    public List<GameObject> activeCharacters = new List<GameObject>(); // 追蹤當前角色
+
     public bool CanBuild { get { return turretToBuild != null; } }
     public bool HasMoney { get { return PlayerStats.Money >= turretToBuild?.cost; } }
+    public int GetCharacterCount(GameObject characterPrefab)
+    {
+        return activeCharacters.Count(c => c.name.StartsWith(characterPrefab.name));
+    }
 
-
+    // 獲取該角色的最大派遣數量
+    public int GetCharacterLimit(GameObject characterPrefab)
+    {
+        characterDispatchLimits = GameObject.Find("LevelSettings").GetComponent<LevelSettings>().characterDispatchLimits;
+        foreach (CharacterDispatchLimit dispatchLimit in characterDispatchLimits)
+        {
+            if (dispatchLimit.character == characterPrefab)
+            {
+                return dispatchLimit.limit;
+            }
+        }
+        return -1; // -1 代表無限制
+    }
     void Start()
     {
         speedControl = GameObject.Find("SpeedControl").GetComponent<SpeedControl>();
@@ -42,6 +64,22 @@ public class BuildManager : MonoBehaviour
         isBuilding = false;
         GameManager.isBuilding = false;
         GameObject buildingPrefab = turretToBuild.prefab;
+        if (turretToBuild != null)
+        {
+            foreach (CharacterDispatchLimit dispatchLimit in characterDispatchLimits)
+            {
+                if (dispatchLimit.character == turretToBuild.prefab)
+                {
+                    int currentCount = activeCharacters.Count(c => c.name.StartsWith(dispatchLimit.character.name));
+                    if (dispatchLimit.limit > 0 && currentCount >= dispatchLimit.limit)
+                    {
+                        FloatTipsScript.DisplayTips($"此角色最多只能派遣 {dispatchLimit.limit} 名！");
+                        speedControl.isForceSlowdown = false;
+                        return;
+                    }
+                }
+            }
+        }
         if (CoolDown.isBuildable)
         {
             if (buildingPrefab?.GetComponent<Character>().characterType != node.tag)
@@ -69,7 +107,8 @@ public class BuildManager : MonoBehaviour
             if (builtCount < 2 &&
                 GameObject.Find("LevelSettings").GetComponent<LevelSettings>().StageName == "第二關")
             {
-                if(rotation.eulerAngles.y != 270){
+                if (rotation.eulerAngles.y != 270)
+                {
                     FloatTipsScript.DisplayTips("嘗試使角色面向右側吧。");
                     speedControl.isForceSlowdown = false;
                     return;
@@ -116,6 +155,11 @@ public class BuildManager : MonoBehaviour
             // 只有在成功建造後才將 DraggingCharacter 設為 null
             DraggingCharacter = null;
             builtCount++;
+            // **加入角色清單**
+            activeCharacters.Add(turret);
+
+            // 更新 UI
+            UpdateAllCharacterCountUI();
         }
         else
         {
@@ -123,7 +167,22 @@ public class BuildManager : MonoBehaviour
             speedControl.isForceSlowdown = false;
         }
     }
-
+    public void RemoveCharacterFromList(GameObject character)
+    {
+        if (activeCharacters.Contains(character))
+        {
+            activeCharacters.Remove(character);
+            UpdateAllCharacterCountUI(); // 角色死亡時更新 UI
+        }
+    }    
+    public void UpdateAllCharacterCountUI()
+    {
+        CoolDown[] allCooldowns = FindObjectsOfType<CoolDown>();
+        foreach (CoolDown cooldown in allCooldowns)
+        {
+            cooldown.UpdateCharacterCountUI();
+        }
+    }
     public void BuildByName(string turretName)
     {
         Debug.Log(turretName);

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using TMPro;
 
 public class CoolDown : MonoBehaviour
 {
@@ -20,6 +21,9 @@ public class CoolDown : MonoBehaviour
 
     public KeyCode keyCode;
     // Start is called before the first frame update
+    [Header("派遣限制")]
+    public GameObject assignedCharacterPrefab; // 對應的角色
+    public TMP_Text characterCountText; // UI 顯示派遣數量的 Text
     public void RemoveCoolDown()
     {
         CoolDownTime = 0;
@@ -28,8 +32,20 @@ public class CoolDown : MonoBehaviour
     void Start()
     {
         MaskImage = transform.Find("MaskImage").GetComponent<UnityEngine.UI.Image>();
+        UpdateCharacterCountUI(); // 遊戲開始時更新一次
     }
 
+    //更新角色數量 UI
+    public void UpdateCharacterCountUI()
+    {
+        if (characterCountText == null || assignedCharacterPrefab == null) return;
+
+        int currentCount = BuildManager.instance.GetCharacterCount(assignedCharacterPrefab);
+        int maxLimit = BuildManager.instance.GetCharacterLimit(assignedCharacterPrefab);
+
+        string limitText = (maxLimit >= 0) ? $"{maxLimit - currentCount}" : "∞"; // -1 代表無限制
+        characterCountText.text = $"{limitText}";
+    }
     // Update is called once per frame
     void Update()
     {

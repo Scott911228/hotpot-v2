@@ -13,6 +13,9 @@ public class LevelSettings : MonoBehaviour
     [Header("關卡敵人內容")]
     public Wave[] EnemyWaves;
     // ======= 湯底效果 ======= 
+    [Header("放置數量上限")]
+    public CharacterDispatchLimit[] characterDispatchLimits;
+    // ======= 湯底效果 ======= 
     [Header("湯底效果")]
     public string FlavorName;
     public string FlavorDescription;

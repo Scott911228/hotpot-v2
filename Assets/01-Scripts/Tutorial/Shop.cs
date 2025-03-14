@@ -17,7 +17,9 @@ public class Shop : MonoBehaviour
         Debug.Log("Standard Tuuret Selected");
         buildmanager.SelectTurretToBuild(character1);
     }
-
+    public void UpdateCharacterCountUI(){
+        
+    }
     public void SelectCharacter2()
     {
         Debug.Log("Standard Tuuret 2 Selected");
