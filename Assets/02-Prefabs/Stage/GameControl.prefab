@@ -810,6 +810,7 @@ MonoBehaviour:
   turretToBuild:
     prefab: {fileID: 0}
     cost: 0
+  activeCharacters: []
 --- !u!114 &541459240808562595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17625,7 +17626,9 @@ MonoBehaviour:
   StageName: 
   Money: 100
   Life: 1
+  characterSets: []
   EnemyWaves: []
+  characterDispatchLimits: []
   FlavorName: 
   FlavorDescription: 
   FlavorColor: {r: 1, g: 1, b: 1, a: 1}
@@ -19633,6 +19636,11 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 541459241684940662}
+    - target: {fileID: 4060205241720244128, guid: 8934bedd8701d9a4ebbb955c9e13424f,
+        type: 3}
+      propertyPath: slotIndex
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4060205241720244129, guid: 8934bedd8701d9a4ebbb955c9e13424f,
         type: 3}
       propertyPath: m_Pivot.x
@@ -19782,6 +19790,11 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 541459241684940662}
+    - target: {fileID: 4060205241720244128, guid: 8934bedd8701d9a4ebbb955c9e13424f,
+        type: 3}
+      propertyPath: slotIndex
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4060205241720244129, guid: 8934bedd8701d9a4ebbb955c9e13424f,
         type: 3}
       propertyPath: m_Pivot.x
@@ -19931,6 +19944,11 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 541459241684940662}
+    - target: {fileID: 4060205241720244128, guid: 8934bedd8701d9a4ebbb955c9e13424f,
+        type: 3}
+      propertyPath: slotIndex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4060205241720244129, guid: 8934bedd8701d9a4ebbb955c9e13424f,
         type: 3}
       propertyPath: m_Pivot.x
@@ -20103,6 +20121,11 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 541459241684940662}
+    - target: {fileID: 4060205241720244128, guid: 8934bedd8701d9a4ebbb955c9e13424f,
+        type: 3}
+      propertyPath: slotIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4060205241720244129, guid: 8934bedd8701d9a4ebbb955c9e13424f,
         type: 3}
       propertyPath: m_Pivot.x

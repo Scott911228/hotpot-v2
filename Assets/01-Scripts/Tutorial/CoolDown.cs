@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 using TMPro;
+using System;
 
 public class CoolDown : MonoBehaviour
 {
@@ -13,15 +14,15 @@ public class CoolDown : MonoBehaviour
     public GameObject UI;
 
     public float CoolDownTime = 2;
-
-    public float timer = 0;
     public bool isBuildable = true;
+    public float timer = 0;
     private UnityEngine.UI.Image MaskImage;
-
     public KeyCode keyCode;
-    // Start is called before the first frame update
+    [Header("欄位編號 (0-based)")]
+    public int slotIndex = 0;
     [Header("派遣限制")]
-    public GameObject assignedCharacterPrefab; // 對應的角色
+    private LevelSettings levelSettings;
+    public TurretBlueprint assignedCharacterPrefab; // 對應的角色
     public TMP_Text characterCountText; // UI 顯示派遣數量的 Text
     public void RemoveCoolDown()
     {
@@ -30,18 +31,19 @@ public class CoolDown : MonoBehaviour
 
     void Start()
     {
+        levelSettings = GameObject.Find("LevelSettings").GetComponent<LevelSettings>();
+        if (slotIndex < levelSettings.characterSets.Length) assignedCharacterPrefab = levelSettings.characterSets[slotIndex].turretBlueprint;
         MaskImage = transform.Find("MaskImage").GetComponent<UnityEngine.UI.Image>();
+        characterCountText = transform.Find("DispatchLimit").GetComponent<TMP_Text>();
         UpdateCharacterCountUI(); // 遊戲開始時更新一次
     }
 
     //更新角色數量 UI
     public void UpdateCharacterCountUI()
     {
-        if (characterCountText == null || assignedCharacterPrefab == null) return;
-
-        int currentCount = BuildManager.instance.GetCharacterCount(assignedCharacterPrefab);
-        int maxLimit = BuildManager.instance.GetCharacterLimit(assignedCharacterPrefab);
-
+        if (characterCountText == null || assignedCharacterPrefab.prefab == null) return;
+        int currentCount = BuildManager.instance.GetCharacterCount(assignedCharacterPrefab.prefab);
+        int maxLimit = BuildManager.instance.GetCharacterLimit(assignedCharacterPrefab.prefab);
         string limitText = (maxLimit >= 0) ? $"{maxLimit - currentCount}" : "∞"; // -1 代表無限制
         characterCountText.text = $"{limitText}";
     }

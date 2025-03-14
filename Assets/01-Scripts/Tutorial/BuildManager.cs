@@ -1,6 +1,7 @@
 ﻿
 using System.Collections.Generic;
 using System.Linq;
+using Fungus;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -25,26 +26,62 @@ public class BuildManager : MonoBehaviour
 
     public bool CanBuild { get { return turretToBuild != null; } }
     public bool HasMoney { get { return PlayerStats.Money >= turretToBuild?.cost; } }
+
     public int GetCharacterCount(GameObject characterPrefab)
     {
+        characterDispatchLimits = GameObject.Find("LevelSettings").GetComponent<LevelSettings>().characterDispatchLimits;
+        Debug.Log(activeCharacters);
         return activeCharacters.Count(c => c.name.StartsWith(characterPrefab.name));
     }
 
     // 獲取該角色的最大派遣數量
     public int GetCharacterLimit(GameObject characterPrefab)
     {
-        characterDispatchLimits = GameObject.Find("LevelSettings").GetComponent<LevelSettings>().characterDispatchLimits;
+        if (characterDispatchLimits == null)
+        {
+            Debug.LogError("GetCharacterLimit(): characterDispatchLimits 為 NULL，請檢查 BuildManager 是否正確初始化！");
+            return -1;
+        }
+
+        if (characterPrefab == null)
+        {
+            Debug.LogError("GetCharacterLimit(): characterPrefab 為 NULL！");
+            return -1;
+        }
+
         foreach (CharacterDispatchLimit dispatchLimit in characterDispatchLimits)
         {
-            if (dispatchLimit.character == characterPrefab)
+            if (dispatchLimit == null)
             {
+                Debug.LogWarning("GetCharacterLimit(): dispatchLimit 為 NULL，跳過此條目");
+                continue;
+            }
+
+            if (dispatchLimit.character == null)
+            {
+                Debug.LogWarning("GetCharacterLimit(): dispatchLimit.character 為 NULL，跳過此條目");
+                continue;
+            }
+
+            Debug.Log($"GetCharacterLimit(): 檢查 {dispatchLimit.character.name} 是否匹配 {characterPrefab.name}");
+
+            if (dispatchLimit.character == characterPrefab || dispatchLimit.character.name == characterPrefab.name)
+            {
+                Debug.Log($"成功匹配角色 {characterPrefab.name}，上限為 {dispatchLimit.limit}");
                 return dispatchLimit.limit;
             }
         }
+
+        Debug.LogWarning($"GetCharacterLimit(): 找不到角色 {characterPrefab.name}，回傳 -1");
         return -1; // -1 代表無限制
     }
     void Start()
     {
+        if (activeCharacters == null)
+        {
+            activeCharacters = new List<GameObject>();
+        }
+        characterDispatchLimits = GameObject.Find("LevelSettings").GetComponent<LevelSettings>().characterDispatchLimits;
         speedControl = GameObject.Find("SpeedControl").GetComponent<SpeedControl>();
         FloatTipsScript = GameObject.Find("FloatTips").transform.Find("FloatTipsBase").GetComponent<FloatTips>();
     }
@@ -187,14 +224,22 @@ public class BuildManager : MonoBehaviour
     }
     private CoolDown FindCooldownForCharacter(GameObject characterPrefab)
     {
+        if (characterPrefab == null)
+        {
+            Debug.LogError("FindCooldownForCharacter() 被呼叫時 characterPrefab 為 NULL！");
+            return null;
+        }
+
         CoolDown[] allCooldowns = FindObjectsByType<CoolDown>(FindObjectsSortMode.None);
         foreach (CoolDown cooldown in allCooldowns)
         {
-            if (cooldown.assignedCharacterPrefab == characterPrefab)
+            if (cooldown.assignedCharacterPrefab != null && cooldown.assignedCharacterPrefab.prefab == characterPrefab)
             {
                 return cooldown;
             }
         }
+
+        Debug.LogWarning($"找不到對應的 CoolDown 物件，角色: {characterPrefab.name}");
         return null;
     }
     public void BuildByName(string turretName)

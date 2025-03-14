@@ -7,9 +7,4 @@ public class TurretBlueprint
 {   
     public GameObject prefab;
     public int cost;
-
-    public static implicit operator GameObject(TurretBlueprint v)
-    {
-        throw new NotImplementedException();
-    }
 }

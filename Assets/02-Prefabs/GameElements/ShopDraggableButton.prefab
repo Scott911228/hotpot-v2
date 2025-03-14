@@ -334,8 +334,14 @@ MonoBehaviour:
   image: {fileID: 0}
   UI: {fileID: 0}
   CoolDownTime: 10
+  isBuildable: 1
   timer: 0
   keyCode: 0
+  slotIndex: 0
+  assignedCharacterPrefab:
+    prefab: {fileID: 0}
+    cost: 0
+  characterCountText: {fileID: 5807265740925167200}
 --- !u!1 &4060205241822630656
 GameObject:
   m_ObjectHideFlags: 0
