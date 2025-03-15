@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using System.Collections;
+using Fungus;
 
 public class Node : MonoBehaviour
 {
@@ -154,21 +155,8 @@ public class Node : MonoBehaviour
     TurretBlueprint GetTurretBlueprintDragging()
     {
         BuildManager buildManager = GameObject.Find("GameControl").GetComponent<BuildManager>();
-        switch (buildManager.DraggingCharacter)
-        {
-            case "DraggableCharacter1":
-                return buildManager.character1;
-            case "DraggableCharacter2":
-                return buildManager.character2;
-            case "DraggableCharacter3":
-                return buildManager.character3;
-            case "DraggableCharacter4":
-                return buildManager.character4;
-            case "DraggableCharacter5":
-                return buildManager.character5;
-            default:
-                return null;
-        }
+        if(buildManager.DraggingCharacterIndex < 0) return null;
+        else return buildManager.GetCharacterSet()[buildManager.DraggingCharacterIndex].turretBlueprint;
     }
 
 
@@ -188,7 +176,7 @@ public class Node : MonoBehaviour
 
     void ChooseNodeExit()
     {
-        GameObject.Find("GameControl").GetComponent<BuildManager>().DraggingCharacter = null;
+        GameObject.Find("GameControl").GetComponent<BuildManager>().DraggingCharacterIndex = -1;
         speedControl.isForceSlowdown = false;
     }
 
@@ -227,7 +215,6 @@ public class Node : MonoBehaviour
         BuildManager buildManager = GameObject.Find("GameControl")?.GetComponent<BuildManager>();
         TurretBlueprint turretBlueprint = GetTurretBlueprintDragging();
         bool isBuilding = buildManager.isBuilding;
-        string buildingTurretname = buildManager?.DraggingCharacter;
 
         if (isBuilding)
         {
@@ -245,7 +232,7 @@ public class Node : MonoBehaviour
         }
         else
         {
-            Debug.Log("DraggingCharacter: " + turretBlueprint.prefab.name);
+            Debug.Log("DraggingCharacterIndex: " + turretBlueprint.prefab.name);
         }
 
         Node node = GetPositionNode(Input.mousePosition);

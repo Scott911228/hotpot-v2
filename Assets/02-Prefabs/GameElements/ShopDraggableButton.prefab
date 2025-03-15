@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3403631644005465712}
   - component: {fileID: 2564769125772251987}
   m_Layer: 5
-  m_Name: DraggableCharacter1
+  m_Name: DraggableCharacter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -90,6 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e09fecec1ceecfe4e90e2c4f3f6a1f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shopIndex: 0
   canvas: {fileID: 0}
 --- !u!225 &2564769125772251987
 CanvasGroup:
@@ -407,7 +408,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 100
+  m_text: 123
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e731000945779f9438cbfde8163bae2d, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 8bc788f532fe4d841ba1c3f7e62aece1, type: 2}

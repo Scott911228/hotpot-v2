@@ -12042,6 +12042,7 @@ MonoBehaviour:
   CharacterTransform: {fileID: 920504035}
   Rotate_Head: {fileID: 629183960}
   turnSpeed: 10
+  shopIcon: {fileID: 0}
   bulletPrefab: {fileID: 6152439982318486957, guid: df10986cd8f3b18429f408a2e815d5d5,
     type: 3}
   healbulletPrefab: {fileID: 0}
@@ -27941,7 +27942,7 @@ PrefabInstance:
     - target: {fileID: 150457513417694434, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 165416839665420504, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
@@ -28145,7 +28146,7 @@ PrefabInstance:
     - target: {fileID: 541459240808562594, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: DraggingCharacter
-      value: 
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 541459240808562594, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
@@ -28254,6 +28255,11 @@ PrefabInstance:
       propertyPath: SayDialog
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 555715206221763122, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: m_Name
+      value: DraggableCharacter
+      objectReference: {fileID: 0}
     - target: {fileID: 648529938545569655, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: m_IsActive
@@ -28267,7 +28273,7 @@ PrefabInstance:
     - target: {fileID: 828332428013284751, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1218005558396186970, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
@@ -28290,11 +28296,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2945908575983069881, guid: e1e89061ca2bb5344b42f3dda3704f25,
         type: 3}
-    - target: {fileID: 2872731597960208460, guid: 2200e26108a0af044a17b619e36318f9,
-        type: 3}
-      propertyPath: m_text
-      value: 250
-      objectReference: {fileID: 0}
     - target: {fileID: 3478886633303858509, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: CoolDownTime
@@ -28308,17 +28309,12 @@ PrefabInstance:
     - target: {fileID: 3878253446449989925, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: m_Name
-      value: DraggableCharacter1
+      value: DraggableCharacter
       objectReference: {fileID: 0}
     - target: {fileID: 3878253446449989925, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: m_TagString
       value: Shop
-      objectReference: {fileID: 0}
-    - target: {fileID: 3884276271968765759, guid: 2200e26108a0af044a17b619e36318f9,
-        type: 3}
-      propertyPath: m_text
-      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 3884276272129577885, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
@@ -28346,6 +28342,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5678020095176589499, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5782261653233293429, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5869956619486283973, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: m_Enabled
@@ -28365,6 +28371,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_EffectDistance.y
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6437583326868056344, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6499869828535564823, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
@@ -28436,6 +28447,11 @@ PrefabInstance:
       propertyPath: 'pathData.Array.data[2].points.Array.data[2]'
       value: 
       objectReference: {fileID: 315694707}
+    - target: {fileID: 6698585111285196744, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7220605516485036811, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: m_Enabled
@@ -28530,6 +28546,26 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2945908575983069881, guid: e1e89061ca2bb5344b42f3dda3704f25,
         type: 3}
+    - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: characterSets.Array.data[0].turretBlueprint.cost
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: characterSets.Array.data[1].turretBlueprint.cost
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: characterSets.Array.data[2].turretBlueprint.cost
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: characterSets.Array.data[3].turretBlueprint.cost
+      value: 114514
+      objectReference: {fileID: 0}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: EnemyWaves.Array.data[0].Enemy.Array.data[0].Enemy
@@ -28653,6 +28689,11 @@ PrefabInstance:
         type: 3}
       propertyPath: EnemyWaves.Array.data[0].Enemy.Array.data[2].delayToNextContent
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7967493723987147999, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7967493723987147999, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.UIElements;
 using TMPro;
 using System;
+using Fungus;
 
 public class CoolDown : MonoBehaviour
 {
@@ -32,7 +33,15 @@ public class CoolDown : MonoBehaviour
     void Start()
     {
         levelSettings = GameObject.Find("LevelSettings").GetComponent<LevelSettings>();
-        if (slotIndex < levelSettings.characterSets.Length) assignedCharacterPrefab = levelSettings.characterSets[slotIndex].turretBlueprint;
+        if (slotIndex < levelSettings.characterSets.Length)
+        {
+            assignedCharacterPrefab = levelSettings.characterSets[slotIndex].turretBlueprint;
+            transform.Find("DraggableCharacter").GetComponent<UnityEngine.UI.Image>().sprite = assignedCharacterPrefab.prefab.GetComponent<Character>().shopIcon;
+            transform.Find("Price").GetComponent<TMP_Text>().text = assignedCharacterPrefab.cost.ToString();
+        }
+        else{
+            gameObject.SetActive(false);
+        }
         MaskImage = transform.Find("MaskImage").GetComponent<UnityEngine.UI.Image>();
         characterCountText = transform.Find("DispatchLimit").GetComponent<TMP_Text>();
         UpdateCharacterCountUI(); // 遊戲開始時更新一次

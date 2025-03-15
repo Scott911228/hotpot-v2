@@ -8,13 +8,9 @@ using UnityEngine;
 public class BuildManager : MonoBehaviour
 {
     SpeedControl speedControl;
-    public string DraggingCharacter = null;
+    public int DraggingCharacterIndex;
     public bool isBuilding = false;
-    public TurretBlueprint character1;
-    public TurretBlueprint character2;
-    public TurretBlueprint character3;
-    public TurretBlueprint character4;
-    public TurretBlueprint character5;
+    private CharacterSet[] characterSets;
     private FloatTips FloatTipsScript;
     public Camera mainCamera;
     public static BuildManager instance;
@@ -23,17 +19,18 @@ public class BuildManager : MonoBehaviour
     public TurretBlueprint turretToBuild;
     private CharacterDispatchLimit[] characterDispatchLimits;
     public List<GameObject> activeCharacters = new List<GameObject>(); // 追蹤當前角色
-
     public bool CanBuild { get { return turretToBuild != null; } }
     public bool HasMoney { get { return PlayerStats.Money >= turretToBuild?.cost; } }
 
     public int GetCharacterCount(GameObject characterPrefab)
     {
         characterDispatchLimits = GameObject.Find("LevelSettings").GetComponent<LevelSettings>().characterDispatchLimits;
-        Debug.Log(activeCharacters);
         return activeCharacters.Count(c => c.name.StartsWith(characterPrefab.name));
     }
-
+    public CharacterSet[] GetCharacterSet()
+    {
+        return characterSets;
+    }
     // 獲取該角色的最大派遣數量
     public int GetCharacterLimit(GameObject characterPrefab)
     {
@@ -77,10 +74,9 @@ public class BuildManager : MonoBehaviour
     }
     void Start()
     {
-        if (activeCharacters == null)
-        {
-            activeCharacters = new List<GameObject>();
-        }
+        DraggingCharacterIndex = -1;
+        characterSets = GameObject.Find("LevelSettings").GetComponent<LevelSettings>().characterSets;
+        activeCharacters ??= new List<GameObject>();
         characterDispatchLimits = GameObject.Find("LevelSettings").GetComponent<LevelSettings>().characterDispatchLimits;
         speedControl = GameObject.Find("SpeedControl").GetComponent<SpeedControl>();
         FloatTipsScript = GameObject.Find("FloatTips").transform.Find("FloatTipsBase").GetComponent<FloatTips>();
@@ -196,8 +192,8 @@ public class BuildManager : MonoBehaviour
             ///
             GameManager.isBuilding = false;
             speedControl.isForceSlowdown = false;
-            // 只有在成功建造後才將 DraggingCharacter 設為 null
-            DraggingCharacter = null;
+            // 只有在成功建造後才將 DraggingCharacterIndex 設為 null
+            DraggingCharacterIndex = -1;
             builtCount++;
             // **加入角色清單**
             activeCharacters.Add(turret);

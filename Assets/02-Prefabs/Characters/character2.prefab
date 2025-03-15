@@ -1950,6 +1950,7 @@ MonoBehaviour:
   CharacterTransform: {fileID: 4054586495299997440}
   Rotate_Head: {fileID: 2113519925426318843}
   turnSpeed: 10
+  shopIcon: {fileID: 21300000, guid: 55de5824b362c204c9189ba4fa7618f5, type: 3}
   bulletPrefab: {fileID: 0}
   healbulletPrefab: {fileID: 6819536045654051427, guid: f64b47f22e6547c4986f063567469777,
     type: 3}

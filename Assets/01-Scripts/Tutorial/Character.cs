@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Character : MonoBehaviour
 {
@@ -30,7 +31,7 @@ public class Character : MonoBehaviour
     public Transform CharacterTransform; // 主角色物件
     public Transform Rotate_Head;
     public float turnSpeed = 10f;
-
+    public Sprite shopIcon;
     public GameObject bulletPrefab;
     public GameObject healbulletPrefab;
     public Transform firePoint;

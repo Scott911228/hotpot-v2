@@ -7,6 +7,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 {
     private GameObject Interactable;
     private FloatTips FloatTipsScript;
+    public int shopIndex;
     SpeedControl speedControl;
     BuildManager buildmanager;
     [SerializeField] private Canvas canvas;
@@ -32,11 +33,12 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (!Interactable.GetComponent<CanvasGroup>().interactable) return;
-        if (name.Length >= 0) buildmanager.DraggingCharacter = name;
+        if (name.Length >= 0) buildmanager.DraggingCharacterIndex = shopIndex;
         else
         {
-            buildmanager.DraggingCharacter = null;
-        };
+            buildmanager.DraggingCharacterIndex = -1;
+        }
+        ;
         speedControl.isForceSlowdown = true;
         canvasGroup.alpha = .6f;
         canvasGroup.blocksRaycasts = false;

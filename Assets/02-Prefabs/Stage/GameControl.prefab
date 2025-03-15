@@ -786,25 +786,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f18eb4a28e1b3814498e28ae872fc3f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DraggingCharacter: 
+  DraggingCharacterIndex: 0
   isBuilding: 0
-  character1:
-    prefab: {fileID: 6032914235060294360, guid: c7c20308c943315448bb82246bdd128c,
-      type: 3}
-    cost: 100
-  character2:
-    prefab: {fileID: 69253638216661701, guid: 642f27573d95e474ab2838a9c8e65710, type: 3}
-    cost: 0
-  character3:
-    prefab: {fileID: 2945908575983069881, guid: e1e89061ca2bb5344b42f3dda3704f25,
-      type: 3}
-    cost: 0
-  character4:
-    prefab: {fileID: 0}
-    cost: 0
-  character5:
-    prefab: {fileID: 0}
-    cost: 0
   mainCamera: {fileID: 0}
   builtCount: 0
   turretToBuild:
@@ -19629,13 +19612,18 @@ PrefabInstance:
     - target: {fileID: 723192359244301839, guid: 8934bedd8701d9a4ebbb955c9e13424f,
         type: 3}
       propertyPath: m_Name
-      value: DraggableCharacter5
+      value: DraggableCharacter
       objectReference: {fileID: 0}
     - target: {fileID: 3403631644005465712, guid: 8934bedd8701d9a4ebbb955c9e13424f,
         type: 3}
       propertyPath: canvas
       value: 
       objectReference: {fileID: 541459241684940662}
+    - target: {fileID: 3403631644005465712, guid: 8934bedd8701d9a4ebbb955c9e13424f,
+        type: 3}
+      propertyPath: shopIndex
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4060205241720244128, guid: 8934bedd8701d9a4ebbb955c9e13424f,
         type: 3}
       propertyPath: slotIndex
@@ -19783,13 +19771,18 @@ PrefabInstance:
     - target: {fileID: 723192359244301839, guid: 8934bedd8701d9a4ebbb955c9e13424f,
         type: 3}
       propertyPath: m_Name
-      value: DraggableCharacter4
+      value: DraggableCharacter
       objectReference: {fileID: 0}
     - target: {fileID: 3403631644005465712, guid: 8934bedd8701d9a4ebbb955c9e13424f,
         type: 3}
       propertyPath: canvas
       value: 
       objectReference: {fileID: 541459241684940662}
+    - target: {fileID: 3403631644005465712, guid: 8934bedd8701d9a4ebbb955c9e13424f,
+        type: 3}
+      propertyPath: shopIndex
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4060205241720244128, guid: 8934bedd8701d9a4ebbb955c9e13424f,
         type: 3}
       propertyPath: slotIndex
@@ -19937,13 +19930,18 @@ PrefabInstance:
     - target: {fileID: 723192359244301839, guid: 8934bedd8701d9a4ebbb955c9e13424f,
         type: 3}
       propertyPath: m_Name
-      value: DraggableCharacter2
+      value: DraggableCharacter
       objectReference: {fileID: 0}
     - target: {fileID: 3403631644005465712, guid: 8934bedd8701d9a4ebbb955c9e13424f,
         type: 3}
       propertyPath: canvas
       value: 
       objectReference: {fileID: 541459241684940662}
+    - target: {fileID: 3403631644005465712, guid: 8934bedd8701d9a4ebbb955c9e13424f,
+        type: 3}
+      propertyPath: shopIndex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4060205241720244128, guid: 8934bedd8701d9a4ebbb955c9e13424f,
         type: 3}
       propertyPath: slotIndex
@@ -20114,13 +20112,18 @@ PrefabInstance:
     - target: {fileID: 723192359244301839, guid: 8934bedd8701d9a4ebbb955c9e13424f,
         type: 3}
       propertyPath: m_Name
-      value: DraggableCharacter3
+      value: DraggableCharacter
       objectReference: {fileID: 0}
     - target: {fileID: 3403631644005465712, guid: 8934bedd8701d9a4ebbb955c9e13424f,
         type: 3}
       propertyPath: canvas
       value: 
       objectReference: {fileID: 541459241684940662}
+    - target: {fileID: 3403631644005465712, guid: 8934bedd8701d9a4ebbb955c9e13424f,
+        type: 3}
+      propertyPath: shopIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4060205241720244128, guid: 8934bedd8701d9a4ebbb955c9e13424f,
         type: 3}
       propertyPath: slotIndex
@@ -20271,6 +20274,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8313631221538567795}
     m_Modifications:
+    - target: {fileID: 723192359244301839, guid: 8934bedd8701d9a4ebbb955c9e13424f,
+        type: 3}
+      propertyPath: m_Name
+      value: DraggableCharacter
+      objectReference: {fileID: 0}
     - target: {fileID: 3403631644005465712, guid: 8934bedd8701d9a4ebbb955c9e13424f,
         type: 3}
       propertyPath: canvas
@@ -20385,6 +20393,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: character1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4060205241822630658, guid: 8934bedd8701d9a4ebbb955c9e13424f,
+        type: 3}
+      propertyPath: m_text
+      value: '-'
       objectReference: {fileID: 0}
     - target: {fileID: 4060205241822630658, guid: 8934bedd8701d9a4ebbb955c9e13424f,
         type: 3}
