@@ -198,6 +198,9 @@ public class BuildManager : MonoBehaviour
             // **加入角色清單**
             activeCharacters.Add(turret);
             assignedCoolDown.StartCoolDown();
+            // 更新派遣角色數量
+            GameStats.Instance.DeployedCharacterCount++;
+            GameStats.Instance.CheckAchievements(); // 檢查是否達成成就
             // 更新 UI
             UpdateAllCharacterCountUI();
         }
