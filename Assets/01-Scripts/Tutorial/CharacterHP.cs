@@ -85,7 +85,7 @@ public class CharacterHP : MonoBehaviour
             new Color(0.5228668f, 0.7924528f, 0.4597722f, 0.7019608f));
         Health = Mathf.Min(Health, StartHealth); // 確保不超過最大 HP
         HealthBar.UpdateHealthBar(StartHealth, Health);
-        Debug.Log("Received healing: " + amount + ", current HP: " + Health);
+        //Debug.Log("Received healing: " + amount + ", current HP: " + Health);
     }
 
 

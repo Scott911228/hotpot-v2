@@ -36,13 +36,13 @@ public class BuildManager : MonoBehaviour
     {
         if (characterDispatchLimits == null)
         {
-            Debug.LogError("GetCharacterLimit(): characterDispatchLimits 為 NULL，請檢查 BuildManager 是否正確初始化！");
+            //Debug.LogError("GetCharacterLimit(): characterDispatchLimits 為 NULL，請檢查 BuildManager 是否正確初始化！");
             return -1;
         }
 
         if (characterPrefab == null)
         {
-            Debug.LogError("GetCharacterLimit(): characterPrefab 為 NULL！");
+            //Debug.LogError("GetCharacterLimit(): characterPrefab 為 NULL！");
             return -1;
         }
 
@@ -50,26 +50,26 @@ public class BuildManager : MonoBehaviour
         {
             if (dispatchLimit == null)
             {
-                Debug.LogWarning("GetCharacterLimit(): dispatchLimit 為 NULL，跳過此條目");
+                //Debug.LogWarning("GetCharacterLimit(): dispatchLimit 為 NULL，跳過此條目");
                 continue;
             }
 
             if (dispatchLimit.character == null)
             {
-                Debug.LogWarning("GetCharacterLimit(): dispatchLimit.character 為 NULL，跳過此條目");
+                //Debug.LogWarning("GetCharacterLimit(): dispatchLimit.character 為 NULL，跳過此條目");
                 continue;
             }
 
-            Debug.Log($"GetCharacterLimit(): 檢查 {dispatchLimit.character.name} 是否匹配 {characterPrefab.name}");
+            //Debug.Log($"GetCharacterLimit(): 檢查 {dispatchLimit.character.name} 是否匹配 {characterPrefab.name}");
 
             if (dispatchLimit.character == characterPrefab || dispatchLimit.character.name == characterPrefab.name)
             {
-                Debug.Log($"成功匹配角色 {characterPrefab.name}，上限為 {dispatchLimit.limit}");
+                //Debug.Log($"成功匹配角色 {characterPrefab.name}，上限為 {dispatchLimit.limit}");
                 return dispatchLimit.limit;
             }
         }
 
-        Debug.LogWarning($"GetCharacterLimit(): 找不到角色 {characterPrefab.name}，回傳 -1");
+        //Debug.LogWarning($"GetCharacterLimit(): 找不到角色 {characterPrefab.name}，回傳 -1");
         return -1; // -1 代表無限制
     }
     void Start()
@@ -200,7 +200,6 @@ public class BuildManager : MonoBehaviour
             assignedCoolDown.StartCoolDown();
             // 更新派遣角色數量
             GameStats.Instance.DeployedCharacterCount++;
-            GameStats.Instance.CheckAchievements(); // 檢查是否達成成就
             // 更新 UI
             UpdateAllCharacterCountUI();
         }

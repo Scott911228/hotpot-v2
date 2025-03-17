@@ -171,6 +171,7 @@ public class Enemies : MonoBehaviour
         isDead = true;
         PlayerStats.Money += GetMoney;
         Destroy(gameObject);
+        GameStats.Instance.RemoveEnemy();
         WaveSpawn.EnemiesAlive--;
         WaveSpawn.KilledEnemyCount++;
     }
@@ -209,7 +210,7 @@ public class Enemies : MonoBehaviour
         {
             wavepointIndex++;
             Target = movingPath[wavepointIndex];
-            Debug.Log($"敵人 {gameObject.name} 移動到下一個節點: {Target.name}");
+            //Debug.Log($"敵人 {gameObject.name} 移動到下一個節點: {Target.name}");
         }
         else
         {
@@ -289,7 +290,7 @@ public class Enemies : MonoBehaviour
         if (movingPath.Length > 0)
         {
             Target = movingPath[wavepointIndex];
-            Debug.Log($"敵人 {gameObject.name} 鎖定到下一個節點: {Target.name}");
+            //Debug.Log($"敵人 {gameObject.name} 鎖定到下一個節點: {Target.name}");
         }
     }
 

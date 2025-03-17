@@ -155,7 +155,8 @@ public class WaveSpawn : MonoBehaviour
             {
                 enemyScript.speedMultiplier = content.speedMultiplier;
             }
-
+            
+            GameStats.Instance.AddEnemy();
             EnemiesAlive++;
         }
     }

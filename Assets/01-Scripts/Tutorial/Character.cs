@@ -247,7 +247,7 @@ public class Character : MonoBehaviour
         {
             GameObject healingBulletGO = Instantiate(healbulletPrefab, firePoint.position, firePoint.rotation);
             HealingBullets healingBullet = healingBulletGO.GetComponent<HealingBullets>();
-            Debug.Log("Healing " + target);
+            //Debug.Log("Healing " + target);
             if (healingBullet != null)
             {
                 healingBullet.Seek(target.transform);

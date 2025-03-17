@@ -1,7 +1,9 @@
 using UnityEngine;
 
 public class LevelSettings : MonoBehaviour
-{
+{   
+    public static LevelSettings Instance;
+
     [Header("關卡敘述")]
     // ======= 關卡名稱 ======= 
     public string StageName = "";
@@ -9,7 +11,7 @@ public class LevelSettings : MonoBehaviour
     // ======= 金錢 ======= 
     public double Money = 100;
     // ======= 基地生命 ======= 
-    public int Life = 1;
+    public int Life ;
     // ======= 角色內容 ======= 
     [Header("角色內容")]
     public CharacterSet[] characterSets;

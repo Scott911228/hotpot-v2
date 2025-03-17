@@ -218,7 +218,7 @@ public class Node : MonoBehaviour
 
         if (isBuilding)
         {
-            Debug.Log("Now building. Cancelling build.");
+            //Debug.Log("Now building. Cancelling build.");
             return;
         }
         if (turretBlueprint?.prefab == null)
@@ -227,18 +227,18 @@ public class Node : MonoBehaviour
         }
         if (string.IsNullOrEmpty(turretBlueprint.prefab.name))
         {
-            Debug.Log("No character is being dragged. Cancelling build.");
+            //Debug.Log("No character is being dragged. Cancelling build.");
             return;
         }
         else
         {
-            Debug.Log("DraggingCharacterIndex: " + turretBlueprint.prefab.name);
+            //Debug.Log("DraggingCharacterIndex: " + turretBlueprint.prefab.name);
         }
 
         Node node = GetPositionNode(Input.mousePosition);
         if (node == null)
         {
-            Debug.Log("Failed to find target node. Cancelling build.");
+            //Debug.Log("Failed to find target node. Cancelling build.");
             return;
         }
 
@@ -268,7 +268,7 @@ public class Node : MonoBehaviour
             // 如果可以跳過方向選擇，直接放置角色
             ChangeNodeColor(node, Color.green); // 將該 Node 設為綠色
             buildManager.BuildTurretOn(node, Quaternion.identity, turretBlueprint);
-            Debug.Log("角色已放置，跳過方向選擇");
+            //Debug.Log("角色已放置，跳過方向選擇");
         }
         else
         {
