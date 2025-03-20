@@ -28447,6 +28447,11 @@ PrefabInstance:
       propertyPath: 'pathData.Array.data[2].points.Array.data[2]'
       value: 
       objectReference: {fileID: 315694707}
+    - target: {fileID: 6644381857077386370, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6698585111285196744, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: m_Sprite
