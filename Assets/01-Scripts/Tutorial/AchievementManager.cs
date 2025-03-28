@@ -1,47 +1,104 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class AchievementManager : MonoBehaviour
-{   
-    public static AchievementManager Instance; // 新增 Singleton 讓其他地方可以直接呼叫
+{
+    public static AchievementManager Instance; // Singleton
 
-    public int Need_TargetHP = 3;
-    public int Need_DeployCharacterCount = 5;
+    public HashSet<int> AchievementGranted = new HashSet<int>(); // 使用 HashSet 儲存成就
+    private AchievementSet[] AchievementSets;
 
-    private bool isTargetHpAchieved = false;
-    private bool isDeployAchieved = false;
-    private bool isClearAchieved = false;
+    // 使用 Dictionary 儲存不同的成就判定方式
+    private Dictionary<AchievementSet.AchievementValueJudgeEnum, System.Func<float, float, bool>> judgeActions;
 
+    void Start()
+    {
+        //InvokeRepeating("CheckAchievements", 0f, 0.5f);
+    }
     void Awake()
     {
-        if (Instance == null) Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // 保證在場景切換時不會銷毀
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+        InitializeJudgeActions();
+    }
+
+    // 初始化不同的判定邏輯
+    private void InitializeJudgeActions()
+    {
+        judgeActions = new Dictionary<AchievementSet.AchievementValueJudgeEnum, System.Func<float, float, bool>>
+        {
+            { AchievementSet.AchievementValueJudgeEnum.Above, (current, target) => current >= target },
+            { AchievementSet.AchievementValueJudgeEnum.Equal, (current, target) => Mathf.Approximately(current, target) },
+            { AchievementSet.AchievementValueJudgeEnum.Below, (current, target) => current < target },
+            { AchievementSet.AchievementValueJudgeEnum.None, (current, target) => false }
+        };
     }
 
     public void CheckAchievements()
     {
-        // 生命值成就檢測
-        if (GameStats.Instance.TargetHP >= Need_TargetHP && !isTargetHpAchieved)
+        bool isGameOver = GameManager.isGameOver;
+        if (isGameOver) return;
+        AchievementSets = GameObject.Find("LevelSettings").GetComponent<LevelSettings>().AchievementSets;
+        int AchievementIndex = 0;
+        foreach (var achievement in AchievementSets)
         {
-            isTargetHpAchieved = true;
-            UnlockAchievement("目標生命值剩餘 3 以上");
-        }
-
-        // 派遣角色成就檢測
-        if (GameStats.Instance.DeployedCharacterCount >= Need_DeployCharacterCount && !isDeployAchieved)
-        {
-            isDeployAchieved = true;
-            UnlockAchievement("派遣 3 個小高以上");
-        }
-
-        // 通過關卡成就檢測
-        if (true)
-        {
-            isClearAchieved = true;
-            UnlockAchievement("通過關卡");
+            // 檢查是否已解鎖該成就
+            if (AchievementGranted.Contains(AchievementIndex))
+            {
+                AchievementIndex++;
+                continue;
+            }
+            float currentValue = GetAchievementValue(achievement);
+            // 確保有正確的判定邏輯
+            if (judgeActions.TryGetValue(achievement.AchievementValueJudge, out var judgeFunction))
+            {
+                if (judgeFunction(currentValue, achievement.value))
+                {
+                    UnlockAchievement(AchievementIndex);
+                }
+            }
+            else
+            {
+                Debug.LogError($"未知的判定方式: {achievement.AchievementValueJudge}");
+            }
+            AchievementIndex++;
         }
     }
 
-    void UnlockAchievement(string achievementName)
+    // 根據成就類型獲取對應的數值
+    private float GetAchievementValue(AchievementSet achievement)
     {
-        Debug.Log("成就達成: " + achievementName);
+        switch (achievement.AchievementType)
+        {
+            case AchievementSet.AchievementTypeEnum.WinLevel:
+                return GameStats.Instance.LevelCleared ? 1f : 0f;
+            case AchievementSet.AchievementTypeEnum.KillCount:
+                return GameStats.Instance.EnemyKilledCount;
+            case AchievementSet.AchievementTypeEnum.BaseHealth:
+                return PlayerStats.Life;
+            case AchievementSet.AchievementTypeEnum.DispatchTotalCount:
+                return GameStats.Instance.DeployedCharacterCount;
+            case AchievementSet.AchievementTypeEnum.DispatchSpecificCount:
+                return GameStats.Instance.GetCharacterDispatchCount(achievement.character);
+            default:
+                return 0f;
+        }
+    }
+
+    void UnlockAchievement(int AchievementIndex)
+    {
+        if (!AchievementGranted.Contains(AchievementIndex))
+        {
+            AchievementGranted.Add(AchievementIndex);
+            Debug.Log("成就達成: 第 " + AchievementIndex + " 項");
+        }
     }
 }

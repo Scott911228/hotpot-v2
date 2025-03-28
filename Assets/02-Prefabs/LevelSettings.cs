@@ -15,12 +15,22 @@ public class LevelSettings : MonoBehaviour
     // ======= 角色內容 ======= 
     [Header("角色內容")]
     public CharacterSet[] characterSets;
-
     // ======= 關卡敵人內容 =======
     [Header("關卡敵人內容")]
     public Wave[] EnemyWaves;
-    // ======= 湯底效果 ======= 
-    [Header("湯底效果")]
+    // ======= 關卡成就 ======= 
+    [Header("關卡成就（最多 3 個）")]
+    public AchievementSet[] AchievementSets;
+    void OnValidate()
+    {
+        if (AchievementSets.Length > 3)
+        {
+            Debug.LogWarning("AchievementSets 的長度無法超過 3 個！");
+            System.Array.Resize(ref AchievementSets, 3);
+        }
+    }
+    // ======= 角色派遣上限 ======= 
+    [Header("角色派遣上限")]
     public CharacterDispatchLimit[] characterDispatchLimits;
     // ======= 湯底效果 ======= 
     [Header("湯底效果")]

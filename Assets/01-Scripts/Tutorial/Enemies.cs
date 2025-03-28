@@ -173,6 +173,7 @@ public class Enemies : MonoBehaviour
         Destroy(gameObject);
         WaveSpawn.EnemiesAlive--;
         WaveSpawn.KilledEnemyCount++;
+        GameStats.Instance.EnemyKilledCount++;
     }
     void Update()
     {

@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
         }
         if (PlayerStats.Life <= 0)
         {
-            EndGame();
+            LoseLevel();
             GameObject[] Enemies = GameObject.FindGameObjectsWithTag(enemyTag);
 
             foreach (GameObject Enemy in Enemies)
@@ -64,17 +64,6 @@ public class GameManager : MonoBehaviour
                 Enemy.GetComponent<Enemies>().isPaused = true;
                 Enemy.GetComponent<EnemyAttack>().isPaused = true;
             }
-        }
-    }
-
-    void EndGame()
-    {
-        if (!isGameOver)
-        {
-            SpeedControl.GetComponent<SpeedControl>().isForceNoSpeed = true;
-            isGamePlaying = false;
-            isGameOver = true;
-            GameOverUI.SetActive(true);
         }
     }
 
@@ -164,24 +153,34 @@ public class GameManager : MonoBehaviour
         isWaiting = false;
         BuildManager.WaitForFullBuild = false;
     }
-    public void WinLevel()
+
+    public void EndLevel()
     {
         isGamePlaying = false;
         if (!isGameOver)
         {
+            AchievementManager.Instance.CheckAchievements();
             isGameOver = true;
-            isGamePlaying = false;
             SpeedControl.GetComponent<SpeedControl>().isForceNoSpeed = true;
-            AchievementManager.Instance.CheckAchievements(); 
-            
-            if (PlayerStats.Life <= 0)
-            {
-                GameOverUI.SetActive(true);
-            }
-            else
-            {
-                CompleteLevelUI.SetActive(true);
-            }
+        }
+
+    }
+    public void LoseLevel()
+    {
+        EndLevel();
+        GameOverUI.SetActive(true);
+    }
+    public void WinLevel()
+    {
+        GameStats.Instance.LevelCleared = true;
+        EndLevel();
+        if (PlayerStats.Life <= 0)
+        {
+            GameOverUI.SetActive(true);
+        }
+        else
+        {
+            CompleteLevelUI.SetActive(true);
         }
     }
 }

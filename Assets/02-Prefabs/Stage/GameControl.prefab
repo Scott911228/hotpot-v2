@@ -1007,6 +1007,7 @@ Transform:
   m_Children:
   - {fileID: 6158094572391975918}
   - {fileID: 1591062562030982425}
+  - {fileID: 6892593567581583675}
   - {fileID: 6160779270371370150}
   - {fileID: 541459241698789165}
   - {fileID: 541459242267512805}
@@ -18309,6 +18310,7 @@ MonoBehaviour:
   Life: 1
   characterSets: []
   EnemyWaves: []
+  AchievementSets: []
   characterDispatchLimits: []
   FlavorName: 
   FlavorDescription: 
@@ -19930,6 +19932,66 @@ MonoBehaviour:
   hideCommands: []
   luaEnvironment: {fileID: 0}
   luaBindingName: flowchart
+--- !u!1 &5366961384806620772
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6892593567581583675}
+  - component: {fileID: 928915277283924666}
+  - component: {fileID: 6816777866590550742}
+  m_Layer: 0
+  m_Name: GameStats
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6892593567581583675
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5366961384806620772}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6.834268, y: -5.076994, z: -10.916504}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 541459240808562592}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &928915277283924666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5366961384806620772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa7d0ac30f248f54dbbca432216c8fa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LevelCleared: 0
+  EnemyKilledCount: 0
+  DeployedCharacterCount: 0
+--- !u!114 &6816777866590550742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5366961384806620772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b3d4046ce3b5384f81414e2e5e57aa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5916776972400750524
 GameObject:
   m_ObjectHideFlags: 0
