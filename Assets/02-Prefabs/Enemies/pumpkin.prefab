@@ -45,7 +45,6 @@ GameObject:
   - component: {fileID: 3185996103170683073}
   - component: {fileID: 1919464605547031526}
   - component: {fileID: 1137666406985852625}
-  - component: {fileID: 2692153606418279105}
   - component: {fileID: 4338297504349021149}
   m_Layer: 0
   m_Name: pumpkin
@@ -114,6 +113,8 @@ MonoBehaviour:
   range: 4.5
   characterTag: Character
   enemyTag: Enemy
+  Target: {fileID: 0}
+  pathIndex: 0
 --- !u!212 &1919464605547031526
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -188,27 +189,6 @@ MonoBehaviour:
   bulletPrefab: {fileID: 6567720417694121480, guid: c163c52f53ff47a4c8d0f7da78600324,
     type: 3}
   firePoint: {fileID: 6228606622513663451}
---- !u!65 &2692153606418279105
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3235380681236260573}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 5.0000005, y: 5.0000005, z: 0.20000009}
-  m_Center: {x: 0, y: 0, z: 0.0000009536743}
 --- !u!95 &4338297504349021149
 Animator:
   serializedVersion: 7

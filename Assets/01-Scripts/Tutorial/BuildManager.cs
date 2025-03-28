@@ -97,6 +97,8 @@ public class BuildManager : MonoBehaviour
         isBuilding = false;
         GameManager.isBuilding = false;
         GameObject buildingPrefab = turretToBuild.prefab;
+        CameraBrightnessController brightnessController = FindAnyObjectByType<CameraBrightnessController>();
+        brightnessController.SetBrightness(0.0f);
         if (turretToBuild != null)
         {
             foreach (CharacterDispatchLimit dispatchLimit in characterDispatchLimits)

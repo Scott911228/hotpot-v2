@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 using System.Collections;
 using Fungus;
 
-public class Node : MonoBehaviour
+public class Node : MonoBehaviour, IMouseInteractable
 {
     SpeedControl speedControl;
     private FloatTips FloatTipsScript;
@@ -35,6 +35,9 @@ public class Node : MonoBehaviour
     IEnumerator SelectTurretRotation(Node node)
     {
         FloatTipsScript.DisplayTips("移動游標設定效果範圍，右鍵確認");
+        RendererHighlightManager rendererHighlightManager = FindAnyObjectByType<RendererHighlightManager>();
+
+        speedControl.isForceSlowdown = true;
         GameObject Guide = GameObject.Find("Guide");
         if (Guide != null) Guide.SetActive(false);
 
@@ -47,10 +50,9 @@ public class Node : MonoBehaviour
         CanvasGroup canvasGroup = turret.GetComponent<CanvasGroup>();
 
         canvasGroup.alpha = 0f; // 隱藏血條（暫時）
-
+        rendererHighlightManager.HighlightObjectOnly(turret);
         turret.GetComponent<Character>().isPaused = true;
         turret.GetComponent<Character>().tag = "Untagged";
-
         bool isRotating = true;
         Character character = turret.GetComponent<Character>();
         character.showAttackRange = true; // 顯示攻擊範圍
@@ -73,17 +75,19 @@ public class Node : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0))
             {
-                Node NewNode = GetPositionNode(Input.mousePosition);
+                Character draggingCharacter = turretBlueprint.prefab?.GetComponent<Character>();
+                Camera camera = GameObject.FindGameObjectWithTag(draggingCharacter.characterType)?.GetComponent<Camera>();
+                Node NewNode = GetPositionNode(Input.mousePosition, camera);
                 if (NewNode)
                 {
-                    Character draggingCharacter = turretBlueprint.prefab?.GetComponent<Character>();
+
                     if (NewNode.turret != null)
                     {
                         FloatTipsScript.DisplayTips("無法放置在這裡！");
                     }
                     else if (draggingCharacter.characterType != NewNode.tag)
                     {
-                        FloatTipsScript.DisplayTips("此角色無法放置在這裡！");
+                        FloatTipsScript.DisplayTips("此角色無法放置在這裡！1");
                     }
                     else
                     {
@@ -155,7 +159,7 @@ public class Node : MonoBehaviour
     TurretBlueprint GetTurretBlueprintDragging()
     {
         BuildManager buildManager = GameObject.Find("GameControl").GetComponent<BuildManager>();
-        if(buildManager.DraggingCharacterIndex < 0) return null;
+        if (buildManager.DraggingCharacterIndex < 0) return null;
         else return buildManager.GetCharacterSet()[buildManager.DraggingCharacterIndex].turretBlueprint;
     }
 
@@ -180,7 +184,7 @@ public class Node : MonoBehaviour
         speedControl.isForceSlowdown = false;
     }
 
-    void OnMouseEnter()
+    public void OnMouseEnterCustom()
     {
         turretBlueprint = GetTurretBlueprintDragging();
         if (turretBlueprint != null)
@@ -201,92 +205,133 @@ public class Node : MonoBehaviour
             if (tag == "Untagged") color.a = 0.4f;
             rend.material.color = color; // 未在拖曳角色時的高光顯示
         }
-        if (!buildmanager.CanBuild)
-            return;
     }
 
-    void OnMouseExit()
+    public void OnMouseExitCustom()
     {
-        rend.material.color = startcolor;
+        rend.material.color = startcolor; // 恢復原色
     }
-
-    void OnMouseUp()
+    public void OnMouseUpCustom()
     {
         BuildManager buildManager = GameObject.Find("GameControl")?.GetComponent<BuildManager>();
         TurretBlueprint turretBlueprint = GetTurretBlueprintDragging();
-        bool isBuilding = buildManager.isBuilding;
+        RendererHighlightManager rendererHighlightManager = FindAnyObjectByType<RendererHighlightManager>();
+        Camera highlightCamera = GameObject.FindGameObjectWithTag("HighlightCamera")?.GetComponent<Camera>();
+        if (buildManager.isBuilding || turretBlueprint?.prefab == null || string.IsNullOrEmpty(turretBlueprint.prefab.name))
+        {
+            ResetHighlights(rendererHighlightManager, turretBlueprint);
+            return;
+        }
+        Node node = GetPositionNode(Input.mousePosition, highlightCamera);
 
-        if (isBuilding)
-        {
-            //Debug.Log("Now building. Cancelling build.");
-            return;
-        }
-        if (turretBlueprint?.prefab == null)
-        {
-            return;
-        }
-        if (string.IsNullOrEmpty(turretBlueprint.prefab.name))
-        {
-            //Debug.Log("No character is being dragged. Cancelling build.");
-            return;
-        }
-        else
-        {
-            //Debug.Log("DraggingCharacterIndex: " + turretBlueprint.prefab.name);
-        }
-
-        Node node = GetPositionNode(Input.mousePosition);
         if (node == null)
         {
-            //Debug.Log("Failed to find target node. Cancelling build.");
+            Debug.LogWarning("Failed to find target node. Cancelling build.");
+            ResetHighlights(rendererHighlightManager, turretBlueprint);
             return;
         }
+        rendererHighlightManager.ResetObject(GameObject.FindGameObjectsWithTag(node.tag));
+
+        Character character = turretBlueprint.prefab.GetComponent<Character>();
 
         if (node.turret != null)
         {
-            FloatTipsScript.DisplayTips("無法放置在這裡！");
-            ChooseNodeExit();
-            return;
-        }
-        else if (PlayerStats.Money < turretBlueprint.cost)
-        {
-            FloatTipsScript.DisplayTips("熱量不足！");
-            ChooseNodeExit();
-            return;
-        }
-        else if (turretBlueprint.prefab.GetComponent<Character>().characterType != node.tag)
-        {
-            FloatTipsScript.DisplayTips("此角色無法放置在這裡！");
-            ChooseNodeExit();
+            ShowError("無法放置在這裡！", rendererHighlightManager, turretBlueprint);
             return;
         }
 
-        // 檢查是否可以跳過方向選擇
-        Character character = turretBlueprint.prefab.GetComponent<Character>();
+        if (PlayerStats.Money < turretBlueprint.cost)
+        {
+            ShowError("熱量不足！", rendererHighlightManager, turretBlueprint);
+            return;
+        }
+
+        if (character.characterType != node.tag)
+        {
+            ShowError("此角色無法放置在這裡！", rendererHighlightManager, turretBlueprint);
+            return;
+        }
+
+        // 調整亮度並檢查方向選擇
+        FindAnyObjectByType<CameraBrightnessController>()?.SetBrightness(-2.0f);
+        ChangeNodeColor(node, Color.green);
+
         if (character.canSkipDirectionSelection)
         {
-            // 如果可以跳過方向選擇，直接放置角色
-            ChangeNodeColor(node, Color.green); // 將該 Node 設為綠色
             buildManager.BuildTurretOn(node, Quaternion.identity, turretBlueprint);
-            //Debug.Log("角色已放置，跳過方向選擇");
         }
         else
         {
-            // 否則，進行方向選擇
-            ChangeNodeColor(node, Color.green); // 將該 Node 設為綠色
             StartCoroutine(SelectTurretRotation(node));
         }
     }
 
-
-    Node GetPositionNode(Vector3 position)
+    private void ResetHighlights(RendererHighlightManager manager, TurretBlueprint blueprint)
     {
-        Ray ray = Camera.main.ScreenPointToRay(position);
-        if (Physics.Raycast(ray, out RaycastHit hit, 100))
+        if (blueprint?.prefab != null)
         {
-            return hit.transform.gameObject.GetComponent<Node>();
+            manager.ResetObject(GameObject.FindGameObjectsWithTag(blueprint.prefab.GetComponent<Character>().characterType));
         }
-        else return null;
+    }
+
+    private void ShowError(string message, RendererHighlightManager manager, TurretBlueprint blueprint)
+    {
+        FloatTipsScript.DisplayTips(message);
+        ResetHighlights(manager, blueprint);
+        ChooseNodeExit();
+    }
+
+    Node GetPositionNode(Vector3 position, Camera camera = null, string highlightLayerName = "HighlightLayer")
+    {
+        if (camera == null)
+        {
+            camera = Camera.main;
+        }
+
+        // 獲取 HighlightLayer 的 Layer Index
+        int highlightLayer = LayerMask.NameToLayer(highlightLayerName);
+        if (highlightLayer == -1)
+        {
+            Debug.LogError($"Layer '{highlightLayerName}' 未找到，請確認已建立該 Layer！");
+            return null;
+        }
+
+        Ray ray = camera.ScreenPointToRay(position);
+
+        // 使用 RaycastAll 獲取所有命中的物件
+        RaycastHit[] hits = Physics.RaycastAll(ray, 100f);
+
+        if (hits.Length > 0)
+        {
+            RaycastHit? highlightHit = null;
+            RaycastHit? normalHit = null;
+
+            // 遍歷所有命中的物件，優先選 HighlightLayer
+            foreach (var hit in hits)
+            {
+                if (hit.transform.gameObject.layer == highlightLayer)
+                {
+                    highlightHit = hit;
+                    break; // 直接選 HighlightLayer，不再遍歷
+                }
+                else if (normalHit == null)
+                {
+                    normalHit = hit; // 如果沒有 HighlightLayer，記錄普通物件
+                }
+            }
+
+            // 優先回傳 HighlightLayer 的物件，如果沒有則回傳普通物件
+            RaycastHit finalHit = highlightHit ?? normalHit.Value;
+
+            // 嘗試獲取 Node 組件
+            Node node = finalHit.transform.gameObject.GetComponent<Node>();
+            if (node != null)
+            {
+                return node;
+            }
+        }
+
+        return null;
     }
 
     public void ChangeNodeColor(Node node, Color color)
