@@ -171,7 +171,6 @@ public class Enemies : MonoBehaviour
         isDead = true;
         PlayerStats.Money += GetMoney;
         Destroy(gameObject);
-        GameStats.Instance.RemoveEnemy();
         WaveSpawn.EnemiesAlive--;
         WaveSpawn.KilledEnemyCount++;
     }

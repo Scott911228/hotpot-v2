@@ -9,6 +9,7 @@ public class WaveSpawn : MonoBehaviour
     public static int EnemiesAlive = 0;
     public GameManager gameManager;
     private Transform Target;
+    private bool isSummoning;
     public float timeBetweenWaves = 5f;
     public float countdown = 5f;
     public static int KilledEnemyCount = 0;
@@ -46,6 +47,10 @@ public class WaveSpawn : MonoBehaviour
     void Update()
     {
         if (TotalEnemyCount - KilledEnemyCount > 0)
+        {
+            return;
+        }
+        if (isSummoning)
         {
             return;
         }
@@ -103,7 +108,7 @@ public class WaveSpawn : MonoBehaviour
         //KilledEnemyCount = 0;
         Wave currentWave = EnemyWaves[waveNumber];
         TotalEnemyCount = 0;
-
+        isSummoning = true;
         foreach (EnemyContent content in currentWave.Enemy)
         {
             TotalEnemyCount += content.spawnCount;
@@ -118,6 +123,7 @@ public class WaveSpawn : MonoBehaviour
         }
 
         waveNumber++;
+        isSummoning = false;
         countdown = timeBetweenWaves;
     }
 
@@ -155,8 +161,6 @@ public class WaveSpawn : MonoBehaviour
             {
                 enemyScript.speedMultiplier = content.speedMultiplier;
             }
-            
-            GameStats.Instance.AddEnemy();
             EnemiesAlive++;
         }
     }

@@ -33,7 +33,7 @@ public class AchievementManager : MonoBehaviour
         }
 
         // 通過關卡成就檢測
-        if (GameStats.Instance.RemainingEnemyCount == 0 && !isClearAchieved)
+        if (true)
         {
             isClearAchieved = true;
             UnlockAchievement("通過關卡");

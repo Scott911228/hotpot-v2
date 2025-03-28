@@ -172,6 +172,8 @@ public class GameManager : MonoBehaviour
             isGameOver = true;
             isGamePlaying = false;
             SpeedControl.GetComponent<SpeedControl>().isForceNoSpeed = true;
+            AchievementManager.Instance.CheckAchievements(); 
+            
             if (PlayerStats.Life <= 0)
             {
                 GameOverUI.SetActive(true);
