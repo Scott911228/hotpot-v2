@@ -29126,7 +29126,7 @@ PrefabInstance:
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: characterSets.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
@@ -29256,7 +29256,7 @@ PrefabInstance:
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: characterSets.Array.data[3].turretBlueprint.cost
-      value: 114514
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
@@ -29304,7 +29304,7 @@ PrefabInstance:
         type: 3}
       propertyPath: characterSets.Array.data[3].turretBlueprint.prefab
       value: 
-      objectReference: {fileID: 6032914235060294360, guid: c7c20308c943315448bb82246bdd128c,
+      objectReference: {fileID: 7283691445766968096, guid: e7624b4cc4927ae4e876fae83e92724b,
         type: 3}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}

@@ -71,6 +71,10 @@ public class Character : MonoBehaviour
 
             foreach (Collider hitCollider in hitColliderSphere)
             {
+                if (hitCollider.gameObject.GetComponent<Node>())
+                {
+                    hitCollider.gameObject.GetComponent<Node>().GetComponent<Renderer>().material.color = Color.yellow;
+                }
                 if (hitCollider.gameObject.GetComponent<Enemies>())
                 {
 
