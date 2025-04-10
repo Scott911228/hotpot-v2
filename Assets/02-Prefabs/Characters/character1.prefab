@@ -2010,7 +2010,7 @@ MonoBehaviour:
   skillName: 
   skillDesc: 
   skillOtherDetail: 
-  HealthBar: {fileID: 8251006695562550924}
+  HealthBar: {fileID: 0}
 --- !u!225 &-4475951249920758488
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -2786,6 +2786,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7031974726502445886, guid: 364211a57bded0b438753feb8e52b9e1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2797,15 +2802,3 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 8116788018293512659}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8251006695562550924 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 154786416774612831, guid: 364211a57bded0b438753feb8e52b9e1,
-    type: 3}
-  m_PrefabInstance: {fileID: 8116788018293512659}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b15dd16bf4f29954a866ff7e4f224feb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
