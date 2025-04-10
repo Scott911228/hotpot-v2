@@ -4,8 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
+public class DragDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
+    public float longPressThreshold = 0.24f; // 長按時間（秒）
+    private float pointerDownTime;
+    private bool isPointerDown = false;
+    private bool longPressed = false;
     private GameObject Interactable;
     private FloatTips FloatTipsScript;
     public int shopIndex;
@@ -15,13 +19,53 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     Vector3 startPosition;
     private RectTransform rectTransform;
     private CanvasGroup canvasGroup;
+    private GameObject skillInfoPanel;
     void Start()
     {
+        skillInfoPanel = transform.Find("SkillInfoPanel")?.gameObject;
+        if (skillInfoPanel != null)
+        {
+            skillInfoPanel.SetActive(false); // 確保一開始是關閉的
+            Debug.LogWarning("找到 SkillInfoPanel");
+        }
+        else
+            Debug.LogWarning("找不到 SkillInfoPanel，請確認命名與結構");
         Interactable = GameObject.Find("GameControl/GameElement/Interactable");
         FloatTipsScript = GameObject.Find("FloatTips").transform.Find("FloatTipsBase").GetComponent<FloatTips>();
         startPosition = transform.position;
         buildmanager = GameObject.Find("GameControl").GetComponent<BuildManager>();
         speedControl = GameObject.Find("SpeedControl").GetComponent<SpeedControl>();
+    }
+    void Update()
+    {
+        // ⭐ 長按判定
+        if (isPointerDown && !longPressed)
+        {
+            if (Time.time - pointerDownTime >= longPressThreshold)
+            {
+                longPressed = true;
+                OnLongPress(); // 觸發長按邏輯
+            }
+        }
+    }
+    private void OnLongPress()
+    {
+        Debug.Log("長按觸發：" + gameObject.name);
+        if (skillInfoPanel != null)
+        {
+            skillInfoPanel.SetActive(true);
+            speedControl.isForceSlowdown = true;
+        }
+    }
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        if (longPressed && skillInfoPanel != null)
+        {
+            HideSkillInfo();
+        }
+        // 重置狀態
+        longPressed = false;
+        isPointerDown = false;
     }
     private void Awake()
     {
@@ -30,6 +74,18 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     }
     public void OnPointerDown(PointerEventData eventData)
     {
+        isPointerDown = true;
+        pointerDownTime = Time.time;
+        longPressed = false;
+        HideSkillInfo();
+    }
+    private void HideSkillInfo()
+    {
+        if (skillInfoPanel != null && skillInfoPanel.activeSelf)
+        {
+            speedControl.isForceSlowdown = false;
+            skillInfoPanel.SetActive(false);
+        }
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -38,9 +94,11 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         else
         {
             buildmanager.DraggingCharacterIndex = -1;
+        };
+        if (skillInfoPanel != null && skillInfoPanel.activeSelf)
+        {
+            skillInfoPanel.SetActive(false);
         }
-        ;
-
         speedControl.isForceSlowdown = true;
         canvasGroup.alpha = .6f;
         canvasGroup.blocksRaycasts = false;
@@ -57,6 +115,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     }
     public void OnEndDrag(PointerEventData eventData)
     {
+        isPointerDown = false;
+        longPressed = false;
         ReturnToOriginPos();
         speedControl.isForceSlowdown = false;
         canvasGroup.alpha = 1f;
@@ -131,5 +191,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     public void ReturnToOriginPos()
     {
         transform.position = startPosition;
+        isPointerDown = false;
+        longPressed = false;
+        HideSkillInfo();
     }
 }

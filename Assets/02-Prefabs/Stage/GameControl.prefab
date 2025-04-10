@@ -22851,6 +22851,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DraggableCharacter
       objectReference: {fileID: 0}
+    - target: {fileID: 2684037260538617261, guid: 8934bedd8701d9a4ebbb955c9e13424f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3403631644005465712, guid: 8934bedd8701d9a4ebbb955c9e13424f,
         type: 3}
       propertyPath: canvas

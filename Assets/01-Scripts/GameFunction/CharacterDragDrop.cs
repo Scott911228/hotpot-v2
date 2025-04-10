@@ -77,7 +77,7 @@ public class CharacterDragDrop : MonoBehaviour
             if (display != null)
             {
                 // 要*0.05是因為放置時的遊戲會放慢
-                display.DOAnchorPos(new Vector2(0, -585), 1f * 0.05f).SetEase(Ease.OutCubic);
+                display.DOAnchorPos(new Vector2(0, -505), 1f * 0.05f).SetEase(Ease.OutCubic);
             }
             else
             {
@@ -99,7 +99,7 @@ public class CharacterDragDrop : MonoBehaviour
             if (display != null)
             {
                 display.DOAnchorPos(new Vector2(0, -787), 1f).SetEase(Ease.OutCubic)
-            .OnComplete(() => gameObject.SetActive(false));
+            .OnComplete(() => go.SetActive(true));
             }
             else
             {
