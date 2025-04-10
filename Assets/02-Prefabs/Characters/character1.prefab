@@ -1845,10 +1845,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDead: 0
   isPaused: 0
-  attackRadius: 5
+  attackRadius: 3
   attackLength: 2
   attackWidth: 1
   attackHeight: 100
+  attackDamage: 50
   showAttackRange: 1
   canSkipDirectionSelection: 1
   characterType: Road
@@ -2005,7 +2006,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetMP: 5
   currentMP: 0
-  gainMPspeed: 1
+  gainMPspeed: 0
+  skillName: 
+  skillDesc: 
+  skillOtherDetail: 
   HealthBar: {fileID: 8251006695562550924}
 --- !u!225 &-4475951249920758488
 CanvasGroup:
@@ -2055,6 +2059,7 @@ MonoBehaviour:
   dragPreviewPrefab: {fileID: 4951841789975945245, guid: 58840a7bd19103144a3173063a5fcbc2,
     type: 3}
   removeCharacterPanel: {fileID: 0}
+  dragThreshold: 10
 --- !u!1 &6032914235130603425
 GameObject:
   m_ObjectHideFlags: 0

@@ -18,7 +18,10 @@ public class CharacterDragDrop : MonoBehaviour
 
     private GraphicRaycaster uiRaycaster;
     private EventSystem eventSystem;
-
+    private Vector3 mouseDownPosition;
+    private bool pointerDown = false;
+    private bool dragStarted = false;
+    public float dragThreshold = 10f;
     void Start()
     {
         speedControl = GameObject.Find("SpeedControl").GetComponent<SpeedControl>();
@@ -29,10 +32,11 @@ public class CharacterDragDrop : MonoBehaviour
         uiRaycaster = GameObject.Find("GameControl/InteractableGuide/RemoveCharacterPanel/Canvas").GetComponent<GraphicRaycaster>();
         eventSystem = EventSystem.current;
     }
-
     private void OnMouseDown()
     {
-        StartDragging();
+        pointerDown = true;
+        dragStarted = false;
+        mouseDownPosition = Input.mousePosition;
     }
 
     public void StartDragging()
@@ -49,9 +53,19 @@ public class CharacterDragDrop : MonoBehaviour
         GameObject.Find("GameControl").GetComponent<GameManager>().setRemoveCharacterPanelActive(true);
         SlideIn();
     }
-
     void Update()
     {
+        if (pointerDown && !dragStarted)
+        {
+            float distance = Vector3.Distance(Input.mousePosition, mouseDownPosition);
+            if (distance > dragThreshold)
+            {
+                // 真正啟動拖曳行為
+                dragStarted = true;
+                StartDragging();
+            }
+        }
+
         if (isDragging && dragPreviewInstance != null)
         {
             Vector3 mousePos = Input.mousePosition;
@@ -66,7 +80,25 @@ public class CharacterDragDrop : MonoBehaviour
                 EndDrag();
             }
         }
+
+        // 點擊結束
+        if (pointerDown && Input.GetMouseButtonUp(0) && !dragStarted)
+        {
+            pointerDown = false;
+            OnClick(); // 觸發點擊事件
+        }
     }
+    private void OnClick()
+    {
+        Debug.Log("角色被點擊了！");
+        CharacterSkill characterSkill = GetComponent<CharacterSkill>();
+        if (characterSkill.currentMP >= characterSkill.targetMP)
+        {
+            characterSkill.RunSkill();
+        };
+        // 你可以在這裡打開說明、播放動畫、彈出提示等
+    }
+
     public void SlideIn()
     {
         GameObject go = GameObject.Find("GameControl/InteractableGuide/RemoveCharacterPanel/Canvas/Display");

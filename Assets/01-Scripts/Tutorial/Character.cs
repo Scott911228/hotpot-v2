@@ -8,7 +8,7 @@ public class Character : MonoBehaviour
 {
     Animator myAnimator;
     private Transform target;
-
+    private bool DEBUG_MODE = false; // 顯示攻擊範圍偵錯
     private List<GameObject> targets = new List<GameObject>();
     public bool isDead = false;
     public bool isPaused = true;
@@ -18,6 +18,7 @@ public class Character : MonoBehaviour
     public float attackLength = 15f; // 攻擊範圍的長度
     public float attackWidth = 1f; // 攻擊範圍的寬度
     public float attackHeight = 1f; // 攻擊範圍的高度
+    public float attackDamage = 10f; // 攻擊傷害
     public bool showAttackRange = false; // 控制是否顯示攻擊範圍
     public bool canSkipDirectionSelection = false; // 是否跳過方向選擇
     public string characterType;
@@ -71,7 +72,7 @@ public class Character : MonoBehaviour
 
             foreach (Collider hitCollider in hitColliderSphere)
             {
-                if (hitCollider.gameObject.GetComponent<Node>())
+                if (hitCollider.gameObject.GetComponent<Node>() && DEBUG_MODE)
                 {
                     hitCollider.gameObject.GetComponent<Node>().GetComponent<Renderer>().material.color = Color.yellow;
                 }
@@ -284,6 +285,7 @@ public class Character : MonoBehaviour
         Bullets bullets = bulletGO.GetComponent<Bullets>();
         if (bullets != null)
         {
+            bullets.damage = attackDamage;
             bullets.Seek(target);
             target = null;
         }

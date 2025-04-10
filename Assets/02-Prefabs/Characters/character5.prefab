@@ -1866,11 +1866,12 @@ MonoBehaviour:
   attackLength: 2
   attackWidth: 1
   attackHeight: 100
+  attackDamage: 120
   showAttackRange: 1
   canSkipDirectionSelection: 1
   characterType: Road
   characterClass: Attacker
-  fireCooldown: 1.12
+  fireCooldown: 0
   characterTag: Character
   enemyTag: Enemy
   CharacterTransform: {fileID: 2410515598669226778}
@@ -1909,7 +1910,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HealthBar: {fileID: 1926925266580380272}
-  StartHealth: 600
+  StartHealth: 360
   isDead: 0
 --- !u!114 &-7182546320365874050
 MonoBehaviour:
@@ -1923,9 +1924,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 828e1cc3f19b51a4da1264bbb55e1732, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetMP: 5
+  targetMP: 10
   currentMP: 0
   gainMPspeed: 1
+  skillName: "\u6211\u4E43\u528D\u4E4B\u9AA8"
+  skillDesc: "\u6280\u80FD\u6301\u7E8C\u6642\u9593\u5167, \n\u653B\u901F\u9010\u6F38\u63D0\u5347\u81F3+100%"
+  skillOtherDetail: 
   HealthBar: {fileID: 5893737100808428931}
 --- !u!225 &942519695726311604
 CanvasGroup:
@@ -1975,6 +1979,7 @@ MonoBehaviour:
   dragPreviewPrefab: {fileID: 4951841789975945245, guid: 58840a7bd19103144a3173063a5fcbc2,
     type: 3}
   removeCharacterPanel: {fileID: 0}
+  dragThreshold: 10
 --- !u!1 &8032021885613976566
 GameObject:
   m_ObjectHideFlags: 0

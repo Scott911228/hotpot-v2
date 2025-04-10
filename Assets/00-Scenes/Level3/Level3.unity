@@ -12415,6 +12415,7 @@ MonoBehaviour:
   attackLength: 2
   attackWidth: 1
   attackHeight: 100
+  attackDamage: 10
   showAttackRange: 1
   canSkipDirectionSelection: 0
   characterType: Road
@@ -28837,6 +28838,21 @@ PrefabInstance:
       propertyPath: CoolDownTime
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3820748570710226684, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3820748570710226684, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 3820748570710226684, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
     - target: {fileID: 3826377091716429691, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: m_Name
@@ -29140,6 +29156,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
+      propertyPath: CharacterAttackSpeedMultiplier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
       propertyPath: EnemyWaves.Array.data[0].Enemy
       value: 
       objectReference: {fileID: 3235380681236260573, guid: 21a5d51227f0ed34fad74c455ff0ade6,
@@ -29152,7 +29173,7 @@ PrefabInstance:
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: characterDispatchLimits.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
@@ -29207,6 +29228,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
+      propertyPath: characterDispatchLimits.Array.data[3].limit
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
       propertyPath: AchievementSets.Array.data[0].AchievementType
       value: 1
       objectReference: {fileID: 0}
@@ -29237,6 +29263,12 @@ PrefabInstance:
       propertyPath: characterDispatchLimits.Array.data[2].character
       value: 
       objectReference: {fileID: 2945908575983069881, guid: e1e89061ca2bb5344b42f3dda3704f25,
+        type: 3}
+    - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: characterDispatchLimits.Array.data[3].character
+      value: 
+      objectReference: {fileID: 7283691445766968096, guid: e7624b4cc4927ae4e876fae83e92724b,
         type: 3}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
@@ -29386,6 +29418,21 @@ PrefabInstance:
         type: 3}
       propertyPath: EnemyWaves.Array.data[0].Enemy.Array.data[0].pathsManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: EnemyWaves.Array.data[0].Enemy.Array.data[0].speedMultiplier
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: EnemyWaves.Array.data[0].Enemy.Array.data[0].damageMultiplier
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: EnemyWaves.Array.data[0].Enemy.Array.data[0].healthMultiplier
+      value: 9999
       objectReference: {fileID: 0}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}

@@ -1843,6 +1843,7 @@ GameObject:
   - component: {fileID: 3550137563766037383}
   - component: {fileID: -3166345487860440544}
   - component: {fileID: -3696330464779683145}
+  - component: {fileID: 2807681043558125256}
   m_Layer: 0
   m_Name: character2
   m_TagString: Character
@@ -1941,6 +1942,7 @@ MonoBehaviour:
   attackLength: 7
   attackWidth: 6
   attackHeight: 100
+  attackDamage: 10
   showAttackRange: 1
   canSkipDirectionSelection: 0
   characterType: Wall
@@ -2019,6 +2021,27 @@ MonoBehaviour:
   dragPreviewPrefab: {fileID: 4951841789975945245, guid: 58840a7bd19103144a3173063a5fcbc2,
     type: 3}
   removeCharacterPanel: {fileID: 0}
+  dragThreshold: 10
+--- !u!114 &2807681043558125256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6444461241218909068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 828e1cc3f19b51a4da1264bbb55e1732, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetMP: 5
+  currentMP: 0
+  gainMPspeed: 0
+  skillName: 
+  skillDesc: 
+  skillOtherDetail: 
+  HealthBar: {fileID: 8251006695562550924, guid: c7c20308c943315448bb82246bdd128c,
+    type: 3}
 --- !u!1 &7091511105797538559
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -22,19 +23,37 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
     private GameObject skillInfoPanel;
     void Start()
     {
-        skillInfoPanel = transform.Find("SkillInfoPanel")?.gameObject;
-        if (skillInfoPanel != null)
-        {
-            skillInfoPanel.SetActive(false); // 確保一開始是關閉的
-            Debug.LogWarning("找到 SkillInfoPanel");
-        }
-        else
-            Debug.LogWarning("找不到 SkillInfoPanel，請確認命名與結構");
         Interactable = GameObject.Find("GameControl/GameElement/Interactable");
         FloatTipsScript = GameObject.Find("FloatTips").transform.Find("FloatTipsBase").GetComponent<FloatTips>();
         startPosition = transform.position;
-        buildmanager = GameObject.Find("GameControl").GetComponent<BuildManager>();
+        buildmanager = GameObject.Find("GameControl").GetComponent<BuildManager>(); // ⬅ 必須提前放在這裡
         speedControl = GameObject.Find("SpeedControl").GetComponent<SpeedControl>();
+        Transform panel = transform.Find("SkillInfoPanel");
+        if (panel != null)
+        {
+            skillInfoPanel = panel.gameObject;
+
+            var nameText = panel.Find("SkillInfoName")?.GetComponent<TMPro.TMP_Text>();
+            var descText = panel.Find("SkillInfoDesc")?.GetComponent<TMPro.TMP_Text>();
+            var detailText = panel.Find("SkillInfoDetail")?.GetComponent<TMPro.TMP_Text>();
+            var characterSet = GameObject.Find("LevelSettings").GetComponent<LevelSettings>().characterSets;
+            if (characterSet != null && shopIndex < characterSet.Length)
+            {
+                var characterSkill = characterSet[shopIndex].turretBlueprint.prefab?.GetComponent<CharacterSkill>();
+                if (characterSkill != null)
+                {
+                    nameText.text = string.IsNullOrEmpty(characterSkill.skillName) ? "無技能" : characterSkill.skillName;
+                    descText.text = string.IsNullOrEmpty(characterSkill.skillDesc) ? "無" : characterSkill.skillDesc;
+                    detailText.text = string.IsNullOrEmpty(characterSkill.skillOtherDetail) ? " " : characterSkill.skillOtherDetail;
+                }
+            }
+
+            skillInfoPanel.SetActive(false);
+        }
+        else
+        {
+            Debug.LogWarning("找不到 SkillInfoPanel，請確認命名與結構");
+        }
     }
     void Update()
     {
@@ -94,7 +113,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
         else
         {
             buildmanager.DraggingCharacterIndex = -1;
-        };
+        }
+        ;
         if (skillInfoPanel != null && skillInfoPanel.activeSelf)
         {
             skillInfoPanel.SetActive(false);
