@@ -225,12 +225,14 @@ public class Character : MonoBehaviour
             else flipedXScale.x = Math.Abs(flipedXScale.x);
             transform.localScale = flipedXScale;
             // 血條轉向
-            Transform healthBar = transform.Find("HealthBarCanvas");
-            flipedXScale = healthBar.transform.localScale;
-            if (dir.z < 0) flipedXScale.x = Math.Abs(flipedXScale.x) * -1;
-            else flipedXScale.x = Math.Abs(flipedXScale.x);
-            healthBar.transform.localScale = flipedXScale;
-
+            Transform barCanvas = transform.Find("Bar");
+            if (barCanvas)
+            {
+                flipedXScale = barCanvas.transform.localScale;
+                if (dir.z < 0) flipedXScale.x = Math.Abs(flipedXScale.x) * -1;
+                else flipedXScale.x = Math.Abs(flipedXScale.x);
+                barCanvas.transform.localScale = flipedXScale;
+            }
             // 只有當目標在攻擊範圍內時才進行攻擊
             if (fireCountdown <= 0f &&
                 !isPaused &&

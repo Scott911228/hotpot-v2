@@ -26,6 +26,13 @@ public class GameManager : MonoBehaviour
         DamageTextInstance.transform.GetChild(0).GetComponent<TextMeshPro>().outlineColor = textColor;
     }
 
+    public void DisplayFloatingText(GameObject characterInstance, string textToDisplay, float textSize, Color32 textColor)
+    {
+        GameObject FloatingTextInstance = Instantiate(damageTextPrefab, characterInstance.transform.position, characterInstance.transform.rotation);
+        FloatingTextInstance.transform.GetChild(0).GetComponent<TextMeshPro>().SetText(textToDisplay);
+        FloatingTextInstance.transform.GetChild(0).GetComponent<TextMeshPro>().fontSize = textSize;
+        FloatingTextInstance.transform.GetChild(0).GetComponent<TextMeshPro>().outlineColor = textColor;
+    }
     public void RemoveAllCharacter()
     {
         GameObject[] characters = GameObject.FindGameObjectsWithTag(characterTag);
