@@ -877,6 +877,8 @@ GameObject:
   - component: {fileID: -2461751473778488967}
   - component: {fileID: 8584694344106997700}
   - component: {fileID: -4525836121055072042}
+  - component: {fileID: 5550339788869306567}
+  - component: {fileID: 3779986767101838810}
   m_Layer: 0
   m_Name: character3
   m_TagString: Character
@@ -1113,6 +1115,42 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &5550339788869306567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2945908575983069881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d22521c28940404fba2e85d3300d455, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dragPreviewPrefab: {fileID: 4951841789975945245, guid: 58840a7bd19103144a3173063a5fcbc2,
+    type: 3}
+  removeCharacterPanel: {fileID: 0}
+--- !u!65 &3779986767101838810
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2945908575983069881}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 10, y: 60, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2949441903349141104
 GameObject:
   m_ObjectHideFlags: 0

@@ -252,6 +252,7 @@ GameObject:
   - component: {fileID: 4060205241720244157}
   - component: {fileID: 4060205241720244130}
   - component: {fileID: 4060205241720244128}
+  - component: {fileID: 6775712171315193463}
   m_Layer: 5
   m_Name: ShopDraggableButton
   m_TagString: Shop
@@ -343,6 +344,18 @@ MonoBehaviour:
     prefab: {fileID: 0}
     cost: 0
   characterCountText: {fileID: 5807265740925167200}
+--- !u!225 &6775712171315193463
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4060205241720244134}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &4060205241822630656
 GameObject:
   m_ObjectHideFlags: 0

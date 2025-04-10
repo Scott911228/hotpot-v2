@@ -1842,6 +1842,7 @@ GameObject:
   - component: {fileID: 7251878783354597937}
   - component: {fileID: 3550137563766037383}
   - component: {fileID: -3166345487860440544}
+  - component: {fileID: -3696330464779683145}
   m_Layer: 0
   m_Name: character2
   m_TagString: Character
@@ -2001,8 +2002,23 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 10, y: 60, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-3696330464779683145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6444461241218909068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d22521c28940404fba2e85d3300d455, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dragPreviewPrefab: {fileID: 4951841789975945245, guid: 58840a7bd19103144a3173063a5fcbc2,
+    type: 3}
+  removeCharacterPanel: {fileID: 0}
 --- !u!1 &7091511105797538559
 GameObject:
   m_ObjectHideFlags: 0

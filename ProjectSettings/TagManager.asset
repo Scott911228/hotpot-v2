@@ -18,6 +18,7 @@ TagManager:
   - AttackRange
   - HighlightCamera
   - TempCamera
+  - ForwardCamera
   layers:
   - Default
   - TransparentFX
@@ -27,7 +28,7 @@ TagManager:
   - UI
   - HighlightLayer
   - TempLayer
-  - 
+  - ForwardLayer
   - 
   - 
   - 

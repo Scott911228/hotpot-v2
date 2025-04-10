@@ -17,7 +17,13 @@ public class GameManager : MonoBehaviour
     public string enemyTag = "Enemy";
     public GameObject damageTextPrefab;
     public bool isGamePlaying = true;
+    private GameObject removeCharacterPanel;
     bool isWaiting = false;
+
+    public void setRemoveCharacterPanelActive(bool visiblility)
+    {
+        removeCharacterPanel.SetActive(visiblility);
+    }
     public void DisplayDamage(GameObject characterInstance, string textToDisplay, float textSize, Color32 textColor)
     {
         GameObject DamageTextInstance = Instantiate(damageTextPrefab, Random.insideUnitSphere * 2f + characterInstance.transform.position, characterInstance.transform.rotation);
@@ -51,6 +57,8 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
+        removeCharacterPanel = GameObject.Find("GameControl/InteractableGuide/RemoveCharacterPanel");
+        setRemoveCharacterPanelActive(false);
         SpeedControl.GetComponent<SpeedControl>().isForceNoSpeed = false;
         InvokeRepeating("WaitingPauseEffect", 0f, 0.1f);
         isGameOver = false;
