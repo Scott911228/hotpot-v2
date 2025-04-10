@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
 
     public void setRemoveCharacterPanelActive(bool visiblility)
     {
-        removeCharacterPanel.SetActive(visiblility);
+        //removeCharacterPanel.SetActive(visiblility);
     }
     public void DisplayDamage(GameObject characterInstance, string textToDisplay, float textSize, Color32 textColor)
     {

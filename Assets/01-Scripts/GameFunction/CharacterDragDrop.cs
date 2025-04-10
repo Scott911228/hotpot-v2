@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using DG.Tweening;
+using UnityEngine.UIElements;
 
 public class CharacterDragDrop : MonoBehaviour
 {
@@ -45,6 +47,7 @@ public class CharacterDragDrop : MonoBehaviour
         speedControl.isForceSlowdown = true;
         gameElement.GetComponent<CanvasGroup>().alpha = 0f;
         GameObject.Find("GameControl").GetComponent<GameManager>().setRemoveCharacterPanelActive(true);
+        SlideIn();
     }
 
     void Update()
@@ -64,7 +67,50 @@ public class CharacterDragDrop : MonoBehaviour
             }
         }
     }
+    public void SlideIn()
+    {
+        GameObject go = GameObject.Find("GameControl/InteractableGuide/RemoveCharacterPanel/Canvas/Display");
 
+        if (go != null)
+        {
+            RectTransform display = go.GetComponent<RectTransform>();
+            if (display != null)
+            {
+                // 要*0.05是因為放置時的遊戲會放慢
+                display.DOAnchorPos(new Vector2(0, -585), 1f * 0.05f).SetEase(Ease.OutCubic);
+            }
+            else
+            {
+                Debug.LogWarning("找不到 RectTransform，請確認 Display 是 UI 元件");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("找不到 Display，請確認路徑是否正確");
+        }
+    }
+    public void SlideOut()
+    {
+        GameObject go = GameObject.Find("GameControl/InteractableGuide/RemoveCharacterPanel/Canvas/Display");
+
+        if (go != null)
+        {
+            RectTransform display = go.GetComponent<RectTransform>();
+            if (display != null)
+            {
+                display.DOAnchorPos(new Vector2(0, -787), 1f).SetEase(Ease.OutCubic)
+            .OnComplete(() => gameObject.SetActive(false));
+            }
+            else
+            {
+                Debug.LogWarning("找不到 RectTransform，請確認 Display 是 UI 元件");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("找不到 Display，請確認路徑是否正確");
+        }
+    }
     void EndDrag()
     {
         bool hitRemovePanel = false;
@@ -113,6 +159,7 @@ public class CharacterDragDrop : MonoBehaviour
         GameManager.isBuilding = false;
         speedControl.isForceSlowdown = false;
         gameElement.GetComponent<CanvasGroup>().alpha = 1.0f;
-        GameObject.Find("GameControl").GetComponent<GameManager>().setRemoveCharacterPanelActive(false);
+        SlideOut();
     }
+
 }
