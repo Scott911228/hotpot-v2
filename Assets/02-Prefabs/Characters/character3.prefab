@@ -1811,7 +1811,7 @@ GameObject:
   - component: {fileID: 7583650101404723850}
   - component: {fileID: 6076807259977873930}
   - component: {fileID: 3355647687119657384}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EffectRange
   m_TagString: AttackRange
   m_Icon: {fileID: 0}

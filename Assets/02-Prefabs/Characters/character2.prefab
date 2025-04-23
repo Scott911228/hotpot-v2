@@ -2212,7 +2212,7 @@ GameObject:
   - component: {fileID: 7819629449324843200}
   - component: {fileID: 1381693979804687396}
   - component: {fileID: 7702120489633251785}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EffectRange
   m_TagString: AttackRange
   m_Icon: {fileID: 0}

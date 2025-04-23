@@ -12,6 +12,7 @@ public class CharacterSkill : MonoBehaviour
     [TextArea]
     public string skillOtherDetail;
 
+    public bool isSkillTriggering = false;
     public HealthBar HealthBar;
     private Animator animator;
     private float originalMultiplier;
@@ -27,6 +28,7 @@ public class CharacterSkill : MonoBehaviour
     void IncreaseMP()
     {
         if (!GameObject.Find("GameControl").GetComponent<GameManager>().isGamePlaying) return;
+        if (isSkillTriggering) return;
         if (currentMP >= targetMP) return;
         currentMP += gainMPspeed;
         HealthBar.UpdateHealthBar(targetMP, currentMP);
@@ -41,6 +43,7 @@ public class CharacterSkill : MonoBehaviour
     }
     public void RunSkill()
     {
+        isSkillTriggering = true;
         currentMP = 0;
         HealthBar.UpdateHealthBar(targetMP, currentMP);
         BoostRunMultiplier(2f, 10f);
@@ -54,8 +57,9 @@ public class CharacterSkill : MonoBehaviour
     public void BoostRunMultiplier(float multiplier = 1.5f, float duration = 3f)
     {
         if (currentBoostCoroutine != null)
+        {
             StopCoroutine(currentBoostCoroutine);
-
+        }
         currentBoostCoroutine = StartCoroutine(RunMultiplierBoostRoutine(multiplier, duration));
     }
     private IEnumerator RunMultiplierBoostRoutine(float targetMultiplier, float duration)
@@ -86,7 +90,7 @@ public class CharacterSkill : MonoBehaviour
             animator.SetFloat("runMultiplier", newMultiplier);
             yield return null;
         }
-
+        isSkillTriggering = false;
         animator.SetFloat("runMultiplier", originalMultiplier);
         currentBoostCoroutine = null;
     }
