@@ -3969,7 +3969,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 541459241684940650}
   m_Enabled: 1
-  m_Alpha: 0.2
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -18652,6 +18652,7 @@ MonoBehaviour:
   EnemyWaves: []
   AchievementSets: []
   characterDispatchLimits: []
+  broadcastMessages: []
   FlavorName: 
   FlavorDescription: 
   FlavorColor: {r: 1, g: 1, b: 1, a: 1}
