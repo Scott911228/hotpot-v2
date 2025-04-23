@@ -7,6 +7,8 @@ public class LevelSettings : MonoBehaviour
     [Header("關卡敘述")]
     // ======= 關卡名稱 ======= 
     public string StageName = "";
+    // ======= 關卡類型 ======= 
+    public LevelType.LevelTypeEnum LevelType; // 使用Enum
     [Header("開場數值")]
     // ======= 金錢 ======= 
     public double Money = 100;
