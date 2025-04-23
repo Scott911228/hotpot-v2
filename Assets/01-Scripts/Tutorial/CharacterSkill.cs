@@ -3,6 +3,7 @@ using System.Collections;
 
 public class CharacterSkill : MonoBehaviour
 {
+    public bool hasSkill = false;
     public float targetMP = 100;
     public float currentMP = 0;
     public float gainMPspeed = 0.1f;
@@ -19,6 +20,7 @@ public class CharacterSkill : MonoBehaviour
     private Coroutine currentBoostCoroutine;
     void Start()
     {
+        if(!hasSkill) return;
         animator = GetComponent<Animator>();
         originalMultiplier = animator.GetFloat("runMultiplier");
         currentMP = 0; // 初始化 MP

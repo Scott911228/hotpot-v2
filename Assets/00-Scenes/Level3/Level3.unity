@@ -28838,21 +28838,6 @@ PrefabInstance:
       propertyPath: CoolDownTime
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3820748570710226684, guid: 2200e26108a0af044a17b619e36318f9,
-        type: 3}
-      propertyPath: m_UiScaleMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3820748570710226684, guid: 2200e26108a0af044a17b619e36318f9,
-        type: 3}
-      propertyPath: m_ReferenceResolution.x
-      value: 1920
-      objectReference: {fileID: 0}
-    - target: {fileID: 3820748570710226684, guid: 2200e26108a0af044a17b619e36318f9,
-        type: 3}
-      propertyPath: m_ReferenceResolution.y
-      value: 1080
-      objectReference: {fileID: 0}
     - target: {fileID: 3826377091716429691, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: m_Name
@@ -29457,17 +29442,6 @@ PrefabInstance:
     - target: {fileID: 7967493723987147999, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: m_RaycastTarget
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8308374485759521781, guid: 2200e26108a0af044a17b619e36318f9,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: c867f3d1948578e4ead10d1c67cfb4e4,
-        type: 3}
-    - target: {fileID: 8308374485759521781, guid: 2200e26108a0af044a17b619e36318f9,
-        type: 3}
-      propertyPath: m_Color.a
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8602328217404411778, guid: 2200e26108a0af044a17b619e36318f9,

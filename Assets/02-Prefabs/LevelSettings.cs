@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class LevelSettings : MonoBehaviour
-{   
+{
     public static LevelSettings Instance;
 
     [Header("關卡敘述")]
@@ -13,7 +13,7 @@ public class LevelSettings : MonoBehaviour
     // ======= 金錢 ======= 
     public double Money = 100;
     // ======= 基地生命 ======= 
-    public int Life ;
+    public int Life;
     // ======= 角色內容 ======= 
     [Header("角色內容")]
     public CharacterSet[] characterSets;
@@ -34,6 +34,11 @@ public class LevelSettings : MonoBehaviour
     // ======= 角色派遣上限 ======= 
     [Header("角色派遣上限")]
     public CharacterDispatchLimit[] characterDispatchLimits;
+    // ======= 劇情波次綁定 ======= 
+    [Header("劇情波次綁定（對接Fungus）")]
+    public WaveBroadcastMessage[] broadcastMessages;
+
+
     // ======= 湯底效果 ======= 
     [Header("湯底效果")]
     public string FlavorName;

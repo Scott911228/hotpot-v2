@@ -2,10 +2,16 @@
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 
 public class WaveSpawn : MonoBehaviour
 {
+    private WaveBroadcastMessage[] broadcastMessages; // Inspector 設定
+    private HashSet<string> playedMessages = new HashSet<string>();
+
+    private string CurrentStageName => GameObject.Find("LevelSettings")?.GetComponent<LevelSettings>()?.StageName;
+
     public static int EnemiesAlive = 0;
     public GameManager gameManager;
     private Transform Target;
@@ -34,11 +40,13 @@ public class WaveSpawn : MonoBehaviour
     [Header("路徑管理")]
     public PathSettings pathSettings; // 路徑管理器
     public GameObject enemyPrefab; // 敵人預製物
-
+    private GameObject[] remainingEnemies;
+    
     void Start()
     {
         pathSettings = GameObject.Find("PathSettings")?.GetComponent<PathSettings>(); // 取得 PathSettings
         EnemyWaves = GameObject.Find("LevelSettings").GetComponent<LevelSettings>().EnemyWaves;
+        broadcastMessages = GameObject.Find("LevelSettings").GetComponent<LevelSettings>().broadcastMessages;
         EnemiesAlive = 0;
         waveNumber = 0;
         InvokeRepeating("UpdateEnemyCountText", 0f, 0.1f);
@@ -46,23 +54,22 @@ public class WaveSpawn : MonoBehaviour
 
     void Update()
     {
-        if (TotalEnemyCount - KilledEnemyCount > 0)
+        if (isSummoning) // 如果正在生成敵人，就不偵測是否重新開始生成
         {
             return;
         }
-        if (isSummoning)
+        if (!GameObject.Find("GameControl").GetComponent<GameManager>().isGamePlaying) // 如果正在暫停，就不偵測是否重新開始生成
         {
             return;
         }
-        if (!GameObject.Find("GameControl").GetComponent<GameManager>().isGamePlaying)
+        if (remainingEnemies?.Length > 0) // 如果場上還有敵人，就不偵測是否重新開始生成
         {
             return;
         }
-
-        if (waveNumber == EnemyWaves.Length)
+        if (waveNumber == EnemyWaves.Length) // 如果已經是最後一波就判定勝利
         {
             gameManager.WinLevel();
-            this.enabled = false;
+            enabled = false;
         }
 
         if (countdown <= 0f)
@@ -71,7 +78,6 @@ public class WaveSpawn : MonoBehaviour
             countdown = timeBetweenWaves;
             return;
         }
-
         countdown -= Time.deltaTime;
         countdown = Mathf.Clamp(countdown, 0f, Mathf.Infinity);
         waveCountdownText.text = "第 " + (waveNumber + 1).ToString() + " 波 ... " + string.Format("{0:00.00}", countdown);
@@ -79,8 +85,9 @@ public class WaveSpawn : MonoBehaviour
 
     public void UpdateEnemyCountText()
     {
-        string EnemyCountString = (TotalEnemyCount - KilledEnemyCount).ToString();
-        if (EnemyCountString != EnemyCountText.text)
+        remainingEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+        string EnemyCountString = remainingEnemies.Length.ToString();
+        if (EnemyCountString != EnemyCountText.text) // 更新敵人數量顯示
         {
             EnemyCountText.text = EnemyCountString;
             Animator = EnemyCountText.GetComponent<Animator>();
@@ -89,23 +96,27 @@ public class WaveSpawn : MonoBehaviour
         }
         if (waveNumber > 0) WaveCountText.text = "第 " + waveNumber.ToString() + " / " + EnemyWaves.Length.ToString() + " 波";
     }
+    private void TriggerWaveBroadcastMessage()
+    {
+        string currentStage = CurrentStageName;
+        if (string.IsNullOrEmpty(currentStage)) return;
 
+        foreach (var msg in broadcastMessages)
+        {
+            if (msg.stageName == currentStage && msg.waveNumber == waveNumber && !playedMessages.Contains(msg.messageKey))
+            {
+                TextControl.BroadcastControlMessage(msg.messageKey);
+                playedMessages.Add(msg.messageKey);
+                break;
+            }
+        }
+    }
     // 協程控制每波敵人生成
     IEnumerator SpawnWaveEnemies()
     {
 
-        if (GameObject.Find("LevelSettings").GetComponent<LevelSettings>().StageName == "第二關")
-        {
-            if (waveNumber == 1)
-            {
-                TextControl.BroadcastControlMessage("tutorial2/text3");
-            }
-            if (waveNumber == 2)
-            {
-                TextControl.BroadcastControlMessage("tutorial2/text5");
-            }
-        }
-        //KilledEnemyCount = 0;
+        TriggerWaveBroadcastMessage();
+
         Wave currentWave = EnemyWaves[waveNumber];
         TotalEnemyCount = 0;
         isSummoning = true;
@@ -115,6 +126,8 @@ public class WaveSpawn : MonoBehaviour
 
             for (int i = 0; i < content.spawnCount; i++)
             {
+                while (!GameObject.Find("GameControl").GetComponent<GameManager>().isGamePlaying)
+                    yield return null;
                 SpawnEnemy(content);  // 生成敵人
                 yield return new WaitForSeconds(content.spawnRate);  // 控制敵人生成的頻率
             }
