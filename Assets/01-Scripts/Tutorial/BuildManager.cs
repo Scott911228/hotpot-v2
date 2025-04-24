@@ -201,7 +201,6 @@ public class BuildManager : MonoBehaviour
             activeCharacters.Add(turret);
             assignedCoolDown.StartCoolDown();
             // 更新派遣角色數量
-            GameStats.Instance.DeployedCharacterCount++;
             GameStats.Instance.RegisterCharacterDispatch(buildingPrefab);
             // 更新 UI
             UpdateAllCharacterCountUI();

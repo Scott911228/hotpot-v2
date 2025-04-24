@@ -60,7 +60,10 @@ public class AchievementManager : MonoBehaviour
             // 確保有正確的判定邏輯
             if (judgeActions.TryGetValue(achievement.AchievementValueJudge, out var judgeFunction))
             {
-                if (judgeFunction(currentValue, achievement.value))
+                float targetValue = achievement.value;
+                Debug.Log($"檢查成就 [{AchievementIndex}] - 類型: {achievement.AchievementType}, 判定: {achievement.AchievementValueJudge}, 目標值: {targetValue}, 當前值: {currentValue}");
+
+                if (judgeFunction(currentValue, targetValue))
                 {
                     UnlockAchievement(AchievementIndex);
                 }

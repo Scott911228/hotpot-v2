@@ -33,6 +33,18 @@ public class LevelSettings : MonoBehaviour
             System.Array.Resize(ref AchievementSets, 3);
         }
     }
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+    }
     // ======= 角色派遣上限 ======= 
     [Header("角色派遣上限")]
     public CharacterDispatchLimit[] characterDispatchLimits;

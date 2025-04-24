@@ -29184,8 +29184,7 @@ PrefabInstance:
         type: 3}
       propertyPath: AchievementSets.Array.data[2].character
       value: 
-      objectReference: {fileID: 6444461241218909068, guid: 642f27573d95e474ab2838a9c8e65710,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: EnemyWaves.Array.data[0].Enemy.Array.size
@@ -29229,7 +29228,7 @@ PrefabInstance:
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: AchievementSets.Array.data[2].AchievementType
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
@@ -29417,7 +29416,7 @@ PrefabInstance:
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: EnemyWaves.Array.data[0].Enemy.Array.data[0].healthMultiplier
-      value: 9999
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
