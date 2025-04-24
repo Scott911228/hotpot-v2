@@ -2034,12 +2034,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 828e1cc3f19b51a4da1264bbb55e1732, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasSkill: 0
   targetMP: 5
   currentMP: 0
   gainMPspeed: 0
   skillName: 
   skillDesc: 
   skillOtherDetail: 
+  isSkillTriggering: 0
   HealthBar: {fileID: 8251006695562550924, guid: c7c20308c943315448bb82246bdd128c,
     type: 3}
 --- !u!1 &7091511105797538559
@@ -2228,7 +2230,7 @@ Transform:
   m_GameObject: {fileID: 7922403438228854240}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 5, z: 0}
   m_LocalScale: {x: 25, y: 0.5, z: 25}
   m_ConstrainProportionsScale: 0
   m_Children: []
