@@ -88,6 +88,11 @@ public class AchievementManager : MonoBehaviour
                 return GameStats.Instance.DeployedCharacterCount;
             case AchievementSet.AchievementTypeEnum.DispatchSpecificCount:
                 return GameStats.Instance.GetCharacterDispatchCount(achievement.character);
+            case AchievementSet.AchievementTypeEnum.SurviveTime:
+                if (LevelSettings.Instance.LevelType == LevelType.LevelTypeEnum.Time)
+                    return GameStats.Instance.SurviveTime;
+                else
+                    return 0f;
             default:
                 return 0f;
         }

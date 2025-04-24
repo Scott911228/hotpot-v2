@@ -13,6 +13,9 @@ public class GameStats : MonoBehaviour
 
 
     public int TargetHP => LevelSettings.Instance != null ? LevelSettings.Instance.Life : 0;
+
+    public float SurviveTime { get; private set; } //限時模式
+
     void Start()
     {
         GameStats.Instance.ResetCharacterDispatchCount();
@@ -28,6 +31,14 @@ public class GameStats : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    private void Update()
+{
+    if (!LevelCleared)
+    {
+        SurviveTime += Time.deltaTime;
+    }
+}
 
     public void ResetCharacterDispatchCount()
     {

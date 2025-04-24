@@ -10,7 +10,8 @@ public class AchievementSet
         BaseHealth,
         KillCount,
         DispatchSpecificCount,
-        DispatchTotalCount
+        DispatchTotalCount,
+        SurviveTime
     }
     public enum AchievementValueJudgeEnum
     {

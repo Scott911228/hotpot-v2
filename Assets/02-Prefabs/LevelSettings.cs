@@ -14,6 +14,8 @@ public class LevelSettings : MonoBehaviour
     public double Money = 100;
     // ======= 基地生命 ======= 
     public int Life;
+    // ======= 時間限制 ======= 
+     public float TimeLimit = 60f;
     // ======= 角色內容 ======= 
     [Header("角色內容")]
     public CharacterSet[] characterSets;
