@@ -5397,7 +5397,7 @@ PrefabInstance:
     - target: {fileID: 541459240808562593, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: countdown
-      value: 2
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 541459240808562593, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
@@ -5650,6 +5650,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 541459241736251570, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 541459242022743015, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: SayDialog
@@ -5704,6 +5709,11 @@ PrefabInstance:
     - target: {fileID: 3478886633303858509, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: CoolDownTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3644631949340383042, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3820748570710226684, guid: 2200e26108a0af044a17b619e36318f9,
@@ -5802,6 +5812,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5400500281064596713, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: m_Name
+      value: Text
+      objectReference: {fileID: 0}
     - target: {fileID: 5678020095176589499, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: m_Sprite
@@ -5831,6 +5846,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_EffectDistance.y
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6003182099045787396, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6437583326868056344, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
@@ -6200,7 +6220,7 @@ PrefabInstance:
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: Life
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
@@ -6225,7 +6245,7 @@ PrefabInstance:
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: surviveTimeTarget
-      value: 10
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
@@ -6240,7 +6260,7 @@ PrefabInstance:
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: AchievementSets.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
@@ -6271,12 +6291,12 @@ PrefabInstance:
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: AchievementSets.Array.data[0].value
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: AchievementSets.Array.data[1].value
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
@@ -6336,7 +6356,7 @@ PrefabInstance:
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: AchievementSets.Array.data[0].AchievementType
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
@@ -6455,7 +6475,7 @@ PrefabInstance:
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: AchievementSets.Array.data[0].AchievementValueJudge
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
@@ -6545,7 +6565,7 @@ PrefabInstance:
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: EnemyWaves.Array.data[0].Enemy.Array.data[0].speedMultiplier
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
@@ -6612,6 +6632,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Alpha
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8858434846013375385, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: m_FontData.m_FontStyle
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8867694536108233816, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}

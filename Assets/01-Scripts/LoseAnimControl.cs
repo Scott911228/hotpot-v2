@@ -1,14 +1,13 @@
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
 using UnityEditor.SearchService;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-
 public class LoseAnimControl : MonoBehaviour
 {
-    public TextMeshProUGUI gameOverText;
-    public TextMeshProUGUI encourageText;
+    public Image gameOverText;
+    public Image encourageText;
     public CanvasGroup Buttons;
     public string loadSceneName;
 

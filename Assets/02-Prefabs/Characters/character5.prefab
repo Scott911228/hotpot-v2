@@ -1924,7 +1924,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 828e1cc3f19b51a4da1264bbb55e1732, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasSkill: 0
+  hasSkill: 1
   targetMP: 10
   currentMP: 0
   gainMPspeed: 1
