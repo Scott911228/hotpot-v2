@@ -109,13 +109,13 @@ public class WaveSpawn : MonoBehaviour
         }
         countdown -= Time.deltaTime;
         countdown = Mathf.Clamp(countdown, 0f, Mathf.Infinity);
-        waveCountdownText.text = "第 " + (waveNumber + 1).ToString() + " 波 ... " + string.Format("{0:00.00}", countdown);
+        waveCountdownText.text = "敵人即將出現... " + string.Format("{0:00.00}", countdown);
     }
 
     public void UpdateEnemyCountText()
     {
-
-        if (_isTimeLevelType) { 
+        if (_isTimeLevelType)
+        {
             EnemyCountText.text = (_surviveTimeTarget - surviveTimeElapsed).ToString("F1");
         }
         else
@@ -128,6 +128,10 @@ public class WaveSpawn : MonoBehaviour
                 Animator = EnemyCountText.GetComponent<Animator>();
                 Animator.enabled = true;
                 Animator.Play("Start", 0, 0f);
+            }
+            if (isSummoning)
+            {
+                return;
             }
             if (waveNumber > 0) WaveCountText.text = "第 " + waveNumber.ToString() + " / " + EnemyWaves.Length.ToString() + " 波";
         }
@@ -150,6 +154,7 @@ public class WaveSpawn : MonoBehaviour
     // 協程控制每波敵人生成
     IEnumerator SpawnWaveEnemies()
     {
+        WaveCountText.text = "第 " + (waveNumber + 1).ToString() + " / " + EnemyWaves.Length.ToString() + " 波";
         TriggerWaveBroadcastMessage();
 
         if (waveNumber >= EnemyWaves.Length) yield break;

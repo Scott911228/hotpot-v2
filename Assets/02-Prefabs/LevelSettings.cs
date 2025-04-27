@@ -7,6 +7,7 @@ public class LevelSettings : MonoBehaviour
     [Header("關卡敘述")]
     // ======= 關卡名稱 ======= 
     public string StageName = "";
+    public string StageEntryMessage = "";
     // ======= 關卡類型 ======= 
     [Header("關卡設定")]
     public LevelType.LevelTypeEnum LevelType; // 使用Enum

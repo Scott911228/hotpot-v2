@@ -2354,6 +2354,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6278839144209725821}
     m_Modifications:
+    - target: {fileID: 1868679816755628663, guid: 364211a57bded0b438753feb8e52b9e1,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 9999
+      objectReference: {fileID: 0}
     - target: {fileID: 2969624942610593836, guid: 364211a57bded0b438753feb8e52b9e1,
         type: 3}
       propertyPath: m_Layer
@@ -2599,6 +2604,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _healthBarGradient.m_NumColorKeys
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1868679816755628663, guid: 364211a57bded0b438753feb8e52b9e1,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 9999
       objectReference: {fileID: 0}
     - target: {fileID: 2152069280773423103, guid: 364211a57bded0b438753feb8e52b9e1,
         type: 3}

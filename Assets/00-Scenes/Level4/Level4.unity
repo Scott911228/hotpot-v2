@@ -5397,7 +5397,7 @@ PrefabInstance:
     - target: {fileID: 541459240808562593, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: countdown
-      value: 0.1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 541459240808562593, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
@@ -6220,7 +6220,7 @@ PrefabInstance:
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: Life
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
@@ -6241,6 +6241,11 @@ PrefabInstance:
         type: 3}
       propertyPath: TimeLimit
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: StageEntryMessage
+      value: "\u5728\u9650\u5236\u6642\u9593\u5167\u4FDD\u8B77\u597D\u57FA\u5730\u5427\uFF01"
       objectReference: {fileID: 0}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}

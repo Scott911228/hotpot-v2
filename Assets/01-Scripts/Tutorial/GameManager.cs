@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 using TMPro;
 
 public class GameManager : MonoBehaviour
@@ -18,6 +19,7 @@ public class GameManager : MonoBehaviour
     public GameObject damageTextPrefab;
     public bool isGamePlaying = true;
     private GameObject removeCharacterPanel;
+    private GameObject broadcastMessagePanel;
     bool isWaiting = false;
 
     public void setRemoveCharacterPanelActive(bool visiblility)
@@ -57,11 +59,25 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
+        broadcastMessagePanel = GameObject.Find("GameControl/GameElement/BroadcastMessage");
         removeCharacterPanel = GameObject.Find("GameControl/InteractableGuide/RemoveCharacterPanel");
         setRemoveCharacterPanelActive(false);
         SpeedControl.GetComponent<SpeedControl>().isForceNoSpeed = false;
         InvokeRepeating("WaitingPauseEffect", 0f, 0.1f);
         isGameOver = false;
+        string entryMessage = GameObject.Find("LevelSettings").GetComponent<LevelSettings>().StageEntryMessage;
+        if(!string.IsNullOrEmpty(entryMessage)) BroadcastMessage(entryMessage);
+    }
+    public void BroadcastMessage(string text, float slideInTime = 1, float stayTime = 2, float slideOutTime = 1)
+    {
+        broadcastMessagePanel.GetComponentInChildren<Text>().text = text;
+        broadcastMessagePanel.transform.DOLocalMove(new Vector3(0, 192, 0), slideInTime).SetEase(Ease.InOutSine).OnComplete(() =>
+                    {
+                        DOVirtual.DelayedCall(stayTime, () =>
+                        {
+                            broadcastMessagePanel.transform.DOLocalMove(new Vector3(0, 258, 0), slideOutTime).SetEase(Ease.InOutSine);
+                        });
+                    });
     }
     void Update()
     {

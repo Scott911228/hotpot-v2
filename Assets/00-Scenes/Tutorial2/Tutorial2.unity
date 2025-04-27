@@ -3767,7 +3767,7 @@ PrefabInstance:
     - target: {fileID: 6499869828535564823, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: selectedBlocks.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6499869828535564823, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
@@ -3861,13 +3861,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
+      propertyPath: StageEntryMessage
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
       propertyPath: EnemyDamageMultiplier
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: EnemyWaves.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
@@ -3966,7 +3971,7 @@ PrefabInstance:
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: EnemyWaves.Array.data[3].Enemy.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}

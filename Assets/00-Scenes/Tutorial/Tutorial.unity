@@ -7159,8 +7159,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 541459240808562593, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
+      propertyPath: countdown
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 541459240808562593, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
       propertyPath: spawnPoint
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 541459240808562593, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: timeBetweenWaves
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 541459240808562593, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
@@ -7352,6 +7362,11 @@ PrefabInstance:
         type: 3}
       propertyPath: StageName
       value: "\u7B2C\u4E00\u95DC"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: StageEntryMessage
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
