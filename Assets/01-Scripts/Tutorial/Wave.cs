@@ -4,6 +4,7 @@
 public class Wave
 {
     public EnemyContent[] Enemy;
+    public bool isInfinitySpawn;
 }
 
 [System.Serializable]

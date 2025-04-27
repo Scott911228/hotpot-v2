@@ -41,19 +41,44 @@ public class WaveSpawn : MonoBehaviour
     public PathSettings pathSettings; // 路徑管理器
     public GameObject enemyPrefab; // 敵人預製物
     private GameObject[] remainingEnemies;
-    
+
+    private float _surviveTimeTarget;
+    private float surviveTimeElapsed = 0f;
+    private bool _isTimeLevelType = false;
     void Start()
     {
         pathSettings = GameObject.Find("PathSettings")?.GetComponent<PathSettings>(); // 取得 PathSettings
         EnemyWaves = GameObject.Find("LevelSettings").GetComponent<LevelSettings>().EnemyWaves;
         broadcastMessages = GameObject.Find("LevelSettings").GetComponent<LevelSettings>().broadcastMessages;
+        _isTimeLevelType = GameObject.Find("LevelSettings").GetComponent<LevelSettings>().LevelType == LevelType.LevelTypeEnum.Time;
+        _surviveTimeTarget = GameObject.Find("LevelSettings").GetComponent<LevelSettings>().surviveTimeTarget;
         EnemiesAlive = 0;
         waveNumber = 0;
         InvokeRepeating("UpdateEnemyCountText", 0f, 0.1f);
     }
 
+    private bool IsInfinityWaveActive()
+    {
+        if (waveNumber >= EnemyWaves.Length) return false;
+        return EnemyWaves[waveNumber].isInfinitySpawn;
+    }
+
     void Update()
     {
+        if (_isTimeLevelType)
+        {
+            if (TotalEnemyCount > 0)
+            {
+                surviveTimeElapsed += Time.deltaTime;
+                //Debug.Log($"{surviveTimeElapsed} / {_surviveTimeTarget}"); // 顯示已經過的秒數與達成條件
+                if (surviveTimeElapsed >= _surviveTimeTarget)
+                {
+                    gameManager.WinLevel();
+                    enabled = false;
+                    return;
+                }
+            }
+        }
         if (isSummoning) // 如果正在生成敵人，就不偵測是否重新開始生成
         {
             return;
@@ -62,16 +87,20 @@ public class WaveSpawn : MonoBehaviour
         {
             return;
         }
+
         if (remainingEnemies?.Length > 0) // 如果場上還有敵人，就不偵測是否重新開始生成
         {
             return;
         }
-        if (waveNumber == EnemyWaves.Length) // 如果已經是最後一波就判定勝利
+        if (waveNumber >= EnemyWaves.Length)
         {
-            gameManager.WinLevel();
-            enabled = false;
+            if (!IsInfinityWaveActive()) // 若不是無限波次才直接判勝
+            {
+                gameManager.WinLevel();
+                enabled = false;
+                return;
+            }
         }
-
         if (countdown <= 0f)
         {
             StartCoroutine(SpawnWaveEnemies());  // 使用協程生成敵人
@@ -114,31 +143,47 @@ public class WaveSpawn : MonoBehaviour
     // 協程控制每波敵人生成
     IEnumerator SpawnWaveEnemies()
     {
-
         TriggerWaveBroadcastMessage();
+
+        if (waveNumber >= EnemyWaves.Length) yield break;
 
         Wave currentWave = EnemyWaves[waveNumber];
         TotalEnemyCount = 0;
         isSummoning = true;
-        foreach (EnemyContent content in currentWave.Enemy)
-        {
-            TotalEnemyCount += content.spawnCount;
 
-            for (int i = 0; i < content.spawnCount; i++)
+        do
+        {
+            foreach (EnemyContent content in currentWave.Enemy)
             {
-                while (!GameObject.Find("GameControl").GetComponent<GameManager>().isGamePlaying)
-                    yield return null;
-                SpawnEnemy(content);  // 生成敵人
-                yield return new WaitForSeconds(content.spawnRate);  // 控制敵人生成的頻率
+                TotalEnemyCount += content.spawnCount;
+
+                for (int i = 0; i < content.spawnCount; i++)
+                {
+                    while (!GameObject.Find("GameControl").GetComponent<GameManager>().isGamePlaying)
+                        yield return null;
+
+                    SpawnEnemy(content);
+                    yield return new WaitForSeconds(content.spawnRate);
+                }
+
+                yield return new WaitForSeconds(content.delayToNextContent);
             }
 
-            yield return new WaitForSeconds(content.delayToNextContent);  // 延遲下一個敵人生成
-        }
+            // 如果是無限波次，就不停重複，不增加 waveNumber
+            if (!currentWave.isInfinitySpawn)
+            {
+                waveNumber++;
+                break;
+            }
 
-        waveNumber++;
+            yield return new WaitForSeconds(timeBetweenWaves); // 無限波次之間也稍微等待
+        }
+        while (true);
+
         isSummoning = false;
         countdown = timeBetweenWaves;
     }
+
 
     // 生成敵人的邏輯
     void SpawnEnemy(EnemyContent content)

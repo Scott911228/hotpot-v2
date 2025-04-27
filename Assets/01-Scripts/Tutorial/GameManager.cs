@@ -188,6 +188,7 @@ public class GameManager : MonoBehaviour
     public void WinLevel()
     {
         GameStats.Instance.LevelCleared = true;
+        isWaiting = true;
         EndLevel();
         if (PlayerStats.Life <= 0)
         {

@@ -54,7 +54,25 @@ public class MouseEnterSimulator : MonoBehaviour
             }
 
             // 優先處理 HighlightLayer
-            RaycastHit finalHit = highlightHit ?? normalHit.Value;
+            RaycastHit finalHit;
+            if (highlightHit.HasValue)
+            {
+                finalHit = highlightHit.Value;
+            }
+            else if (normalHit.HasValue)
+            {
+                finalHit = normalHit.Value;
+            }
+            else
+            {
+                // 沒有任何合法目標，強制 OnMouseExitCustom()
+                if (currentInteractable != null)
+                {
+                    currentInteractable.OnMouseExitCustom();
+                    currentInteractable = null;
+                }
+                return; // 直接結束這一幀，不處理後續
+            }
             IMouseInteractable finalInteractable = finalHit.transform.GetComponent<IMouseInteractable>();
 
             if (finalInteractable != null)

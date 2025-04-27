@@ -9,13 +9,13 @@ public class LevelSettings : MonoBehaviour
     public string StageName = "";
     // ======= 關卡類型 ======= 
     public LevelType.LevelTypeEnum LevelType; // 使用Enum
+    // ======= 時間限制 ======= 
+    public float surviveTimeTarget = 180f; // 目標存活秒數
     [Header("開場數值")]
     // ======= 金錢 ======= 
     public double Money = 100;
     // ======= 基地生命 ======= 
     public int Life;
-    // ======= 時間限制 ======= 
-     public float TimeLimit = 60f;
     // ======= 角色內容 ======= 
     [Header("角色內容")]
     public CharacterSet[] characterSets;
