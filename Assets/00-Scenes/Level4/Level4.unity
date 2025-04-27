@@ -5421,6 +5421,11 @@ PrefabInstance:
       objectReference: {fileID: 1851289983}
     - target: {fileID: 541459240808562593, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
+      propertyPath: timeBetweenWaves
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 541459240808562593, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
       propertyPath: waves.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -5614,6 +5619,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Mesh
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 541459241736251569, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 541459241736251569, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 541459241736251569, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 541459241736251569, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 541459241736251569, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -806.42993
+      objectReference: {fileID: 0}
+    - target: {fileID: 541459241736251569, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 541459242022743015, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
@@ -6190,7 +6225,7 @@ PrefabInstance:
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: surviveTimeTarget
-      value: 180
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
@@ -6262,6 +6297,11 @@ PrefabInstance:
         type: 3}
       propertyPath: AchievementSets.Array.data[2].character
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: EnemyWaves.Array.data[0].isInfinitySpawn
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
@@ -6515,7 +6555,22 @@ PrefabInstance:
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: EnemyWaves.Array.data[0].Enemy.Array.data[0].healthMultiplier
-      value: 1
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: EnemyWaves.Array.data[0].Enemy.Array.data[1].healthMultiplier
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: EnemyWaves.Array.data[0].Enemy.Array.data[2].healthMultiplier
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: EnemyWaves.Array.data[0].Enemy.Array.data[3].healthMultiplier
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}

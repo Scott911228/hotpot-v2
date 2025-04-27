@@ -114,16 +114,23 @@ public class WaveSpawn : MonoBehaviour
 
     public void UpdateEnemyCountText()
     {
-        remainingEnemies = GameObject.FindGameObjectsWithTag("Enemy");
-        string EnemyCountString = remainingEnemies.Length.ToString();
-        if (EnemyCountString != EnemyCountText.text) // 更新敵人數量顯示
-        {
-            EnemyCountText.text = EnemyCountString;
-            Animator = EnemyCountText.GetComponent<Animator>();
-            Animator.enabled = true;
-            Animator.Play("Start", 0, 0f);
+
+        if (_isTimeLevelType) { 
+            EnemyCountText.text = (_surviveTimeTarget - surviveTimeElapsed).ToString("F1");
         }
-        if (waveNumber > 0) WaveCountText.text = "第 " + waveNumber.ToString() + " / " + EnemyWaves.Length.ToString() + " 波";
+        else
+        {
+            remainingEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+            string EnemyCountString = remainingEnemies.Length.ToString();
+            if (EnemyCountString != EnemyCountText.text) // 更新敵人數量顯示
+            {
+                EnemyCountText.text = EnemyCountString;
+                Animator = EnemyCountText.GetComponent<Animator>();
+                Animator.enabled = true;
+                Animator.Play("Start", 0, 0f);
+            }
+            if (waveNumber > 0) WaveCountText.text = "第 " + waveNumber.ToString() + " / " + EnemyWaves.Length.ToString() + " 波";
+        }
     }
     private void TriggerWaveBroadcastMessage()
     {
