@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine.UIElements;
 
-public class CharacterDragDrop : MonoBehaviour
+public class CharacterDragDrop : MonoBehaviour, IMouseInteractable
 {
     Vector3 mousePosition;
 
@@ -22,8 +22,12 @@ public class CharacterDragDrop : MonoBehaviour
     private bool pointerDown = false;
     private bool dragStarted = false;
     public float dragThreshold = 10f;
+    private Vector3 originalScale;
+    private float hoverScaleMultiplier = 1.1f; // 碰到時的放大倍率
+    private bool isHovering = false;
     void Start()
     {
+        originalScale = transform.localScale;
         speedControl = GameObject.Find("SpeedControl").GetComponent<SpeedControl>();
         gameElement = GameObject.Find("GameElement");
         removeCharacterPanel = GameObject.Find("InteractableGuide/RemoveCharacterPanel");
@@ -55,6 +59,40 @@ public class CharacterDragDrop : MonoBehaviour
     }
     void Update()
     {
+        if (!isDragging) // 偵測是否碰到游標並且未被點擊
+        {
+            Vector3 mousePos = Input.mousePosition;
+            Ray ray = Camera.main.ScreenPointToRay(mousePos);
+            RaycastHit[] hits = Physics.RaycastAll(ray, 100f);
+
+            bool hitSelf = false;
+
+            foreach (var hit in hits)
+            {
+                if (hit.transform == transform)
+                {
+                    hitSelf = true;
+                    break;
+                }
+            }
+            if (hitSelf)
+            {
+                if (!isHovering)
+                {
+                    OnMouseEnterCustom();
+                    isHovering = true;
+                }
+            }
+            else
+            {
+                if (isHovering)
+                {
+                    OnMouseExitCustom();
+                    isHovering = false;
+                }
+            }
+
+        }
         if (pointerDown && !dragStarted)
         {
             float distance = Vector3.Distance(Input.mousePosition, mouseDownPosition);
@@ -88,6 +126,18 @@ public class CharacterDragDrop : MonoBehaviour
             OnClick(); // 觸發點擊事件
         }
     }
+    public void OnMouseEnterCustom()
+    {
+        if (isDragging) return; // 拖曳中不要放大
+        transform.DOScale(originalScale * hoverScaleMultiplier, 0.2f).SetEase(Ease.OutBack);
+    }
+    public void OnMouseExitCustom()
+    {
+        if (isDragging) return; // 拖曳中不要縮回
+        transform.DOScale(originalScale, 0.2f).SetEase(Ease.OutBack);
+    }
+    public void OnMouseUpCustom()
+    { }
     private void OnClick()
     {
         Debug.Log("角色被點擊了！");
@@ -95,7 +145,8 @@ public class CharacterDragDrop : MonoBehaviour
         if (characterSkill.currentMP >= characterSkill.targetMP)
         {
             characterSkill.RunSkill();
-        };
+        }
+        ;
         // 你可以在這裡打開說明、播放動畫、彈出提示等
     }
 
