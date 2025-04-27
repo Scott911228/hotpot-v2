@@ -8,9 +8,11 @@ public class LevelSettings : MonoBehaviour
     // ======= 關卡名稱 ======= 
     public string StageName = "";
     // ======= 關卡類型 ======= 
+    [Header("關卡設定")]
     public LevelType.LevelTypeEnum LevelType; // 使用Enum
     // ======= 時間限制 ======= 
     public float surviveTimeTarget = 180f; // 目標存活秒數
+    public bool isCharacterRemoveAvailable = true; // 是否可以撤退角色
     [Header("開場數值")]
     // ======= 金錢 ======= 
     public double Money = 100;

@@ -45,6 +45,7 @@ public class CharacterDragDrop : MonoBehaviour, IMouseInteractable
 
     public void StartDragging()
     {
+        if(!GameObject.Find("LevelSettings").GetComponent<LevelSettings>().isCharacterRemoveAvailable) return;
         if (dragPreviewPrefab == null) return;
 
         isDragging = true;

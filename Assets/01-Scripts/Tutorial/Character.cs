@@ -231,7 +231,7 @@ public class Character : MonoBehaviour
             Vector3 dir = target.position - transform.position;
             // 角色轉向
             Vector3 flipedXScale = transform.localScale;
-            if (dir.z < 0) flipedXScale.x = Math.Abs(flipedXScale.x) * -1;
+            if (dir.z < -5) flipedXScale.x = Math.Abs(flipedXScale.x) * -1;
             else flipedXScale.x = Math.Abs(flipedXScale.x);
             transform.localScale = flipedXScale;
             // 血條轉向
@@ -239,7 +239,7 @@ public class Character : MonoBehaviour
             if (barCanvas)
             {
                 flipedXScale = barCanvas.transform.localScale;
-                if (dir.z < 0) flipedXScale.x = Math.Abs(flipedXScale.x) * -1;
+                if (dir.z < -5) flipedXScale.x = Math.Abs(flipedXScale.x) * -1;
                 else flipedXScale.x = Math.Abs(flipedXScale.x);
                 barCanvas.transform.localScale = flipedXScale;
             }
