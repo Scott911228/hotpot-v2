@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
@@ -38,9 +39,13 @@ public class Character : MonoBehaviour
     public Transform firePoint;
 
     private Quaternion fixedCharacterRotation; // 固定角色朝向
+    private Vector3 originalScale;
+    private float hoverScaleMultiplier = 1.1f; // 碰到時的放大倍率
 
     void Start()
     {
+        originalScale = transform.localScale;
+        transform.DOScale(originalScale * hoverScaleMultiplier, 0.2f).SetEase(Ease.OutBack);
         myAnimator = GetComponent<Animator>();
         // ======= 湯底效果 =======
         fireCooldown /= GameObject.Find("LevelSettings").GetComponent<LevelSettings>().CharacterAttackSpeedMultiplier;
