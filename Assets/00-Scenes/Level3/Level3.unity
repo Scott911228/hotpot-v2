@@ -28792,10 +28792,25 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 541459242022743001, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 541459242022743015, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: SayDialog
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 541459242513294784, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 134.6408
+      objectReference: {fileID: 0}
+    - target: {fileID: 541459242513294784, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 720.97955
       objectReference: {fileID: 0}
     - target: {fileID: 555715206221763122, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
