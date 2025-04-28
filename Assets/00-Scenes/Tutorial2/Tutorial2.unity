@@ -3767,12 +3767,22 @@ PrefabInstance:
     - target: {fileID: 6499869828535564823, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: selectedBlocks.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6499869828535564823, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: selectedCommands.Array.size
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6499869828535564823, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: 'selectedBlocks.Array.data[0]'
+      value: 
+      objectReference: {fileID: 338105635}
+    - target: {fileID: 6499869828535564823, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: 'selectedCommands.Array.data[0]'
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6522493728350851578, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
@@ -4184,10 +4194,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5237553912724401908, guid: 2200e26108a0af044a17b619e36318f9,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 338105632}
     - targetCorrespondingSourceObject: {fileID: 5237553912724401908, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       insertIndex: -1
@@ -4768,6 +4774,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 338105812}
+    - targetCorrespondingSourceObject: {fileID: 5237553912724401908, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 338105814}
   m_SourcePrefab: {fileID: 100100000, guid: 2200e26108a0af044a17b619e36318f9, type: 3}
 --- !u!1 &338105624 stripped
 GameObject:
@@ -4817,36 +4827,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 338105623}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &338105632
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 338105625}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ac5ce55bc698fa4290939ef6e426501, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 14
-  indentLevel: 0
-  display: 1
-  stage: {fileID: 0}
-  character: {fileID: 1844027851}
-  replacedCharacter: {fileID: 0}
-  portrait: {fileID: 21300000, guid: 3fbd0c476387fdd489015f5e10855b89, type: 3}
-  offset: 0
-  fromPosition: {fileID: 0}
-  toPosition: {fileID: 116566548}
-  facing: 1
-  useDefaultSettings: 1
-  fadeDuration: 0.5
-  moveDuration: 1
-  shiftOffset: {x: 0, y: 0}
-  move: 0
-  shiftIntoPlace: 0
-  waitUntilFinished: 0
 --- !u!114 &338105633
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -4930,7 +4910,7 @@ MonoBehaviour:
   - {fileID: 338105726}
   - {fileID: 338105648}
   - {fileID: 338105647}
-  - {fileID: 338105632}
+  - {fileID: 338105814}
   - {fileID: 338105674}
   - {fileID: 338105676}
   - {fileID: 338105696}
@@ -9158,6 +9138,36 @@ MonoBehaviour:
   stringEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &338105814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 338105625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ac5ce55bc698fa4290939ef6e426501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 225
+  indentLevel: 0
+  display: 1
+  stage: {fileID: 0}
+  character: {fileID: 1844027851}
+  replacedCharacter: {fileID: 0}
+  portrait: {fileID: 21300000, guid: 3fbd0c476387fdd489015f5e10855b89, type: 3}
+  offset: 0
+  fromPosition: {fileID: 0}
+  toPosition: {fileID: 116566548}
+  facing: 1
+  useDefaultSettings: 1
+  fadeDuration: 0.5
+  moveDuration: 1
+  shiftOffset: {x: 0, y: 0}
+  move: 0
+  shiftIntoPlace: 0
+  waitUntilFinished: 0
 --- !u!1 &351330127
 GameObject:
   m_ObjectHideFlags: 0
@@ -9877,7 +9887,7 @@ GameObject:
   - component: {fileID: 418092681}
   - component: {fileID: 418092680}
   m_Layer: 0
-  m_Name: _Player
+  m_Name: Ball(Character)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9895,10 +9905,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25fb867d2049d41f597aefdd6b19f598, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameText: "\u73A9\u5BB6"
+  nameText: "\u8CA2\u4E38"
   nameColor: {r: 1, g: 1, b: 1, a: 1}
   soundEffect: {fileID: 0}
-  portraits: []
+  portraits:
+  - {fileID: 21300000, guid: f3585906e204edf4a830fe5a8b56fa38, type: 3}
+  - {fileID: 21300000, guid: 6dabc2cf903f3024e9afcdfc1dc3bb0b, type: 3}
+  - {fileID: 21300000, guid: fd1e7462ee9f16a4aad864e67c82a262, type: 3}
+  - {fileID: 21300000, guid: 36f5a14b8bf04874d8dea6bf22008a5c, type: 3}
+  - {fileID: 21300000, guid: 4ceb0d95756386b4295ea7c7b4e041bc, type: 3}
+  - {fileID: 21300000, guid: da665530be69ad246b87ab83ea23d27e, type: 3}
+  - {fileID: 21300000, guid: 2652624a9209e5145989e24e8f708437, type: 3}
   portraitsFace: 0
   setSayDialog: {fileID: 0}
   description: 
