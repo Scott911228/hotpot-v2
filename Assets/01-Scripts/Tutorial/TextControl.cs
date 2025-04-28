@@ -12,6 +12,6 @@ public class TextControl : MonoBehaviour
     public static void TutorialText_3()
     {
         Fungus.Flowchart.BroadcastFungusMessage("tutorial/text3");
-        TipsText.Content = "將所有金錢用來部屬小高吧。";
+        TipsText.Instance.ChangeText("將所有金錢用來部屬小高吧。");
     }
 }

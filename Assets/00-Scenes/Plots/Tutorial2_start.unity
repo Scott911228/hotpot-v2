@@ -439,12 +439,17 @@ PrefabInstance:
     - target: {fileID: 4131654759107920305, guid: d129e606df988cc4688b9de0a4797c5e,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Tutorial2
+      value: PrepareScene_2
       objectReference: {fileID: 0}
     - target: {fileID: 4131654759107920305, guid: d129e606df988cc4688b9de0a4797c5e,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4131654759107920306, guid: d129e606df988cc4688b9de0a4797c5e,
+        type: 3}
+      propertyPath: fadeOut
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4131654759107920306, guid: d129e606df988cc4688b9de0a4797c5e,
         type: 3}
@@ -454,7 +459,7 @@ PrefabInstance:
     - target: {fileID: 4131654759107920317, guid: d129e606df988cc4688b9de0a4797c5e,
         type: 3}
       propertyPath: loadSceneName
-      value: Tutorial2
+      value: PrepareScene_2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2317,7 +2322,6 @@ GameObject:
   - component: {fileID: 1266606461}
   - component: {fileID: 1266606454}
   - component: {fileID: 1266606462}
-  - component: {fileID: 1266606463}
   - component: {fileID: 1266606464}
   - component: {fileID: 1266606346}
   - component: {fileID: 1266606465}
@@ -2425,10 +2429,8 @@ MonoBehaviour:
     y: -340
     width: 1114
     height: 859
-  selectedBlocks:
-  - {fileID: 1266606334}
-  selectedCommands:
-  - {fileID: 1266606355}
+  selectedBlocks: []
+  selectedCommands: []
   variables: []
   description: 
   stepPause: 0
@@ -2454,8 +2456,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 149
-    y: 109
+    x: 150
+    y: 107.5
     width: 79.72
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -2607,7 +2609,6 @@ MonoBehaviour:
   - {fileID: 1266606538}
   - {fileID: 1266606537}
   - {fileID: 1266606536}
-  - {fileID: 1266606463}
   - {fileID: 1266606462}
   suppressAllAutoSelections: 0
 --- !u!114 &1266606335
@@ -5134,7 +5135,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Tutorial2
+          m_StringArgument: PrepareScene_2
           m_BoolArgument: 0
         m_CallState: 2
   booleanParameter:
@@ -5161,26 +5162,6 @@ MonoBehaviour:
   stringEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1266606463
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1266606332}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 207aecf668a0345388087ccf522f9957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 243
-  indentLevel: 0
-  duration: 0.5
-  targetAlpha: 1
-  waitUntilFinished: 1
-  fadeColor: {r: 0, g: 0, b: 0, a: 1}
-  fadeTexture: {fileID: 0}
-  fadeTweenType: 4
 --- !u!114 &1266606464
 MonoBehaviour:
   m_ObjectHideFlags: 2

@@ -41,4 +41,14 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/00-Scenes/Plots/Tutorial2_end.unity
     guid: 1b35f1ee60bde1e469831a302b32d449
+  - enabled: 1
+    path: Assets/00-Scenes/Level4/Level4.unity
+    guid: 2eccf63c3a8de9a48b1d90de720db3cf
+  - enabled: 1
+    path: Assets/00-Scenes/Level4/PrepareScene_4.unity
+    guid: 6e34b1fca0596c6459f8758ee6b70d52
+  - enabled: 1
+    path: Assets/00-Scenes/Tutorial2/PrepareScene_2.unity
+    guid: 8ecef64c93606504ca7f9d9107ed5af0
   m_configObjects: {}
+  m_UseUCBPForAssetBundles: 0

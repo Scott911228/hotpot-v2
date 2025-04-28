@@ -66,7 +66,7 @@ public class WaveSpawn : MonoBehaviour
 
     void Update()
     {
-        if(!GameObject.Find("GameControl").GetComponent<GameManager>().isGamePlaying) return;
+        if (!GameObject.Find("GameControl").GetComponent<GameManager>().isGamePlaying) return;
         if (_isTimeLevelType)
         {
             if (TotalEnemyCount > 0)
@@ -109,9 +109,12 @@ public class WaveSpawn : MonoBehaviour
             countdown = timeBetweenWaves;
             return;
         }
-        countdown -= Time.deltaTime;
-        countdown = Mathf.Clamp(countdown, 0f, Mathf.Infinity);
-        waveCountdownText.text = "敵人即將出現... " + string.Format("{0:00.00}", countdown);
+        else
+        {
+            countdown -= Time.deltaTime;
+            countdown = Mathf.Clamp(countdown, 0f, Mathf.Infinity);
+            waveCountdownText.text = "敵人即將出現... " + string.Format("{0:00.00}", countdown);
+        }
     }
 
     public void UpdateEnemyCountText()

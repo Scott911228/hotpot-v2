@@ -439,7 +439,7 @@ PrefabInstance:
     - target: {fileID: 4131654759107920305, guid: d129e606df988cc4688b9de0a4797c5e,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Tutorial2
+      value: MainMenuScene
       objectReference: {fileID: 0}
     - target: {fileID: 4131654759107920305, guid: d129e606df988cc4688b9de0a4797c5e,
         type: 3}
@@ -454,7 +454,7 @@ PrefabInstance:
     - target: {fileID: 4131654759107920317, guid: d129e606df988cc4688b9de0a4797c5e,
         type: 3}
       propertyPath: loadSceneName
-      value: Tutorial2
+      value: MainMenuScene
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2384,7 +2384,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 1266606334}
   selectedCommands:
-  - {fileID: 1266606395}
+  - {fileID: 1266606462}
   variables: []
   description: 
   stepPause: 0
@@ -5400,7 +5400,7 @@ MonoBehaviour:
   fadeTweenType: 4
 --- !u!114 &1266606464
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -5430,7 +5430,7 @@ MonoBehaviour:
   waitUntilFinished: 0
 --- !u!114 &1266606465
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -5460,7 +5460,7 @@ MonoBehaviour:
   waitUntilFinished: 0
 --- !u!114 &1266606466
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -5490,7 +5490,7 @@ MonoBehaviour:
   waitUntilFinished: 0
 --- !u!114 &1266606467
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -5520,7 +5520,7 @@ MonoBehaviour:
   waitUntilFinished: 0
 --- !u!114 &1266606468
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -5550,7 +5550,7 @@ MonoBehaviour:
   waitUntilFinished: 0
 --- !u!114 &1266606469
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}

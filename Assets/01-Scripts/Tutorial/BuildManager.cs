@@ -170,7 +170,7 @@ public class BuildManager : MonoBehaviour
                 {
                     if (builtCount == 0)
                     {
-                        TextControl.BroadcastControlMessage("tutorial/text2");
+                        TextControl.BroadcastControlMessage("tutorial/guidestart2");
                     }
                     if (WaitForFullBuild && PlayerStats.Money <= 50)
                     {

@@ -35,6 +35,7 @@ public class Node : MonoBehaviour, IMouseInteractable
     IEnumerator SelectTurretRotation(Node node)
     {
         FloatTipsScript.DisplayTips("移動游標設定效果範圍，右鍵確認");
+        if(GameObject.Find("LevelSettings").GetComponent<LevelSettings>().StageName == "第二關") TipsText.Instance.ChangeText("移動游標設定效果範圍，右鍵確認");
         RendererHighlightManager rendererHighlightManager = FindAnyObjectByType<RendererHighlightManager>();
 
         speedControl.isForceSlowdown = true;
@@ -124,7 +125,7 @@ public class Node : MonoBehaviour, IMouseInteractable
         {
             case 0.0f:
                 //colliderStartPos.x += character.attackLength;
-                effectDisplayStartPos.z -= character.attackLength;
+                effectDisplayStartPos.z -= character.attackWidth;
                 break;
             case 90.0f:
                 //colliderStartPos.z -= character.attackLength;
@@ -132,7 +133,7 @@ public class Node : MonoBehaviour, IMouseInteractable
                 break;
             case 180.0f:
                 //colliderStartPos.x -= character.attackLength;
-                effectDisplayStartPos.z -= character.attackLength;
+                effectDisplayStartPos.z -= character.attackWidth;
                 break;
             case 270.0f:
                 //colliderStartPos.z += character.attackLength;

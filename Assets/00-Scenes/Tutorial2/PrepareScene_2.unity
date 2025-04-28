@@ -899,6 +899,31 @@ PrefabInstance:
       propertyPath: canvasGroup
       value: 
       objectReference: {fileID: 896435101}
+    - target: {fileID: 6215459552590391641, guid: 3c901ba4d45c52748a15840ac103f288,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6215459552590391641, guid: 3c901ba4d45c52748a15840ac103f288,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 483770134373157343}
+    - target: {fileID: 6215459552590391641, guid: 3c901ba4d45c52748a15840ac103f288,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: FadeToScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 6215459552590391641, guid: 3c901ba4d45c52748a15840ac103f288,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SwitchScene, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6215459552590391641, guid: 3c901ba4d45c52748a15840ac103f288,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Tutorial2
+      objectReference: {fileID: 0}
     - target: {fileID: 6770652536370624949, guid: 3c901ba4d45c52748a15840ac103f288,
         type: 3}
       propertyPath: m_IsActive
@@ -908,17 +933,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: f59f8ab53f8e17547bef5bfb00d5fb7f,
+      objectReference: {fileID: 21300000, guid: fa6e23502e2dbec439b9210cf47ce2f3,
         type: 3}
     - target: {fileID: 9099653126207003607, guid: 3c901ba4d45c52748a15840ac103f288,
         type: 3}
       propertyPath: m_Text
-      value: "\u7B2C\u4E00\u95DC"
+      value: "\u7B2C\u4E8C\u95DC"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9129631883492632425, guid: 3c901ba4d45c52748a15840ac103f288,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 483770134373157343}
   m_SourcePrefab: {fileID: 100100000, guid: 3c901ba4d45c52748a15840ac103f288, type: 3}
 --- !u!1 &483770134373157341 stripped
 GameObject:
@@ -926,6 +955,25 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 483770134373157340}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &483770134373157342 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9129631883492632425, guid: 3c901ba4d45c52748a15840ac103f288,
+    type: 3}
+  m_PrefabInstance: {fileID: 483770134373157340}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &483770134373157343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 483770134373157342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f836c428706574e42834f840ebd3200c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadSceneName: Tutorial2
 --- !u!1001 &8899860340061044013
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -5431,6 +5431,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4131654759107920305, guid: d129e606df988cc4688b9de0a4797c5e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: PrepareScene_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4131654759107920317, guid: d129e606df988cc4688b9de0a4797c5e,
+        type: 3}
+      propertyPath: loadSceneName
+      value: PrepareScene_1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
