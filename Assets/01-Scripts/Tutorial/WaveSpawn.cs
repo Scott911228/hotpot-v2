@@ -65,6 +65,7 @@ public class WaveSpawn : MonoBehaviour
 
     void Update()
     {
+        if(!GameObject.Find("GameControl").GetComponent<GameManager>().isGamePlaying) return;
         if (_isTimeLevelType)
         {
             if (TotalEnemyCount > 0)

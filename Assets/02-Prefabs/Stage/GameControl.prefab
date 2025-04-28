@@ -1129,6 +1129,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UI: {fileID: 2856578012754536817}
   SayDialog: {fileID: 0}
+  speedControl: {fileID: 541459242267512806}
+  characterTag: Character
+  enemyTag: Enemy
 --- !u!1 &541459240808562584
 GameObject:
   m_ObjectHideFlags: 0
@@ -1278,6 +1281,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UI: {fileID: 2856578012754536817}
   SayDialog: {fileID: 0}
+  speedControl: {fileID: 0}
+  characterTag: Character
+  enemyTag: Enemy
 --- !u!114 &541459240808562597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16117,7 +16123,6 @@ GameObject:
   - component: {fileID: 541459241917977737}
   - component: {fileID: 541459241917977738}
   - component: {fileID: 541459241917977739}
-  - component: {fileID: 541459241917977740}
   m_Layer: 5
   m_Name: SpeedButton
   m_TagString: Untagged
@@ -16251,20 +16256,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &541459241917977740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 541459241917977742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82bc57dfcea57a24f9e82f343996c53b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UI: {fileID: 0}
-  SayDialog: {fileID: 0}
 --- !u!1 &541459241945279413
 GameObject:
   m_ObjectHideFlags: 0
@@ -16671,6 +16662,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UI: {fileID: 541459242022743001}
   SayDialog: {fileID: 0}
+  speedControl: {fileID: 0}
+  characterTag: Character
+  enemyTag: Enemy
 --- !u!1 &541459242097547574
 GameObject:
   m_ObjectHideFlags: 0
@@ -19100,6 +19094,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UI: {fileID: 2856578012754536817}
   SayDialog: {fileID: 0}
+  speedControl: {fileID: 0}
+  characterTag: Character
+  enemyTag: Enemy
 --- !u!1 &3196732479689577628
 GameObject:
   m_ObjectHideFlags: 0
