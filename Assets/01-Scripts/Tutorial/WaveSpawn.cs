@@ -16,6 +16,7 @@ public class WaveSpawn : MonoBehaviour
     public GameManager gameManager;
     private Transform Target;
     private bool isSummoning;
+    public bool hasEverSummoned;
     public float timeBetweenWaves = 5f;
     public float countdown = 5f;
     public static int KilledEnemyCount = 0;
@@ -163,7 +164,7 @@ public class WaveSpawn : MonoBehaviour
         Wave currentWave = EnemyWaves[waveNumber];
         TotalEnemyCount = 0;
         isSummoning = true;
-
+        hasEverSummoned = true;
         do
         {
             foreach (EnemyContent content in currentWave.Enemy)

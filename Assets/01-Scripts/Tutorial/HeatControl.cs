@@ -45,6 +45,7 @@ public class HeatControl : MonoBehaviour
     void AddHeatByLevel()
     {
         if(!GameObject.Find("GameControl").GetComponent<GameManager>().isGamePlaying) return;
+        if(!GameObject.Find("GameControl").GetComponent<WaveSpawn>().hasEverSummoned) return;
         switch (HeatLevel % 3)
         {
             case 0:
