@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
-using UnityEditor.SearchService;
 using UnityEngine.SceneManagement;
 
 public class WinAnimControl : MonoBehaviour
