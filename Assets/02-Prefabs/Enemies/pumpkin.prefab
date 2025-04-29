@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HealthBar: {fileID: 6474523218972480958}
-  initSpeed: 6
+  initSpeed: 4.8
   speedMultiplier: 1
   isPaused: 0
   StartHealth: 100

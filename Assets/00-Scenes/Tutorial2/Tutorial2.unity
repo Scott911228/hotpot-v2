@@ -4123,12 +4123,12 @@ PrefabInstance:
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: EnemyWaves.Array.data[1].Enemy.Array.data[0].spawnRate
-      value: 0.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: EnemyWaves.Array.data[2].Enemy.Array.data[0].spawnRate
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
@@ -14495,13 +14495,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1151388028547126963, guid: ab60c0d8eb6b30045a2c5fe035a781bd,
         type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151388028547126963, guid: ab60c0d8eb6b30045a2c5fe035a781bd,
+        type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.2
+      value: 0.37
       objectReference: {fileID: 0}
     - target: {fileID: 1151388028547126963, guid: ab60c0d8eb6b30045a2c5fe035a781bd,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.11
+      value: 0.04
       objectReference: {fileID: 0}
     - target: {fileID: 1151388028547126963, guid: ab60c0d8eb6b30045a2c5fe035a781bd,
         type: 3}
@@ -29992,17 +29997,17 @@ PrefabInstance:
     - target: {fileID: 6969039130706590907, guid: 94a76ed5aa7ab364abcb8245df0ae858,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 6969039130706590907, guid: 94a76ed5aa7ab364abcb8245df0ae858,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 6969039130706590907, guid: 94a76ed5aa7ab364abcb8245df0ae858,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.33
       objectReference: {fileID: 0}
     - target: {fileID: 6969039130706590907, guid: 94a76ed5aa7ab364abcb8245df0ae858,
         type: 3}
