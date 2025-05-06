@@ -50,5 +50,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/00-Scenes/Tutorial2/PrepareScene_2.unity
     guid: 8ecef64c93606504ca7f9d9107ed5af0
+  - enabled: 1
+    path: Assets/00-Scenes/Level3/Level3.unity
+    guid: 42771d314a669294b937fd845b132510
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
