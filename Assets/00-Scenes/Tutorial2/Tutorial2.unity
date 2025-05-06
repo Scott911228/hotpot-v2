@@ -6750,7 +6750,7 @@ MonoBehaviour:
   stage: {fileID: 0}
   character: {fileID: 1844027851}
   replacedCharacter: {fileID: 0}
-  portrait: {fileID: 21300000, guid: b9f619de8b7749d4e909f4436c800b23, type: 3}
+  portrait: {fileID: 21300000, guid: 1bc6c7a3666608848ac8fc6c3c88713b, type: 3}
   offset: 0
   fromPosition: {fileID: 770438139}
   toPosition: {fileID: 1039942923}
@@ -7081,7 +7081,7 @@ MonoBehaviour:
   stage: {fileID: 0}
   character: {fileID: 1844027851}
   replacedCharacter: {fileID: 0}
-  portrait: {fileID: 21300000, guid: 7b0b3ba87a7b5e14f8e2f81a9e94a436, type: 3}
+  portrait: {fileID: 21300000, guid: 0dbd6ecd9841ae04bbfc9924b9931261, type: 3}
   offset: 0
   fromPosition: {fileID: 770438139}
   toPosition: {fileID: 116566548}
@@ -7195,7 +7195,7 @@ MonoBehaviour:
   stage: {fileID: 0}
   character: {fileID: 1844027851}
   replacedCharacter: {fileID: 0}
-  portrait: {fileID: 21300000, guid: 57e87b4c9294e614392e85053df104c0, type: 3}
+  portrait: {fileID: 21300000, guid: 1bc6c7a3666608848ac8fc6c3c88713b, type: 3}
   offset: 0
   fromPosition: {fileID: 0}
   toPosition: {fileID: 116566548}
@@ -7221,7 +7221,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 59
   indentLevel: 0
-  storyText: "\u6BCF\u904E\u4E00\u6BB5\u6642\u9593\uFF0C\u5728\u5B62\u5B50\u7CBE\u9748\u7684\u5E87\u8B77\u4E0B\uFF0C\n\u53D7\u6211\u6CBB\u7642\u7684\u55AE\u4F4D\u80FD\u5728\u6578\u79D2\u5167\uFF0C\u7372\u5F97\u6301\u7E8C\u758A\u52A0\u7684\u8B77\u76FE\u6548\u679C\u3002"
+  storyText: "\u6BCF\u904E\u4E00\u6BB5\u6642\u9593\uFF0C\u5728\u5B62\u5B50\u7CBE\u9748\u7684\u5E87\u8B77\u4E0B\uFF0C\n\u6CBB\u7642\u7BC4\u570D\u5167\u7684\u6240\u6709\u5730\u9762\u89D2\u8272\u6703\u7372\u5F97\u5C0F\u5E45\u5EA6\u7684\u751F\u547D\u56DE\u5FA9\u6548\u679C\u54E6\u3002"
   description: 
   character: {fileID: 1844027851}
   portrait: {fileID: 0}
@@ -7248,7 +7248,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 58
   indentLevel: 0
-  storyText: "\u6C92\u554F\u984C\uFF01\n\u9996\u5148\u6211\u662F\u6CBB\u7642\u5E2B\uFF0C\n\u80FD\u5920\u5728\u9AD8\u8655\u70BA\u6CBB\u7642\u7BC4\u570D\u5167\u7684\u5730\u9762\u89D2\u8272\u63D0\u4F9B\u751F\u547D\u56DE\u5FA9\u6548\u679C\u3002"
+  storyText: "\u6C92\u554F\u984C\uFF01\n\u9996\u5148\u6211\u662F\u6CBB\u7642\u5E2B\uFF0C\u80FD\u5920\u70BA\u5728\u5730\u9762\u6230\u9B25\u7684\u5925\u4F34\u63D0\u4F9B\u6CBB\u7642\uFF01"
   description: 
   character: {fileID: 1844027851}
   portrait: {fileID: 0}
@@ -7279,7 +7279,7 @@ MonoBehaviour:
   stage: {fileID: 0}
   character: {fileID: 1844027851}
   replacedCharacter: {fileID: 0}
-  portrait: {fileID: 21300000, guid: b9f619de8b7749d4e909f4436c800b23, type: 3}
+  portrait: {fileID: 21300000, guid: 0cf763ba1d766fc489ac8a9118b42c0b, type: 3}
   offset: 0
   fromPosition: {fileID: 0}
   toPosition: {fileID: 116566548}
@@ -8372,7 +8372,7 @@ MonoBehaviour:
   stage: {fileID: 0}
   character: {fileID: 1844027851}
   replacedCharacter: {fileID: 0}
-  portrait: {fileID: 21300000, guid: 3fbd0c476387fdd489015f5e10855b89, type: 3}
+  portrait: {fileID: 21300000, guid: 8039909690e970b44998aecb79cf9aa9, type: 3}
   offset: 0
   fromPosition: {fileID: 0}
   toPosition: {fileID: 1039942923}
@@ -8735,7 +8735,7 @@ MonoBehaviour:
   stage: {fileID: 0}
   character: {fileID: 1844027851}
   replacedCharacter: {fileID: 0}
-  portrait: {fileID: 21300000, guid: 7b0b3ba87a7b5e14f8e2f81a9e94a436, type: 3}
+  portrait: {fileID: 21300000, guid: 3e817c908c7a210419f92da4b7096966, type: 3}
   offset: 0
   fromPosition: {fileID: 2096468908}
   toPosition: {fileID: 1039942923}
@@ -9246,7 +9246,7 @@ MonoBehaviour:
   stage: {fileID: 0}
   character: {fileID: 1844027851}
   replacedCharacter: {fileID: 0}
-  portrait: {fileID: 21300000, guid: 3fbd0c476387fdd489015f5e10855b89, type: 3}
+  portrait: {fileID: 21300000, guid: 680b98d736fa5744a8541f0a24188619, type: 3}
   offset: 0
   fromPosition: {fileID: 0}
   toPosition: {fileID: 116566548}
@@ -32905,11 +32905,16 @@ MonoBehaviour:
   nameColor: {r: 1, g: 1, b: 1, a: 1}
   soundEffect: {fileID: 0}
   portraits:
-  - {fileID: 21300000, guid: 3fbd0c476387fdd489015f5e10855b89, type: 3}
-  - {fileID: 21300000, guid: 3d04f1b7eb59da6479435549f90db6fd, type: 3}
-  - {fileID: 21300000, guid: 7b0b3ba87a7b5e14f8e2f81a9e94a436, type: 3}
-  - {fileID: 21300000, guid: b9f619de8b7749d4e909f4436c800b23, type: 3}
-  - {fileID: 21300000, guid: 57e87b4c9294e614392e85053df104c0, type: 3}
+  - {fileID: 21300000, guid: 84d43d4bf1510124389655e925733c80, type: 3}
+  - {fileID: 21300000, guid: b5ee4b5f29b0ba44089e4475011ecb40, type: 3}
+  - {fileID: 21300000, guid: 1bc6c7a3666608848ac8fc6c3c88713b, type: 3}
+  - {fileID: 21300000, guid: 0cf763ba1d766fc489ac8a9118b42c0b, type: 3}
+  - {fileID: 21300000, guid: 680b98d736fa5744a8541f0a24188619, type: 3}
+  - {fileID: 21300000, guid: 84518a37d4f73bd4492b57d5b2580677, type: 3}
+  - {fileID: 21300000, guid: 0dbd6ecd9841ae04bbfc9924b9931261, type: 3}
+  - {fileID: 21300000, guid: 3e817c908c7a210419f92da4b7096966, type: 3}
+  - {fileID: 21300000, guid: 8039909690e970b44998aecb79cf9aa9, type: 3}
+  - {fileID: 21300000, guid: 51ca5ad0790a216458e77f10b49b56a5, type: 3}
   portraitsFace: 1
   setSayDialog: {fileID: 0}
   description: 

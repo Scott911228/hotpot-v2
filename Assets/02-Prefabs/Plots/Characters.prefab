@@ -330,11 +330,16 @@ MonoBehaviour:
   nameColor: {r: 1, g: 1, b: 1, a: 1}
   soundEffect: {fileID: 0}
   portraits:
-  - {fileID: 21300000, guid: 3fbd0c476387fdd489015f5e10855b89, type: 3}
-  - {fileID: 21300000, guid: 3d04f1b7eb59da6479435549f90db6fd, type: 3}
-  - {fileID: 21300000, guid: 7b0b3ba87a7b5e14f8e2f81a9e94a436, type: 3}
-  - {fileID: 21300000, guid: b9f619de8b7749d4e909f4436c800b23, type: 3}
-  - {fileID: 21300000, guid: 57e87b4c9294e614392e85053df104c0, type: 3}
+  - {fileID: 21300000, guid: 84d43d4bf1510124389655e925733c80, type: 3}
+  - {fileID: 21300000, guid: b5ee4b5f29b0ba44089e4475011ecb40, type: 3}
+  - {fileID: 21300000, guid: 1bc6c7a3666608848ac8fc6c3c88713b, type: 3}
+  - {fileID: 21300000, guid: 0cf763ba1d766fc489ac8a9118b42c0b, type: 3}
+  - {fileID: 21300000, guid: 680b98d736fa5744a8541f0a24188619, type: 3}
+  - {fileID: 21300000, guid: 84518a37d4f73bd4492b57d5b2580677, type: 3}
+  - {fileID: 21300000, guid: 0dbd6ecd9841ae04bbfc9924b9931261, type: 3}
+  - {fileID: 21300000, guid: 3e817c908c7a210419f92da4b7096966, type: 3}
+  - {fileID: 21300000, guid: 8039909690e970b44998aecb79cf9aa9, type: 3}
+  - {fileID: 21300000, guid: 51ca5ad0790a216458e77f10b49b56a5, type: 3}
   portraitsFace: 1
   setSayDialog: {fileID: 0}
   description: 
@@ -368,14 +373,14 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6950457783431351678}
-  - {fileID: 1761111456616228997}
   - {fileID: 4412798448813631987}
-  - {fileID: 3977511183006368133}
   - {fileID: 1143293188682141830}
   - {fileID: 537400522009926161}
   - {fileID: 4744907294053341118}
   - {fileID: 6963493470871397125}
+  - {fileID: 1761111456616228997}
   - {fileID: 881525562163624880}
+  - {fileID: 3977511183006368133}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7875566933426846765
