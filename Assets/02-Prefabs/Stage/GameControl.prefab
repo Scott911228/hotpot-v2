@@ -1312,6 +1312,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roundsText: {fileID: 0}
   UI: {fileID: 541459242022743001}
+  saydialog: {fileID: 0}
 --- !u!114 &1509975986487111527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2300,6 +2301,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roundsText: {fileID: 0}
   UI: {fileID: 0}
+  saydialog: {fileID: 0}
 --- !u!1 &541459241102260548
 GameObject:
   m_ObjectHideFlags: 0
@@ -3165,6 +3167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roundsText: {fileID: 0}
   UI: {fileID: 0}
+  saydialog: {fileID: 0}
 --- !u!1 &541459241360615409
 GameObject:
   m_ObjectHideFlags: 0
@@ -17188,6 +17191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roundsText: {fileID: 0}
   UI: {fileID: 541459242177742313}
+  saydialog: {fileID: 0}
 --- !u!95 &541459242177742324
 Animator:
   serializedVersion: 7
@@ -18310,8 +18314,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 541459242177742327}
-        m_TargetAssemblyTypeName: 
+      - m_Target: {fileID: 901332268752741850}
+        m_TargetAssemblyTypeName: GameOver, Assembly-CSharp
         m_MethodName: Retry
         m_Mode: 1
         m_Arguments:
@@ -18799,6 +18803,7 @@ GameObject:
   - component: {fileID: 1396031516930634194}
   - component: {fileID: 5472369773533992047}
   - component: {fileID: 4737601378539652702}
+  - component: {fileID: 901332268752741850}
   - component: {fileID: 8871447190260834558}
   m_Layer: 5
   m_Name: Gameover (new)
@@ -18955,6 +18960,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &901332268752741850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2527541269521125282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0590e06ed51c2054994a98497b8a4ed7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roundsText: {fileID: 0}
+  UI: {fileID: 2527541269521125282}
+  saydialog: {fileID: 0}
 --- !u!114 &8871447190260834558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21981,6 +22001,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roundsText: {fileID: 2242611277747637784}
   UI: {fileID: 0}
+  saydialog: {fileID: 0}
 --- !u!1 &6741854379030407502
 GameObject:
   m_ObjectHideFlags: 0
