@@ -320,7 +320,7 @@ PrefabInstance:
     - target: {fileID: 4131654759107920305, guid: d129e606df988cc4688b9de0a4797c5e,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Tutorial2
+      value: Level3_start
       objectReference: {fileID: 0}
     - target: {fileID: 4131654759107920305, guid: d129e606df988cc4688b9de0a4797c5e,
         type: 3}
@@ -335,7 +335,7 @@ PrefabInstance:
     - target: {fileID: 4131654759107920317, guid: d129e606df988cc4688b9de0a4797c5e,
         type: 3}
       propertyPath: loadSceneName
-      value: MainMenuScene
+      value: Level3_start
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1895,8 +1895,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 1266606334}
-  selectedCommands: []
+  - {fileID: 1266606537}
+  selectedCommands:
+  - {fileID: 1266606538}
   variables: []
   description: 
   stepPause: 0
@@ -2670,7 +2671,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: MainMenuScene
+          m_StringArgument: Level3_start
           m_BoolArgument: 0
         m_CallState: 2
   booleanParameter:

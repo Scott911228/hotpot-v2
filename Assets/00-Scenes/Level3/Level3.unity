@@ -7111,6 +7111,7 @@ MonoBehaviour:
   commandList:
   - {fileID: 1501435058}
   - {fileID: 1501435088}
+  - {fileID: 1501435094}
   - {fileID: 1501435055}
   - {fileID: 1501435054}
   - {fileID: 1501435053}
@@ -7144,8 +7145,8 @@ MonoBehaviour:
   - {fileID: 1501435035}
   - {fileID: 1501435062}
   - {fileID: 1501435060}
-  - {fileID: 1501435059}
   - {fileID: 1501435084}
+  - {fileID: 1501435059}
   - {fileID: 1501435083}
   - {fileID: 1501435034}
   - {fileID: 1501435082}
@@ -25678,7 +25679,7 @@ PrefabInstance:
         type: 3}
       propertyPath: 'selectedCommands.Array.data[0]'
       value: 
-      objectReference: {fileID: 1501435084}
+      objectReference: {fileID: 1501435094}
     - target: {fileID: 6522493728350851578, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: pathData.Array.data[0].spawnPoint
@@ -26631,6 +26632,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1501435093}
+    - targetCorrespondingSourceObject: {fileID: 5237553912724401908, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1501435094}
   m_SourcePrefab: {fileID: 100100000, guid: 2200e26108a0af044a17b619e36318f9, type: 3}
 --- !u!114 &1501435026 stripped
 MonoBehaviour:
@@ -28355,7 +28360,7 @@ MonoBehaviour:
   waitUntilFinished: 0
 --- !u!114 &1501435091
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -28411,7 +28416,7 @@ MonoBehaviour:
       m_Calls: []
 --- !u!114 &1501435092
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -28467,7 +28472,7 @@ MonoBehaviour:
       m_Calls: []
 --- !u!114 &1501435093
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -28495,6 +28500,24 @@ MonoBehaviour:
   move: 0
   shiftIntoPlace: 0
   waitUntilFinished: 0
+--- !u!114 &1501435094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 752308218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3315ad2ebb85443909a1203d56d9344e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 69
+  indentLevel: 0
+  _duration:
+    floatRef: {fileID: 0}
+    floatVal: 1.5
+  durationOLD: 0
 --- !u!1 &1502046624
 GameObject:
   m_ObjectHideFlags: 0
