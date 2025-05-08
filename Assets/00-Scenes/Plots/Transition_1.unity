@@ -1895,9 +1895,8 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 1266606537}
-  selectedCommands:
-  - {fileID: 1266606538}
+  - {fileID: 1266606334}
+  selectedCommands: []
   variables: []
   description: 
   stepPause: 0
@@ -2078,7 +2077,7 @@ MonoBehaviour:
   indentLevel: 0
   storyText: "\u6C90\u5152\u3001\u827E\u683C\uFF0C\u4F60\u5011\u4E5F\u8DDF\u6211\u4F86\u3002"
   description: 
-  character: {fileID: 0}
+  character: {fileID: 2028153552}
   portrait: {fileID: 0}
   voiceOverClip: {fileID: 0}
   showAlways: 1
@@ -2105,7 +2104,7 @@ MonoBehaviour:
   indentLevel: 0
   storyText: "\u6211\u5148\u53BB\u627E\u751C\u4E0D\u8FA3\u8A0E\u8AD6\u4E00\u4E9B\u4E8B\u60C5\uFF0C\u9019\u88E1\u4EA4\u7D66\u4F60\u5011\u4E86\u3002"
   description: 
-  character: {fileID: 0}
+  character: {fileID: 2028153552}
   portrait: {fileID: 0}
   voiceOverClip: {fileID: 0}
   showAlways: 1
@@ -2132,7 +2131,7 @@ MonoBehaviour:
   indentLevel: 0
   storyText: "\u5F88\u597D\u3002\u65E2\u7136\u525B\u597D\u662F\u4F60\u5011\u5006\u503C\u73ED\uFF0C\u5C31\u5E36\u9019\u4F4D\u65B0\u4EBA\u719F\u6089\u74B0\u5883\uFF0C\n\u9806\u5E36\u8B1B\u89E3\u4E00\u4E0B\u6211\u5011\u7684\u4F5C\u6230\u4FE1\u689D\u5427\u3002"
   description: 
-  character: {fileID: 0}
+  character: {fileID: 2028153552}
   portrait: {fileID: 0}
   voiceOverClip: {fileID: 0}
   showAlways: 1
