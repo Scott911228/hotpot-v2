@@ -59,5 +59,14 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/00-Scenes/Plots/Transition_1.unity
     guid: e2942ddd6ec7ba24f939907540c89e53
+  - enabled: 1
+    path: Assets/00-Scenes/Level3/Level3/PrepareScene_3.unity
+    guid: 289f75632d02cf340a8559c55ed697c3
+  - enabled: 1
+    path: Assets/00-Scenes/Level5/PrepareScene_5.unity
+    guid: 69d2c97fa001d9246bb5bb26b5d1dd65
+  - enabled: 1
+    path: Assets/00-Scenes/Level5/Level5.unity
+    guid: c2d00ff7101676c4cb304defad66b5ec
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
