@@ -14811,7 +14811,7 @@ PrefabInstance:
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: StageName
-      value: "\u7B2C\u56DB\u95DC"
+      value: "\u7B2C\u4E94\u95DC"
       objectReference: {fileID: 0}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
@@ -14846,7 +14846,7 @@ PrefabInstance:
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: StageEntryMessage
-      value: "\u5728\u9650\u5236\u6642\u9593\u5167\u4FDD\u8B77\u597D\u57FA\u5730\u5427\uFF01"
+      value: "\u4FDD\u8B77\u597D\u57FA\u5730\u4E26\u64CA\u6557BOSS\u5427\uFF01"
       objectReference: {fileID: 0}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
@@ -15066,7 +15066,7 @@ PrefabInstance:
         type: 3}
       propertyPath: EnemyWaves.Array.data[1].Enemy.Array.data[0].Enemy
       value: 
-      objectReference: {fileID: 4972915257033465028, guid: da9c7862e7fe77f4c873b01c3d7c8b69,
+      objectReference: {fileID: 2348844079809591606, guid: 6df0ff5fb1c40ba4b950cf5d2032879f,
         type: 3}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}

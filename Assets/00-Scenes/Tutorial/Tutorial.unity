@@ -7533,7 +7533,7 @@ PrefabInstance:
     - target: {fileID: 555715206221763122, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 630759273678446502, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
@@ -7918,6 +7918,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
+      propertyPath: characterSets.Array.data[1].turretBlueprint.cost
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
       propertyPath: EnemyWaves.Array.data[0].Enemy.Array.data[0].Enemy
       value: 
       objectReference: {fileID: 3235380681236260573, guid: 900bfc4e414318e4b92f7985b3b1dc05,
@@ -7933,6 +7938,12 @@ PrefabInstance:
       propertyPath: characterSets.Array.data[0].turretBlueprint.prefab
       value: 
       objectReference: {fileID: 6032914235060294360, guid: c7c20308c943315448bb82246bdd128c,
+        type: 3}
+    - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: characterSets.Array.data[1].turretBlueprint.prefab
+      value: 
+      objectReference: {fileID: 4100282466574885278, guid: 2b7f431530e46a1429ed85f0c7d4503b,
         type: 3}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
@@ -9283,6 +9294,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27604d480d99e584ba50a1826a9834e6, type: 3}
+--- !u!1 &1239556049 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3386732198537335632, guid: 72bc458d8030b5f40ae95d2d122bf943,
+    type: 3}
+  m_PrefabInstance: {fileID: 3120875148805480960}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1242892259
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13135,6 +13152,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df25574933cf1d64885493e2a51dae71, type: 3}
+--- !u!1 &1737217755 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1358451726662779552, guid: 2200e26108a0af044a17b619e36318f9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1118185912}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1758338380 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7271703817546932988, guid: df25574933cf1d64885493e2a51dae71,
@@ -16755,6 +16778,8 @@ MonoBehaviour:
     _prefab: Assets/02-Prefabs/Tutorial2/normalcube.prefab
   - _gameObject: {fileID: 1549501345}
     _prefab: Assets/02-Prefabs/Tutorial2/normalcube.prefab
+  - _gameObject: {fileID: 1239556049}
+    _prefab: Assets/02-Prefabs/Characters/character4.prefab
   - _gameObject: {fileID: 1536083628}
     _prefab: Assets/02-Prefabs/Stage/metal spoon.obj
   - _gameObject: {fileID: 960952353}
@@ -18109,6 +18134,79 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 887054642}
   m_SourcePrefab: {fileID: 100100000, guid: 88cd6bcc6a663ca4c9690bb7cbeb4981, type: 3}
+--- !u!1001 &3120875148805480960
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3386732198537335632, guid: 72bc458d8030b5f40ae95d2d122bf943,
+        type: 3}
+      propertyPath: m_Name
+      value: PrePlacedCharacter4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7216541810647301897, guid: 72bc458d8030b5f40ae95d2d122bf943,
+        type: 3}
+      propertyPath: removeCharacterPanel
+      value: 
+      objectReference: {fileID: 1737217755}
+    - target: {fileID: 8948944401351430432, guid: 72bc458d8030b5f40ae95d2d122bf943,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 28.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8948944401351430432, guid: 72bc458d8030b5f40ae95d2d122bf943,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8948944401351430432, guid: 72bc458d8030b5f40ae95d2d122bf943,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -31.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 8948944401351430432, guid: 72bc458d8030b5f40ae95d2d122bf943,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 8948944401351430432, guid: 72bc458d8030b5f40ae95d2d122bf943,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8948944401351430432, guid: 72bc458d8030b5f40ae95d2d122bf943,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 8948944401351430432, guid: 72bc458d8030b5f40ae95d2d122bf943,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8948944401351430432, guid: 72bc458d8030b5f40ae95d2d122bf943,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8948944401351430432, guid: 72bc458d8030b5f40ae95d2d122bf943,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8948944401351430432, guid: 72bc458d8030b5f40ae95d2d122bf943,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 72bc458d8030b5f40ae95d2d122bf943, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -18128,5 +18226,6 @@ SceneRoots:
   - {fileID: 2037772510}
   - {fileID: 1260801127}
   - {fileID: 987140850}
+  - {fileID: 3120875148805480960}
   - {fileID: 1242892259}
   - {fileID: 1841081117}
