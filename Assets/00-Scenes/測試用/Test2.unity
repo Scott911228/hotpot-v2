@@ -3973,6 +3973,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
+      propertyPath: characterSets.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
       propertyPath: CharacterDamageMultiplier
       value: 1
       objectReference: {fileID: 0}
@@ -4088,6 +4093,12 @@ PrefabInstance:
       propertyPath: EnemyWaves.Array.data[0].Enemy.Array.data[5].Enemy
       value: 
       objectReference: {fileID: 3235380681236260573, guid: 21a5d51227f0ed34fad74c455ff0ade6,
+        type: 3}
+    - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: characterSets.Array.data[0].turretBlueprint.prefab
+      value: 
+      objectReference: {fileID: 5977268545930518481, guid: 716a9d42072cff441b1df631dbd989bf,
         type: 3}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
