@@ -41,6 +41,10 @@ public class TutorialEvent : MonoBehaviour
                 else if (_index == 4) TextControl.BroadcastControlMessage("tutorial/text2");
                 else if (_index == 5) TextControl.BroadcastControlMessage("tutorial/guideclose3");
             }
+            else if (GameObject.Find("LevelSettings").GetComponent<LevelSettings>().StageName == "第二關")
+            {
+                if (_index == 0) TextControl.BroadcastControlMessage("tutorial2/guideclose");
+            }
         });
     }
 }
