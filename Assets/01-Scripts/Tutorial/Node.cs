@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
+using System.Collections.Generic;
 using System.Collections;
 using Fungus;
 
@@ -17,7 +18,9 @@ public class Node : MonoBehaviour, IMouseInteractable
     TurretBlueprint turretBlueprint;
     BuildManager buildmanager;
     public Quaternion turretRotation = Quaternion.identity;
-
+    private int highlightLayer;
+    private Dictionary<GameObject, int> originalLayers = new Dictionary<GameObject, int>();
+    private RendererHighlightManager rendererHighlightManager;
     void Start()
     {
         speedControl = GameObject.Find("SpeedControl").GetComponent<SpeedControl>();
@@ -25,6 +28,8 @@ public class Node : MonoBehaviour, IMouseInteractable
         rend = GetComponent<Renderer>();
         startcolor = rend.material.color;
         buildmanager = BuildManager.instance;
+        highlightLayer = LayerMask.NameToLayer("HighlightLayer");
+        rendererHighlightManager = FindAnyObjectByType<RendererHighlightManager>();
     }
 
     public Vector3 GetBuildPosition()
@@ -35,7 +40,7 @@ public class Node : MonoBehaviour, IMouseInteractable
     IEnumerator SelectTurretRotation(Node node)
     {
         FloatTipsScript.DisplayTips("移動游標設定效果範圍，右鍵確認");
-        if(GameObject.Find("LevelSettings").GetComponent<LevelSettings>().StageName == "第二關") TipsText.Instance.ChangeText("移動游標設定效果範圍，右鍵確認");
+        if (GameObject.Find("LevelSettings").GetComponent<LevelSettings>().StageName == "第二關") TipsText.Instance.ChangeText("移動游標設定效果範圍，右鍵確認");
         RendererHighlightManager rendererHighlightManager = FindAnyObjectByType<RendererHighlightManager>();
 
         speedControl.isForceSlowdown = true;
@@ -70,7 +75,7 @@ public class Node : MonoBehaviour, IMouseInteractable
                 turret.transform.LookAt(hitPoint);
                 turret.transform.eulerAngles = new Vector3(0, Mathf.Round((turret.transform.eulerAngles.y - 90) / 90) * 90, 0);
                 // 更新攻擊範圍顯示
-                AttackRotation = DisplayAttackRange(character);
+                AttackRotation = UpdateNodeColors(character);
                 turret.transform.eulerAngles = ForceCharacterRotation;
             }
 
@@ -88,7 +93,7 @@ public class Node : MonoBehaviour, IMouseInteractable
                     }
                     else if (draggingCharacter.characterType != NewNode.tag)
                     {
-                        FloatTipsScript.DisplayTips("此角色無法放置在這裡！1");
+                        FloatTipsScript.DisplayTips("此角色無法放置在這裡！");
                     }
                     else
                     {
@@ -106,6 +111,10 @@ public class Node : MonoBehaviour, IMouseInteractable
         }
         turret.GetComponent<Character>().isPaused = false;
         turret.GetComponent<Character>().tag = "Character";
+        // 右鍵確認後將 Node 恢復為原本顏色
+        ResetAllNodeColors();
+        rendererHighlightManager.ResetTaggedObjectsLayer("Character");
+        rendererHighlightManager.ResetTaggedObjectsLayer("Enemy");
         Debug.Log("角色成功放置");
         character.showAttackRange = false;
         Destroy(turret);
@@ -162,6 +171,106 @@ public class Node : MonoBehaviour, IMouseInteractable
         BuildManager buildManager = GameObject.Find("GameControl").GetComponent<BuildManager>();
         if (buildManager.DraggingCharacterIndex < 0) return null;
         else return buildManager.GetCharacterSet()[buildManager.DraggingCharacterIndex].turretBlueprint;
+    }
+
+    private Vector3 UpdateNodeColors(Character character)
+    {
+        Vector3 colliderStartPos = character.firePoint.position;
+        switch (character.transform.eulerAngles.y)
+        {
+            case 0.0f:
+                colliderStartPos.x += character.attackLength;
+                break;
+            case 90.0f:
+                colliderStartPos.z -= character.attackLength;
+                break;
+            case 180.0f:
+                colliderStartPos.x -= character.attackLength;
+                break;
+            case 270.0f:
+                colliderStartPos.z += character.attackLength;
+                break;
+        }
+        colliderStartPos.y -= 2.5f;
+        Collider[] hitColliders = Physics.OverlapBox(
+            colliderStartPos,
+            new Vector3(character.attackWidth, character.attackHeight, character.attackLength),
+            character.firePoint.rotation);
+
+        ResetAllNodeColors();
+        rendererHighlightManager.ResetTaggedObjectsLayer("Character");
+        rendererHighlightManager.ResetTaggedObjectsLayer("Enemy");
+
+        foreach (Collider hitCollider in hitColliders)
+        {
+            Node targetNode = hitCollider.GetComponent<Node>();
+            if (targetNode != null)
+            {
+                if (character.characterType != "Wall")
+                {
+                    if (targetNode.tag == character.characterType)
+                    {
+                        ChangeNodeColor(targetNode, new Color(0.953f, 1f, 0.78f, 1f));
+                    }
+                }
+                else
+                {
+                    if (true)
+                    {
+                        ChangeNodeColor(targetNode, new Color(0.953f, 1f, 0.78f, 1f));
+                    }
+                }
+            }
+            else
+            {
+
+                if (character.characterClass == "Attacker")
+                {
+                    Enemies targetEnemy = hitCollider.GetComponent<Enemies>();
+                    if (targetEnemy != null)
+                    {
+                        rendererHighlightManager.HighlightObjectOnly(targetEnemy.gameObject);
+                    }
+                }
+                else if (character.characterClass == "Healer")
+                {
+                    Character targetCharacter = hitCollider.GetComponent<Character>();
+                    if (targetCharacter != null)
+                    {
+                        rendererHighlightManager.HighlightObjectOnly(targetCharacter.gameObject);
+                    }
+                }
+            }
+        }
+        return character.transform.eulerAngles;
+    }
+
+
+    private void ResetAllNodeColors()
+    {
+        Node[] allNodes = FindObjectsOfType<Node>();
+        foreach (Node node in allNodes)
+        {
+            RestoreNodeColor(node);
+        }
+    }
+
+    private void RestoreHighlightedNodes(Character character)
+    {
+        // 將已點亮的 Node 恢復為原本顏色
+        Collider[] hitColliders = Physics.OverlapBox(
+            character.firePoint.position,
+            new Vector3(character.attackWidth / 2, character.attackHeight / 2, character.attackLength / 2),
+            character.firePoint.rotation);
+
+        foreach (var hitCollider in hitColliders)
+        {
+            Node node = hitCollider.GetComponent<Node>();
+            if (node != null)
+            {
+                RestoreNodeColor(node); // 恢復為初始顏色
+            }
+        }
     }
 
 
@@ -338,11 +447,37 @@ public class Node : MonoBehaviour, IMouseInteractable
     public void ChangeNodeColor(Node node, Color color)
     {
         if (node.tag == "Untagged") color.a = 0.2f;
-        node.rend.material.color = color; // 改變 Node 顏色
+        node.rend.material.color = color;
+        SetLayerRecursively(node.gameObject, highlightLayer);
     }
 
     private void RestoreNodeColor(Node node)
     {
-        node.rend.material.color = node.startcolor; // 恢復為初始顏色
+        node.rend.material.color = node.startcolor;
+        RestoreLayerRecursively(node.gameObject);
+    }
+    private void SetLayerRecursively(GameObject obj, int newLayer)
+    {
+        if (obj == null) return;
+        foreach (Transform t in obj.GetComponentsInChildren<Transform>(true))
+        {
+            if (!originalLayers.ContainsKey(t.gameObject))
+            {
+                originalLayers[t.gameObject] = t.gameObject.layer;
+            }
+            t.gameObject.layer = newLayer;
+        }
+    }
+
+    private void RestoreLayerRecursively(GameObject obj)
+    {
+        if (obj == null) return;
+        foreach (Transform t in obj.GetComponentsInChildren<Transform>(true))
+        {
+            if (originalLayers.TryGetValue(t.gameObject, out int originalLayer))
+            {
+                t.gameObject.layer = originalLayer;
+            }
+        }
     }
 }

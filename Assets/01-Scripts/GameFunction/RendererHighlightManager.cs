@@ -8,8 +8,7 @@ public class RendererHighlightManager : MonoBehaviour
     public string tempLayerName = "TempLayer";
 
     private int highlightLayer;
-    private int tempLayer;
-    private Dictionary<Renderer, int> originalLayers = new Dictionary<Renderer, int>();
+    private int tempLayer; private Dictionary<Renderer, int> originalLayers = new Dictionary<Renderer, int>();
 
     void Start()
     {
@@ -51,7 +50,7 @@ public class RendererHighlightManager : MonoBehaviour
         MoveTaggedObjectsToLayer("Character", tempLayer);
         MoveTaggedObjectsToLayer("Enemy", tempLayer);
     }
-    
+
     // 僅高亮所有 Renderer
     public void HighlightObjectOnly(params GameObject[] objects)
     {
@@ -116,7 +115,7 @@ public class RendererHighlightManager : MonoBehaviour
     }
 
     // 還原 Layer
-    private void ResetTaggedObjectsLayer(string tag)
+    public void ResetTaggedObjectsLayer(string tag)
     {
         GameObject[] taggedObjects = GameObject.FindGameObjectsWithTag(tag);
         foreach (GameObject obj in taggedObjects)

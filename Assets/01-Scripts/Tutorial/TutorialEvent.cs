@@ -31,15 +31,16 @@ public class TutorialEvent : MonoBehaviour
     public void hide()
     {
         if (!canClickToHide) return;
-
         canClickToHide = false; // 防止重複觸發
         imageObject.transform.DOScale(0f, 0.3f).SetEase(Ease.InBack).OnComplete(() =>
         {
-            if (_index == 0) show(_index + 1);
-            else if(_index == 1) TextControl.BroadcastControlMessage("tutorial/guideclose1");
-            else if(_index == 2) TextControl.BroadcastControlMessage("tutorial/text2");
-            else if(_index == 3) TextControl.BroadcastControlMessage("tutorial/guideclose3");
-            // 可以在這裡做一些其他處理
+            if (GameObject.Find("LevelSettings").GetComponent<LevelSettings>().StageName == "第一關")
+            {
+                if (_index <= 2) show(_index + 1);
+                else if (_index == 3) TextControl.BroadcastControlMessage("tutorial/guideclose1");
+                else if (_index == 4) TextControl.BroadcastControlMessage("tutorial/text2");
+                else if (_index == 5) TextControl.BroadcastControlMessage("tutorial/guideclose3");
+            }
         });
     }
 }

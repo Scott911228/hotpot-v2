@@ -25,6 +25,7 @@ public class CoolDown : MonoBehaviour
     private LevelSettings levelSettings;
     public TurretBlueprint assignedCharacterPrefab; // 對應的角色
     public TMP_Text characterCountText; // UI 顯示派遣數量的 Text
+    public TMP_Text characterTypeText; // UI 顯示角色類型的 Text
     public void RemoveCoolDown()
     {
         CoolDownTime = 0;
@@ -44,10 +45,10 @@ public class CoolDown : MonoBehaviour
         }
         MaskImage = transform.Find("MaskImage").GetComponent<UnityEngine.UI.Image>();
         characterCountText = transform.Find("DispatchLimit").GetComponent<TMP_Text>();
+        characterTypeText = transform.Find("DispatchType").GetComponent<TMP_Text>();
         UpdateCharacterCountUI(); // 遊戲開始時更新一次
+        UpdateCharacterTypeUI(); // 遊戲開始時更新一次
     }
-
-    //更新角色數量 UI
     public void UpdateCharacterCountUI()
     {
         if (characterCountText == null || assignedCharacterPrefab.prefab == null) return;
@@ -55,6 +56,13 @@ public class CoolDown : MonoBehaviour
         int maxLimit = BuildManager.instance.GetCharacterLimit(assignedCharacterPrefab.prefab);
         string limitText = (maxLimit >= 0) ? $"{maxLimit - currentCount}" : "∞"; // -1 代表無限制
         characterCountText.text = $"{limitText}";
+    }
+    //更新角色數量 UI
+    public void UpdateCharacterTypeUI()
+    {
+        if (characterTypeText == null || assignedCharacterPrefab.prefab == null) return;
+        if(assignedCharacterPrefab.prefab.GetComponent<Character>().characterType == "Road") characterTypeText.text = "地面";
+        else if(assignedCharacterPrefab.prefab.GetComponent<Character>().characterType == "Wall") characterTypeText.text = "高台";
     }
     // Update is called once per frame
     void Update()

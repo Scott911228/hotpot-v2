@@ -966,7 +966,7 @@ MonoBehaviour:
   showAttackRange: 1
   canSkipDirectionSelection: 0
   characterType: Wall
-  characterClass: 
+  characterClass: Attacker
   fireCooldown: 1
   characterTag: Character
   enemyTag: Enemy
