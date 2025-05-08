@@ -222,6 +222,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 6059251163786847490}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6211345391901418077 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 154786416774612831, guid: 364211a57bded0b438753feb8e52b9e1,
+    type: 3}
+  m_PrefabInstance: {fileID: 6059251163786847490}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b15dd16bf4f29954a866ff7e4f224feb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6738915951348463148
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -369,8 +381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0ea88d342aaeeb46a3f73a55fc82963, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthBar: {fileID: 5792999939146790856, guid: da9c7862e7fe77f4c873b01c3d7c8b69,
-    type: 3}
+  HealthBar: {fileID: 6211345391901418077}
   initSpeed: 4
   speedMultiplier: 1
   isPaused: 0
@@ -400,8 +411,7 @@ MonoBehaviour:
   enemyTag: Character
   bulletPrefab: {fileID: 3668269667669425829, guid: 52278ca795a478e4ebd9cdc8fe1d2829,
     type: 3}
-  firePoint: {fileID: 8430483167552955594, guid: da9c7862e7fe77f4c873b01c3d7c8b69,
-    type: 3}
+  firePoint: {fileID: 6099786999598690117}
 --- !u!95 &5313218641633725675
 Animator:
   serializedVersion: 7
