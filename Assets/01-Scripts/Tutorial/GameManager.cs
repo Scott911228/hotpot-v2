@@ -21,7 +21,19 @@ public class GameManager : MonoBehaviour
     private GameObject removeCharacterPanel;
     private GameObject broadcastMessagePanel;
     bool isWaiting = false;
+    public static bool isRestarted = false;
 
+    public void DoStageStoryMustPlayCheck()
+    {
+        if (isRestarted)
+        {
+            TextControl.BroadcastControlMessage("retry");
+        }
+        else
+        {
+            TextControl.BroadcastControlMessage("start");
+        }
+    }
     public void setRemoveCharacterPanelActive(bool visiblility)
     {
         //removeCharacterPanel.SetActive(visiblility);
@@ -66,7 +78,7 @@ public class GameManager : MonoBehaviour
         InvokeRepeating("WaitingPauseEffect", 0f, 0.1f);
         isGameOver = false;
         string entryMessage = GameObject.Find("LevelSettings").GetComponent<LevelSettings>().StageEntryMessage;
-        if(!string.IsNullOrEmpty(entryMessage)) BroadcastMessage(entryMessage);
+        if (!string.IsNullOrEmpty(entryMessage)) BroadcastMessage(entryMessage);
     }
     public void BroadcastMessage(string text, float slideInTime = 1, float stayTime = 2, float slideOutTime = 1)
     {

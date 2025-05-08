@@ -681,6 +681,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4593934835722751939, guid: 3c901ba4d45c52748a15840ac103f288,
+        type: 3}
+      propertyPath: m_Text
+      value: "\u6575\u4EBA\u751F\u547D\u503C1.25\u500D\uFF1B\u6575\u4EBA\u79FB\u52D5\u901F\u5EA60.75\u500D"
+      objectReference: {fileID: 0}
     - target: {fileID: 4837045434895311586, guid: 3c901ba4d45c52748a15840ac103f288,
         type: 3}
       propertyPath: m_Text
@@ -731,6 +736,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6985540008283810713, guid: 3c901ba4d45c52748a15840ac103f288,
+        type: 3}
+      propertyPath: m_Text
+      value: "\u5B88\u4F4F\u57FA\u5730\u4E26\u6253\u5012BOSS\u5427\uFF01"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7691127070174147066, guid: 3c901ba4d45c52748a15840ac103f288,
+        type: 3}
+      propertyPath: m_Text
+      value: "\u828B\u982D\u6E6F\u5E95\uFF1A"
+      objectReference: {fileID: 0}
     - target: {fileID: 8647807521643581235, guid: 3c901ba4d45c52748a15840ac103f288,
         type: 3}
       propertyPath: m_Sprite
@@ -740,7 +755,7 @@ PrefabInstance:
     - target: {fileID: 9099653126207003607, guid: 3c901ba4d45c52748a15840ac103f288,
         type: 3}
       propertyPath: m_Text
-      value: "\u7B2C\u4E94\u95DC"
+      value: "BOSS\u95DC"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

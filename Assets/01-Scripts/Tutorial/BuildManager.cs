@@ -91,6 +91,9 @@ public class BuildManager : MonoBehaviour
         }
         instance = this;
     }
+    public void setBuiltCount(int count){
+        builtCount = count;
+    }
     public void BuildTurretOn(Node node, Quaternion rotation, TurretBlueprint turretBlueprint)
     {
         turretToBuild = turretBlueprint;

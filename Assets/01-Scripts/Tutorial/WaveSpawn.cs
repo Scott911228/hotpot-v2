@@ -148,7 +148,7 @@ public class WaveSpawn : MonoBehaviour
 
         foreach (var msg in broadcastMessages)
         {
-            if (msg.stageName == currentStage && msg.waveNumber == waveNumber && !playedMessages.Contains(msg.messageKey))
+            if (msg.stageName == currentStage && msg.waveNumber == waveNumber && !playedMessages.Contains(msg.messageKey) && !GameManager.isRestarted)
             {
                 TextControl.BroadcastControlMessage(msg.messageKey);
                 playedMessages.Add(msg.messageKey);
