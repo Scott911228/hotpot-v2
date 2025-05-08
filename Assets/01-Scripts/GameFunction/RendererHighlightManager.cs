@@ -6,14 +6,18 @@ public class RendererHighlightManager : MonoBehaviour
     public Camera overlayCamera;
     public string highlightLayerName = "HighlightLayer";
     public string tempLayerName = "TempLayer";
+    public string defaultLayerName = "Default";
 
     private int highlightLayer;
-    private int tempLayer; private Dictionary<Renderer, int> originalLayers = new Dictionary<Renderer, int>();
+    private int tempLayer;
+    private int defaultLayer;
+    private Dictionary<Renderer, int> originalLayers = new Dictionary<Renderer, int>();
 
     void Start()
     {
         highlightLayer = LayerMask.NameToLayer(highlightLayerName);
         tempLayer = LayerMask.NameToLayer(tempLayerName);
+        defaultLayer = LayerMask.NameToLayer(defaultLayerName);
 
         if (highlightLayer == -1)
         {
@@ -93,6 +97,15 @@ public class RendererHighlightManager : MonoBehaviour
                     originalLayers.Remove(renderer);
                 }
             }
+        }
+    }
+    public void ResetObjectToDefault(GameObject obj)
+    {
+        if (obj == null) return;
+        Renderer[] renderers = obj.GetComponentsInChildren<Renderer>();
+        foreach (var renderer in renderers)
+        {
+            renderer.gameObject.layer = defaultLayer;
         }
     }
 

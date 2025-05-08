@@ -563,6 +563,11 @@ PrefabInstance:
       propertyPath: m_Text
       value: "\u81F3\u5C11\u90E8\u7F72\u738B\u5B50\u9EB5 1 \u6B21"
       objectReference: {fileID: 0}
+    - target: {fileID: 483770134742014419, guid: 3c901ba4d45c52748a15840ac103f288,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 483770135139048248, guid: 3c901ba4d45c52748a15840ac103f288,
         type: 3}
       propertyPath: m_IsActive

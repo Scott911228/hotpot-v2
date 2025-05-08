@@ -19,6 +19,7 @@ public class Node : MonoBehaviour, IMouseInteractable
     BuildManager buildmanager;
     public Quaternion turretRotation = Quaternion.identity;
     private int highlightLayer;
+    private int defaultLayer;
     private Dictionary<GameObject, int> originalLayers = new Dictionary<GameObject, int>();
     private RendererHighlightManager rendererHighlightManager;
     void Start()
@@ -29,6 +30,7 @@ public class Node : MonoBehaviour, IMouseInteractable
         startcolor = rend.material.color;
         buildmanager = BuildManager.instance;
         highlightLayer = LayerMask.NameToLayer("HighlightLayer");
+        defaultLayer = LayerMask.NameToLayer("Default");
         rendererHighlightManager = FindAnyObjectByType<RendererHighlightManager>();
     }
 
@@ -369,6 +371,7 @@ public class Node : MonoBehaviour, IMouseInteractable
         if (character.canSkipDirectionSelection)
         {
             buildManager.BuildTurretOn(node, Quaternion.identity, turretBlueprint);
+            rendererHighlightManager.ResetObjectToDefault(node.gameObject);
         }
         else
         {
