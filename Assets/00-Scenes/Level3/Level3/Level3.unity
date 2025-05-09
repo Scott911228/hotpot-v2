@@ -25558,6 +25558,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 0f09cea95cf4f9643963925561e06f80,
         type: 3}
+    - target: {fileID: 2856578012754536817, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2872731597543257326, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: CoolDownTime
@@ -25609,6 +25614,11 @@ PrefabInstance:
         type: 3}
       propertyPath: CoolDownTime
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4518221805680233356, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 4819166092026721108, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
@@ -25713,7 +25723,7 @@ PrefabInstance:
     - target: {fileID: 6499869828535564823, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: selectedCommands.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6499869828535564823, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
@@ -26154,6 +26164,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6701803594607712417, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 6787278608525225385, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
