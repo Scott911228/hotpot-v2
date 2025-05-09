@@ -6518,7 +6518,7 @@ PrefabInstance:
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: characterSets.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
@@ -6549,7 +6549,7 @@ PrefabInstance:
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: characterDispatchLimits.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
@@ -6618,6 +6618,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
+      propertyPath: characterDispatchLimits.Array.data[4].limit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
       propertyPath: AchievementSets.Array.data[0].AchievementType
       value: 1
       objectReference: {fileID: 0}
@@ -6657,6 +6662,12 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
+      propertyPath: characterDispatchLimits.Array.data[4].character
+      value: 
+      objectReference: {fileID: 5977268545930518481, guid: 716a9d42072cff441b1df631dbd989bf,
+        type: 3}
+    - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
       propertyPath: characterSets.Array.data[0].turretBlueprint.cost
       value: 100
       objectReference: {fileID: 0}
@@ -6678,7 +6689,7 @@ PrefabInstance:
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: characterSets.Array.data[4].turretBlueprint.cost
-      value: 0
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
@@ -6738,7 +6749,7 @@ PrefabInstance:
         type: 3}
       propertyPath: characterSets.Array.data[4].turretBlueprint.prefab
       value: 
-      objectReference: {fileID: 4540081717224413148, guid: 27403d01bc04f7845ab8abc247a70ec0,
+      objectReference: {fileID: 5977268545930518481, guid: 716a9d42072cff441b1df631dbd989bf,
         type: 3}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
@@ -26079,6 +26090,7 @@ MonoBehaviour:
   overlayCamera: {fileID: 970275985}
   highlightLayerName: HighlightLayer
   tempLayerName: TempLayer
+  defaultLayerName: Default
 --- !u!114 &970275984
 MonoBehaviour:
   m_ObjectHideFlags: 0

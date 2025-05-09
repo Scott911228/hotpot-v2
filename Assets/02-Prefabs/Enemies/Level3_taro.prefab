@@ -219,7 +219,7 @@ MonoBehaviour:
   enemyTag: Character
   bulletPrefab: {fileID: 6567720417694121480, guid: c163c52f53ff47a4c8d0f7da78600324,
     type: 3}
-  firePoint: {fileID: 8382001582654665095}
+  firePoint: {fileID: 7169529970385527846}
 --- !u!95 &2089259900225685380
 Animator:
   serializedVersion: 7
