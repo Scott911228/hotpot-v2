@@ -57,7 +57,7 @@ public class CharacterSkill : MonoBehaviour
         if (skillID == 0) BoostRunMultiplier(2f, 10f);
         else if (skillID == 1) Invincible(5f);
     }
-    public void Invincible(float multiplier = 1.5f, float duration = 3f)
+    public void Invincible(float duration = 3f)
     {
         if (currentBoostCoroutine != null)
         {
