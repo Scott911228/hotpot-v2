@@ -934,7 +934,7 @@ PrefabInstance:
     - target: {fileID: 4031436151168141819, guid: db1a52b61b505b04dafefafec6fdde44,
         type: 3}
       propertyPath: m_Text
-      value: aaa
+      value: "\u65B0\u4E00\u4EE3\u8A2D\u8A08\u5C55\uFF1A\u8056\u934B"
       objectReference: {fileID: 0}
     - target: {fileID: 4031436151168141819, guid: db1a52b61b505b04dafefafec6fdde44,
         type: 3}

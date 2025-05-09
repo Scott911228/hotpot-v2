@@ -456,7 +456,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!82 &52729037
 AudioSource:
   m_ObjectHideFlags: 0
@@ -8874,6 +8874,7 @@ MonoBehaviour:
   overlayCamera: {fileID: 1183312723}
   highlightLayerName: HighlightLayer
   tempLayerName: TempLayer
+  defaultLayerName: Default
 --- !u!114 &1183312722
 MonoBehaviour:
   m_ObjectHideFlags: 0
