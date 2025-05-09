@@ -2087,7 +2087,7 @@ PrefabInstance:
     - target: {fileID: 4131654759107920305, guid: d129e606df988cc4688b9de0a4797c5e,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: StageClearScene_1
+      value: Tutorial2_start
       objectReference: {fileID: 0}
     - target: {fileID: 4131654759107920306, guid: d129e606df988cc4688b9de0a4797c5e,
         type: 3}
@@ -2112,13 +2112,25 @@ PrefabInstance:
     - target: {fileID: 4131654759107920317, guid: d129e606df988cc4688b9de0a4797c5e,
         type: 3}
       propertyPath: loadSceneName
-      value: StageClearScene_1
+      value: Tutorial2_start
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d129e606df988cc4688b9de0a4797c5e, type: 3}
+--- !u!114 &1120421206 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4131654759107920317, guid: d129e606df988cc4688b9de0a4797c5e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1120421205}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f836c428706574e42834f840ebd3200c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1175533672 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4131654757504639965, guid: d129e606df988cc4688b9de0a4797c5e,
@@ -2336,7 +2348,6 @@ GameObject:
   - component: {fileID: 1266606588}
   - component: {fileID: 1266606587}
   - component: {fileID: 1266606586}
-  - component: {fileID: 1266606585}
   - component: {fileID: 1266606677}
   - component: {fileID: 1266606679}
   - component: {fileID: 1266606682}
@@ -2350,6 +2361,9 @@ GameObject:
   - component: {fileID: 1266606687}
   - component: {fileID: 1266606689}
   - component: {fileID: 1266606688}
+  - component: {fileID: 1266606692}
+  - component: {fileID: 1266606690}
+  - component: {fileID: 1266606691}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -2384,7 +2398,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 1266606334}
   selectedCommands:
-  - {fileID: 1266606679}
+  - {fileID: 1266606691}
   variables: []
   description: 
   stepPause: 0
@@ -2551,7 +2565,9 @@ MonoBehaviour:
   - {fileID: 1266606588}
   - {fileID: 1266606587}
   - {fileID: 1266606586}
-  - {fileID: 1266606585}
+  - {fileID: 1266606692}
+  - {fileID: 1266606690}
+  - {fileID: 1266606691}
   suppressAllAutoSelections: 0
 --- !u!114 &1266606335
 MonoBehaviour:
@@ -3437,25 +3453,6 @@ MonoBehaviour:
   move: 0
   shiftIntoPlace: 0
   waitUntilFinished: 0
---- !u!114 &1266606585
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1266606332}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00d03ae0919f04264b018681ed534177, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 384
-  indentLevel: 0
-  _sceneName:
-    stringRef: {fileID: 0}
-    stringVal: StageClearScene_1
-  loadingImage: {fileID: 0}
-  sceneNameOLD: 
 --- !u!114 &1266606586
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -7125,7 +7122,7 @@ MonoBehaviour:
   waitUntilFinished: 0
 --- !u!114 &1266606686
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -7143,7 +7140,7 @@ MonoBehaviour:
   durationOLD: 0
 --- !u!114 &1266606687
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -7173,7 +7170,7 @@ MonoBehaviour:
   waitUntilFinished: 0
 --- !u!114 &1266606688
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -7193,7 +7190,7 @@ MonoBehaviour:
   fadeTweenType: 4
 --- !u!114 &1266606689
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -7206,6 +7203,102 @@ MonoBehaviour:
   itemId: 396
   indentLevel: 0
   duration: 1
+  targetAlpha: 1
+  waitUntilFinished: 1
+  fadeColor: {r: 0, g: 0, b: 0, a: 1}
+  fadeTexture: {fileID: 0}
+  fadeTweenType: 4
+--- !u!114 &1266606690
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1266606332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95d9ff288f3904c05ada7ac9c9a075bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 399
+  indentLevel: 0
+  description: 
+  delay: 0
+  invokeType: 0
+  staticEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1120421206}
+        m_TargetAssemblyTypeName: SwitchScene, Assembly-CSharp
+        m_MethodName: SwitchSceneTo
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Tutorial2_start
+          m_BoolArgument: 0
+        m_CallState: 2
+  booleanParameter:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+  booleanEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  integerParameter:
+    integerRef: {fileID: 0}
+    integerVal: 0
+  integerEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  floatParameter:
+    floatRef: {fileID: 0}
+    floatVal: 0
+  floatEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  stringParameter:
+    stringRef: {fileID: 0}
+    stringVal: 
+  stringEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1266606691
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1266606332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 207aecf668a0345388087ccf522f9957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 400
+  indentLevel: 0
+  duration: 0.5
+  targetAlpha: 0
+  waitUntilFinished: 1
+  fadeColor: {r: 0, g: 0, b: 0, a: 1}
+  fadeTexture: {fileID: 0}
+  fadeTweenType: 4
+--- !u!114 &1266606692
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1266606332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 207aecf668a0345388087ccf522f9957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 398
+  indentLevel: 0
+  duration: 1.5
   targetAlpha: 1
   waitUntilFinished: 1
   fadeColor: {r: 0, g: 0, b: 0, a: 1}
