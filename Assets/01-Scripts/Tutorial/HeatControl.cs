@@ -14,6 +14,7 @@ public class HeatControl : MonoBehaviour
     public void ChangeHeat()
     {
         HeatLevel++;
+        HeatLevel %= 3;
         switch (HeatLevel % 3)
         {
             case 0:
