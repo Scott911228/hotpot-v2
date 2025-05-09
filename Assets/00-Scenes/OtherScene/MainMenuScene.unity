@@ -221,6 +221,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: StarPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 4031436149441386200, guid: db1a52b61b505b04dafefafec6fdde44,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4031436149441386201, guid: db1a52b61b505b04dafefafec6fdde44,
         type: 3}
       propertyPath: m_Pivot.x
