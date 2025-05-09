@@ -45,6 +45,11 @@ public class TutorialEvent : MonoBehaviour
             {
                 if (_index == 0) TextControl.BroadcastControlMessage("tutorial2/guideclose");
             }
+            else if (GameObject.Find("LevelSettings").GetComponent<LevelSettings>().StageName == "第三關")
+            {
+                if (_index == 0) show(_index + 1);
+                else if (_index == 1) TextControl.BroadcastControlMessage("level3/guideclose");
+            }
         });
     }
 }
