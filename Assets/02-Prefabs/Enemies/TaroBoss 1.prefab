@@ -387,6 +387,7 @@ MonoBehaviour:
   isPaused: 0
   StartHealth: 100
   Health: 0
+  AttackPlayerBaseDamage: 9999
   GetMoney: 1000
   range: 4.5
   characterTag: Character

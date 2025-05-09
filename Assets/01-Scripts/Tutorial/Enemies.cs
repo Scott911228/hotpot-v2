@@ -17,7 +17,7 @@ public class Enemies : MonoBehaviour
     private SpriteRenderer spriteRenderer; //用來調控敵人透明度用的
     public float StartHealth = 100;
     public float Health;
-
+    public int AttackPlayerBaseDamage = 1;
     public int GetMoney = 50;
 
     [Header("Attributes")]
@@ -223,7 +223,8 @@ public class Enemies : MonoBehaviour
         if (EnteredBase) return; //防止重複進入基地扣血
         EnteredBase = true;
 
-        if (PlayerStats.Life > 0) PlayerStats.Life--;
+        if (PlayerStats.Life > 0) PlayerStats.Life -= AttackPlayerBaseDamage;
+        if (PlayerStats.Life < 0) PlayerStats.Life = 0;
         WaveSpawn.EnemiesAlive--;
         WaveSpawn.KilledEnemyCount++;
 

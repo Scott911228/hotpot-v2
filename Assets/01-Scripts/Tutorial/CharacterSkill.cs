@@ -55,7 +55,7 @@ public class CharacterSkill : MonoBehaviour
         40,
         new Color(0.09411757f, 0.05882348f, 0.05882348f, 0.8705882f));
         if (skillID == 0) BoostRunMultiplier(2f, 10f);
-        else if (skillID == 1) Invincible(8f);
+        else if (skillID == 1) Invincible(5f);
     }
     public void Invincible(float multiplier = 1.5f, float duration = 3f)
     {

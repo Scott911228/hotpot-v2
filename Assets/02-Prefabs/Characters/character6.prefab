@@ -1597,7 +1597,7 @@ MonoBehaviour:
   skillName: "\u98C4\u9999\u7684\u7121\u5F62\u5C4F\u969C\xB7\u5E7B"
   skillDesc: "\u6280\u80FD\u6301\u7E8C\u6642\u9593\u5167, \n\u7121\u8996\u6240\u6709\u6575\u65B9\u50B7\u5BB3"
   skillOtherDetail: "\u5145\u80FD\u6240\u9700 : 15 \u79D2 | \u6548\u679C\u6301\u7E8C
-    : 8 \u79D2"
+    : 5 \u79D2"
   isSkillTriggering: 0
   HealthBar: {fileID: 8591254583666854236}
 --- !u!225 &1127116490598630903
