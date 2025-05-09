@@ -7644,12 +7644,12 @@ PrefabInstance:
     - target: {fileID: 6499869828535564823, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: scrollPos.x
-      value: 74.79285
+      value: 738.79285
       objectReference: {fileID: 0}
     - target: {fileID: 6499869828535564823, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: scrollPos.y
-      value: 49.851074
+      value: 35.851074
       objectReference: {fileID: 0}
     - target: {fileID: 6499869828535564823, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
@@ -7659,13 +7659,13 @@ PrefabInstance:
     - target: {fileID: 6499869828535564823, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: selectedCommands.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6499869828535564823, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: 'selectedBlocks.Array.data[0]'
       value: 
-      objectReference: {fileID: 1819084718}
+      objectReference: {fileID: 0}
     - target: {fileID: 6499869828535564823, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: 'selectedCommands.Array.data[0]'
@@ -8168,10 +8168,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5237553912724401908, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1819084719}
-    - targetCorrespondingSourceObject: {fileID: 5237553912724401908, guid: 2200e26108a0af044a17b619e36318f9,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1819084720}
     - targetCorrespondingSourceObject: {fileID: 5237553912724401908, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
@@ -8377,6 +8373,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1819084774}
+    - targetCorrespondingSourceObject: {fileID: 5237553912724401908, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1819084788}
   m_SourcePrefab: {fileID: 100100000, guid: 2200e26108a0af044a17b619e36318f9, type: 3}
 --- !u!114 &1118185913 stripped
 MonoBehaviour:
@@ -14652,8 +14652,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 391.09436
-    y: 31.510647
+    x: 337.09436
+    y: 41.510647
     width: 187.95
     height: 40
   tint: {r: 0.8679245, g: 0.39711642, b: 0.41096374, a: 1}
@@ -14682,21 +14682,6 @@ MonoBehaviour:
   - {fileID: 1819084701}
   - {fileID: 1819084702}
   suppressAllAutoSelections: 0
---- !u!114 &1819084719
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1819084678}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d7d417659cd54a6787f70f763950c34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentBlock: {fileID: 1819084747}
-  suppressBlockAutoSelect: 0
-  message: tutorial/text1
 --- !u!114 &1819084720
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -15381,7 +15366,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: -162.86316
+    x: -159.36316
     y: 26.648933
     width: 151.95
     height: 40
@@ -15390,7 +15375,7 @@ MonoBehaviour:
   itemId: 0
   blockName: "\u6559\u5B78\u95DC\u958B\u5834 (Copy)"
   description: 
-  eventHandler: {fileID: 1819084719}
+  eventHandler: {fileID: 1819084788}
   commandList:
   - {fileID: 1819084756}
   - {fileID: 1819084746}
@@ -15671,7 +15656,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95d9ff288f3904c05ada7ac9c9a075bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 74
+  itemId: 162
   indentLevel: 0
   description: 
   delay: 0
@@ -16226,6 +16211,21 @@ MonoBehaviour:
   stringEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1819084788
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819084678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2f6487d21a03404cb21b245f0242e79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentBlock: {fileID: 1819084747}
+  suppressBlockAutoSelect: 0
+  waitForFrames: 1
 --- !u!1 &1823319143
 GameObject:
   m_ObjectHideFlags: 1

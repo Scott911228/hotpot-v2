@@ -1896,7 +1896,8 @@ MonoBehaviour:
     height: 859
   selectedBlocks:
   - {fileID: 1266606334}
-  selectedCommands: []
+  selectedCommands:
+  - {fileID: 1266606518}
   variables: []
   description: 
   stepPause: 0
@@ -2183,7 +2184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 254
   indentLevel: 0
-  storyText: "\u8CA2\u4E38\u9577\u5B98\uFF0C\u9806\u5E36\u5411\u60A8\u5831\u544A\uFF0C\u9019\u5E7E\u5929\u96D6\u7136\u6C92\u6709\u8207\u828B\u982D\u8ECD\u63A5\u6230\uFF0C\n"
+  storyText: "\u8CA2\u4E38\u9577\u5B98\uFF0C\u9806\u5E36\u5411\u60A8\u5831\u544A\uFF0C\u9019\u5E7E\u5929\u96D6\u7136\u6C92\u6709\u8207\u828B\u982D\u8ECD\u63A5\u6230\uFF0C"
   description: 
   character: {fileID: 577082812}
   portrait: {fileID: 0}
