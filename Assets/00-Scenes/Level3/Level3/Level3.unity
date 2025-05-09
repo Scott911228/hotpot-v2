@@ -8848,6 +8848,7 @@ MonoBehaviour:
   showAttackRange: 1
   canSkipDirectionSelection: 0
   characterType: Road
+  characterName: 
   characterClass: Attacker
   fireCooldown: 1.12
   characterTag: Character
@@ -25541,6 +25542,11 @@ PrefabInstance:
       propertyPath: m_Text
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2527541269521125282, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2636732285861297779, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: sprites.Array.size
@@ -26360,7 +26366,7 @@ PrefabInstance:
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: AchievementSets.Array.data[1].AchievementType
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}

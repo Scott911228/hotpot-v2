@@ -1268,6 +1268,7 @@ MonoBehaviour:
   showAttackRange: 1
   canSkipDirectionSelection: 0
   characterType: Wall
+  characterName: "\u5348"
   characterClass: Healer
   fireCooldown: 2
   characterTag: Character
@@ -1361,6 +1362,7 @@ MonoBehaviour:
   targetMP: 5
   currentMP: 0
   gainMPspeed: 0
+  skillID: 0
   skillName: 
   skillDesc: 
   skillOtherDetail: 

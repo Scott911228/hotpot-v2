@@ -1092,6 +1092,7 @@ MonoBehaviour:
   targetMP: 5
   currentMP: 0
   gainMPspeed: 0
+  skillID: 0
   skillName: 
   skillDesc: 
   skillOtherDetail: 
@@ -1246,6 +1247,7 @@ MonoBehaviour:
   showAttackRange: 1
   canSkipDirectionSelection: 1
   characterType: Road
+  characterName: 
   characterClass: Attacker
   fireCooldown: 1.12
   characterTag: Character
@@ -4225,6 +4227,11 @@ PrefabInstance:
       propertyPath: 'pathData.Array.data[0].points.Array.data[6]'
       value: 
       objectReference: {fileID: 1802044069}
+    - target: {fileID: 6644381857077386370, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7220605516485036811, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: m_Enabled
@@ -4279,6 +4286,11 @@ PrefabInstance:
         type: 3}
       propertyPath: CharacterDamageMultiplier
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: AchievementSets.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
@@ -4361,6 +4373,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
+      propertyPath: AchievementSets.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: AchievementSets.Array.data[1].value
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: AchievementSets.Array.data[2].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
       propertyPath: EnemyWaves.Array.data[0].Enemy.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -4413,6 +4440,21 @@ PrefabInstance:
         type: 3}
       propertyPath: characterDispatchLimits.Array.data[0].limit
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: AchievementSets.Array.data[0].AchievementType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: AchievementSets.Array.data[1].AchievementType
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: AchievementSets.Array.data[2].AchievementType
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
@@ -4476,6 +4518,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2945908575983069881, guid: e1e89061ca2bb5344b42f3dda3704f25,
         type: 3}
+    - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: AchievementSets.Array.data[0].AchievementValueJudge
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: AchievementSets.Array.data[1].AchievementValueJudge
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: AchievementSets.Array.data[2].AchievementValueJudge
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: EnemyWaves.Array.data[0].Enemy.Array.data[0].spawnRate

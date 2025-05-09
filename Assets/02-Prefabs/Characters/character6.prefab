@@ -1535,6 +1535,7 @@ MonoBehaviour:
   showAttackRange: 1
   canSkipDirectionSelection: 1
   characterType: Road
+  characterName: "\u86CB\u9903"
   characterClass: Attacker
   fireCooldown: 2
   characterTag: Character

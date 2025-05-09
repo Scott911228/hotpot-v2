@@ -1870,6 +1870,7 @@ MonoBehaviour:
   showAttackRange: 1
   canSkipDirectionSelection: 1
   characterType: Road
+  characterName: "\u9EB5\u738B\u5B50"
   characterClass: Attacker
   fireCooldown: 0
   characterTag: Character
@@ -1928,6 +1929,7 @@ MonoBehaviour:
   targetMP: 50
   currentMP: 0
   gainMPspeed: 1
+  skillID: 0
   skillName: "\u6211\u4E43\u528D\u4E4B\u9AA8"
   skillDesc: "\u6280\u80FD\u6301\u7E8C\u6642\u9593\u5167, \n\u653B\u901F\u9010\u6F38\u63D0\u5347\u81F3+100%"
   skillOtherDetail: "\u5145\u80FD\u6240\u9700 : 5 \u79D2 | \u6548\u679C\u6301\u7E8C

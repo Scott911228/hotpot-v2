@@ -23,6 +23,7 @@ public class Character : MonoBehaviour
     public bool showAttackRange = false; // 控制是否顯示攻擊範圍
     public bool canSkipDirectionSelection = false; // 是否跳過方向選擇
     public string characterType;
+    public string characterName;
     public string characterClass;
     public float fireCooldown = 1f;
     private float fireCountdown = 0f;

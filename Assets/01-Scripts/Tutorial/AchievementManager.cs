@@ -109,4 +109,8 @@ public class AchievementManager : MonoBehaviour
             Debug.Log("成就達成: 第 " + AchievementIndex + " 項");
         }
     }
+    public HashSet<int> CheckGrantedAchievement()
+    {
+        return AchievementGranted;
+    }
 }

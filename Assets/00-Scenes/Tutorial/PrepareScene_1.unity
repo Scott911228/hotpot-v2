@@ -812,7 +812,7 @@ PrefabInstance:
     - target: {fileID: 483770134654587930, guid: 3c901ba4d45c52748a15840ac103f288,
         type: 3}
       propertyPath: m_Text
-      value: "\u81F3\u5C11\u90E8\u7F72\u89D2\u8272 5 \u6B21"
+      value: "\u5408\u8A08\u81F3\u5C11\u90E8\u7F72 5 \u6B21\u89D2\u8272 "
       objectReference: {fileID: 0}
     - target: {fileID: 483770135139048248, guid: 3c901ba4d45c52748a15840ac103f288,
         type: 3}
@@ -878,6 +878,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 483770135356392255, guid: 3c901ba4d45c52748a15840ac103f288,
+        type: 3}
+      propertyPath: m_Text
+      value: "\u6211\u65B9\u57FA\u5730\u751F\u547D\u5269\u9918\u81F3\u5C11 1"
       objectReference: {fileID: 0}
     - target: {fileID: 1564551008850838373, guid: 3c901ba4d45c52748a15840ac103f288,
         type: 3}
