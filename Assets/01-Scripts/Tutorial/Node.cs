@@ -66,8 +66,8 @@ public class Node : MonoBehaviour, IMouseInteractable
         bool isRotating = true;
         Character character = turret.GetComponent<Character>();
         character.showAttackRange = true; // 顯示攻擊範圍
-        Vector3 AttackRotation = new Vector3(0, -90, 0);
-        Vector3 ForceCharacterRotation = new Vector3(0, -90, 0); // 配置時角色始終向右
+        Vector3 AttackRotation = new Vector3(-20, -90, 0);
+        Vector3 ForceCharacterRotation = new Vector3(20, -90, 0); // 配置時角色始終向右
         InteractCharacterModeEnter();
         while (isRotating)
         {

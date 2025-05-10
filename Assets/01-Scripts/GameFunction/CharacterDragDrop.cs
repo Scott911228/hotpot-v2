@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System.Linq;
 using DG.Tweening;
 using UnityEngine.UIElements;
 
@@ -25,6 +26,7 @@ public class CharacterDragDrop : MonoBehaviour, IMouseInteractable
     private Vector3 originalScale;
     private float hoverScaleMultiplier = 1.1f; // 碰到時的放大倍率
     private bool isHovering = false;
+    private static CharacterDragDrop currentHovered; // 靜態變量，唯一放大的物件
     void Start()
     {
         originalScale = transform.localScale;
@@ -35,6 +37,10 @@ public class CharacterDragDrop : MonoBehaviour, IMouseInteractable
         // 從 Canvas 上取得 GraphicRaycaster（假設你的 UI 在 Canvas 下）
         uiRaycaster = GameObject.Find("GameControl/InteractableGuide/RemoveCharacterPanel/Canvas").GetComponent<GraphicRaycaster>();
         eventSystem = EventSystem.current;
+        if (isDragging) return;
+
+        // **重置縮放狀態，防止放大遺留**
+        ResetScale();
     }
     private void OnMouseDown()
     {
@@ -45,97 +51,185 @@ public class CharacterDragDrop : MonoBehaviour, IMouseInteractable
 
     public void StartDragging()
     {
-        if(!GameObject.Find("LevelSettings").GetComponent<LevelSettings>().isCharacterRemoveAvailable) return;
+        if (!GameObject.Find("LevelSettings").GetComponent<LevelSettings>().isCharacterRemoveAvailable) return;
         if (dragPreviewPrefab == null) return;
 
         isDragging = true;
+
+        // 縮回當前放大的物件
+        if (currentHovered != null)
+        {
+            currentHovered.ResetScale();
+            currentHovered = null;
+        }
+
         dragPreviewInstance = Instantiate(dragPreviewPrefab);
         dragPreviewInstance.GetComponent<SpriteRenderer>().sprite = GetComponent<Character>().shopIcon;
 
         GameManager.isBuilding = true;
         speedControl.isForceSlowdown = true;
         gameElement.GetComponent<CanvasGroup>().alpha = 0f;
-        GameObject.Find("GameControl").GetComponent<GameManager>().setRemoveCharacterPanelActive(true);
+
         SlideIn();
     }
-    void Update()
+    void EndDrag()
     {
-        if (!isDragging) // 偵測是否碰到游標並且未被點擊
+        bool hitRemovePanel = false;
+
+        PointerEventData pointerEventData = new PointerEventData(eventSystem);
+        pointerEventData.position = Input.mousePosition;
+
+        List<RaycastResult> results = new List<RaycastResult>();
+        uiRaycaster.Raycast(pointerEventData, results);
+
+        foreach (RaycastResult result in results)
         {
-            Vector3 mousePos = Input.mousePosition;
-            Ray ray = Camera.main.ScreenPointToRay(mousePos);
-            RaycastHit[] hits = Physics.RaycastAll(ray, 100f);
+            Transform current = result.gameObject.transform;
 
-            bool hitSelf = false;
-
-            foreach (var hit in hits)
+            while (current != null)
             {
-                if (hit.transform == transform)
+                if (current.name == "RemoveCharacterPanel")
                 {
-                    hitSelf = true;
+                    hitRemovePanel = true;
                     break;
                 }
-            }
-            if (hitSelf)
-            {
-                if (!isHovering)
-                {
-                    OnMouseEnterCustom();
-                    isHovering = true;
-                }
-            }
-            else
-            {
-                if (isHovering)
-                {
-                    OnMouseExitCustom();
-                    isHovering = false;
-                }
+                current = current.parent;
             }
 
+            if (hitRemovePanel) break;
         }
+
+        if (hitRemovePanel)
+        {
+            Debug.Log("命中 RemoveCharacterPanel → 移除角色");
+            Destroy(gameObject);
+        }
+        else
+        {
+            // **放置角色並立即重置縮放狀態**
+            GameObject newCharacter = Instantiate(dragPreviewPrefab, transform.position, Quaternion.identity);
+            CharacterDragDrop newDragDrop = newCharacter.GetComponent<CharacterDragDrop>();
+
+            if (newDragDrop != null)
+            {
+                newDragDrop.ResetScale();
+
+                // 更新 currentHovered 狀態為新生成物件
+                currentHovered = newDragDrop;
+            }
+        }
+
+        // **縮回當前放大的物件**
+        if (currentHovered != null)
+        {
+            currentHovered.ResetScale();
+            currentHovered = null;
+        }
+
+        if (dragPreviewInstance != null)
+        {
+            Destroy(dragPreviewInstance);
+        }
+
+        isDragging = false;
+        GameManager.isBuilding = false;
+        speedControl.isForceSlowdown = false;
+        gameElement.GetComponent<CanvasGroup>().alpha = 1.0f;
+        SlideOut();
+    }
+
+    void Update()
+    {
         if (pointerDown && !dragStarted)
         {
             float distance = Vector3.Distance(Input.mousePosition, mouseDownPosition);
             if (distance > dragThreshold)
             {
-                // 真正啟動拖曳行為
                 dragStarted = true;
                 StartDragging();
             }
         }
 
-        if (isDragging && dragPreviewInstance != null)
+        if (isDragging)
         {
-            Vector3 mousePos = Input.mousePosition;
-            Ray ray = Camera.main.ScreenPointToRay(mousePos);
-            if (Physics.Raycast(ray, out RaycastHit hit))
+            if (dragPreviewInstance != null)
             {
-                dragPreviewInstance.transform.position = hit.point;
+                Vector3 mousePos = Input.mousePosition;
+                Ray dragRay = Camera.main.ScreenPointToRay(mousePos);
+                if (Physics.Raycast(dragRay, out RaycastHit hit))
+                {
+                    dragPreviewInstance.transform.position = hit.point;
+                }
             }
 
             if (Input.GetMouseButtonUp(0))
             {
                 EndDrag();
             }
+
+            return; // 拖曳中不進行縮放檢查
         }
 
-        // 點擊結束
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit[] hits = Physics.RaycastAll(ray);
+
+        RaycastHit? closestHit = hits.OrderBy(hit => hit.distance).FirstOrDefault();
+        CharacterDragDrop hovered = null;
+
+        if (closestHit.HasValue)
+        {
+            hovered = closestHit.Value.transform.GetComponent<CharacterDragDrop>();
+        }
+
+        if (hovered != null && hovered != currentHovered)
+        {
+            if (currentHovered != null)
+            {
+                currentHovered.ResetScale();
+            }
+
+            currentHovered = hovered;
+            currentHovered.OnMouseEnterCustom();
+        }
+        else if (hovered == null && currentHovered != null)
+        {
+            currentHovered.ResetScale();
+            currentHovered = null;
+        }
+
         if (pointerDown && Input.GetMouseButtonUp(0) && !dragStarted)
         {
             pointerDown = false;
-            OnClick(); // 觸發點擊事件
+            OnClick();
         }
     }
+
     public void OnMouseEnterCustom()
     {
-        if (isDragging) return; // 拖曳中不要放大
+        if (isDragging) return;
         transform.DOScale(originalScale * hoverScaleMultiplier, 0.2f).SetEase(Ease.OutBack);
     }
+
+    public void ResetScale()
+    {
+        transform.DOScale(originalScale, 0.2f).SetEase(Ease.OutBack);
+    }
+
     public void OnMouseExitCustom()
     {
         if (isDragging) return; // 拖曳中不要縮回
-        transform.DOScale(originalScale, 0.2f).SetEase(Ease.OutBack);
+
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit[] hits = Physics.RaycastAll(ray);
+
+        // 判斷游標下是否還有當前物件
+        bool isStillHovering = hits.Any(hit => hit.transform == transform);
+
+        // 當前物件不再位於游標下方時，才執行縮回
+        if (!isStillHovering)
+        {
+            transform.DOScale(originalScale, 0.2f).SetEase(Ease.OutBack);
+        }
     }
     public void OnMouseUpCustom()
     { }
@@ -194,56 +288,6 @@ public class CharacterDragDrop : MonoBehaviour, IMouseInteractable
         {
             Debug.LogWarning("找不到 Display，請確認路徑是否正確");
         }
-    }
-    void EndDrag()
-    {
-        bool hitRemovePanel = false;
-
-        // 使用 UI 射線檢測是否點到 removeCharacterPanel
-        PointerEventData pointerEventData = new PointerEventData(eventSystem);
-        pointerEventData.position = Input.mousePosition;
-
-        List<RaycastResult> results = new List<RaycastResult>();
-        uiRaycaster.Raycast(pointerEventData, results);
-
-        foreach (RaycastResult result in results)
-        {
-            Transform current = result.gameObject.transform;
-
-            // 一層層往上找是否包含 RemoveCharacterPanel
-            while (current != null)
-            {
-                if (current.name == "RemoveCharacterPanel")
-                {
-                    hitRemovePanel = true;
-                    break;
-                }
-                current = current.parent;
-            }
-
-            if (hitRemovePanel) break;
-        }
-        if (hitRemovePanel)
-        {
-            Debug.Log("命中 RemoveCharacterPanel → 移除角色");
-            Destroy(gameObject); // 真正移除角色
-        }
-        else
-        {
-            Debug.Log("未命中 RemoveCharacterPanel → 取消拖曳");
-        }
-
-        // 拖曳結束處理
-        if (dragPreviewInstance != null)
-        {
-            Destroy(dragPreviewInstance);
-        }
-
-        isDragging = false;
-        GameManager.isBuilding = false;
-        speedControl.isForceSlowdown = false;
-        gameElement.GetComponent<CanvasGroup>().alpha = 1.0f;
-        SlideOut();
     }
 
 }
