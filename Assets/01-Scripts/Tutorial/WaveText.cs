@@ -16,14 +16,5 @@ public class WaveText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (WaveSpawn.waveNumber > 0)
-        {
-            //TextElement.text = "第 " + WaveSpawn.waveNumber.ToString() + " 波";
-
-        }
-        else
-        {
-            TextElement.text = "";
-        }
     }
 }

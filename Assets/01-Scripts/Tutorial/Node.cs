@@ -22,6 +22,7 @@ public class Node : MonoBehaviour, IMouseInteractable
     private int defaultLayer;
     private Dictionary<GameObject, int> originalLayers = new Dictionary<GameObject, int>();
     private RendererHighlightManager rendererHighlightManager;
+    private PlayerStats playerStats;
     void Start()
     {
         speedControl = GameObject.Find("SpeedControl").GetComponent<SpeedControl>();
@@ -32,6 +33,7 @@ public class Node : MonoBehaviour, IMouseInteractable
         highlightLayer = LayerMask.NameToLayer("HighlightLayer");
         defaultLayer = LayerMask.NameToLayer("Default");
         rendererHighlightManager = FindAnyObjectByType<RendererHighlightManager>();
+        playerStats = GameObject.Find("GameControl").GetComponent<PlayerStats>();
     }
 
     public Vector3 GetBuildPosition()
@@ -42,7 +44,7 @@ public class Node : MonoBehaviour, IMouseInteractable
     IEnumerator SelectTurretRotation(Node node)
     {
         FloatTipsScript.DisplayTips("移動游標設定效果範圍，右鍵確認");
-        if (GameObject.Find("LevelSettings").GetComponent<LevelSettings>().StageName == "第二關") TipsText.Instance.ChangeText("移動游標設定效果範圍，右鍵確認");
+        if (GameObject.Find("LevelSettings").GetComponent<LevelSettings>().StageName == "第二關" && !GameManager.isRestarted) TipsText.Instance.ChangeText("移動游標設定效果範圍，右鍵確認");
         RendererHighlightManager rendererHighlightManager = FindAnyObjectByType<RendererHighlightManager>();
 
         speedControl.isForceSlowdown = true;
@@ -352,7 +354,7 @@ public class Node : MonoBehaviour, IMouseInteractable
             return;
         }
 
-        if (PlayerStats.Money < turretBlueprint.cost)
+        if (playerStats.Money < turretBlueprint.cost)
         {
             ShowError("熱量不足！", rendererHighlightManager, turretBlueprint);
             return;

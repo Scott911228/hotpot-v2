@@ -19,8 +19,10 @@ public class BuildManager : MonoBehaviour
     public TurretBlueprint turretToBuild;
     private CharacterDispatchLimit[] characterDispatchLimits;
     public List<GameObject> activeCharacters = new List<GameObject>(); // 追蹤當前角色
+    
+    private PlayerStats playerStats;
     public bool CanBuild { get { return turretToBuild != null; } }
-    public bool HasMoney { get { return PlayerStats.Money >= turretToBuild?.cost; } }
+    public bool HasMoney { get { return playerStats.Money >= turretToBuild?.cost; } }
 
     public int GetCharacterCount(GameObject characterPrefab)
     {
@@ -75,6 +77,7 @@ public class BuildManager : MonoBehaviour
     void Start()
     {
         DraggingCharacterIndex = -1;
+        playerStats = GameObject.Find("GameControl").GetComponent<PlayerStats>();
         characterSets = GameObject.Find("LevelSettings").GetComponent<LevelSettings>().characterSets;
         activeCharacters ??= new List<GameObject>();
         characterDispatchLimits = GameObject.Find("LevelSettings").GetComponent<LevelSettings>().characterDispatchLimits;
@@ -133,7 +136,7 @@ public class BuildManager : MonoBehaviour
                 speedControl.isForceSlowdown = false;
                 return;
             }
-            if (PlayerStats.Money < turretToBuild?.cost)
+            if (playerStats.Money < turretToBuild?.cost)
             {
                 FloatTipsScript.DisplayTips("熱量不足！");
                 speedControl.isForceSlowdown = false;
@@ -160,11 +163,11 @@ public class BuildManager : MonoBehaviour
                 }
             }
             // 成功建造
-            PlayerStats.Money -= turretToBuild.cost;
+            playerStats.Money -= turretToBuild.cost;
             GameObject turret = Instantiate(buildingPrefab, node.GetBuildPosition(), Quaternion.Euler(0, -90, 0));
             turret.GetComponent<Character>().firePoint.rotation = rotation;
             node.turret = turret;
-            FloatTipsScript.DisplayTips("已派遣角色！剩餘熱量 " + math.floor(PlayerStats.Money).ToString());
+            FloatTipsScript.DisplayTips("已派遣角色！剩餘熱量 " + math.floor(playerStats.Money).ToString());
             //turret.transform.Find("HealthBarCanvas").rotation = Quaternion.identity;
 
             //////// 關卡事件 ////////
@@ -175,7 +178,7 @@ public class BuildManager : MonoBehaviour
                     {
                         TextControl.BroadcastControlMessage("tutorial/guidestart2");
                     }
-                    if (WaitForFullBuild && PlayerStats.Money <= 50)
+                    if (WaitForFullBuild && playerStats.Money <= 50)
                     {
                         TextControl.BroadcastControlMessage("tutorial/text5");
                         WaitForFullBuild = false;

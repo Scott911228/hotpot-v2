@@ -10,6 +10,7 @@ public class HeatControl : MonoBehaviour
     public Animator HeatButtonAnim;
     public Text HeatText;
     // Start is called before the first frame update
+    private PlayerStats playerStats;
 
     public void ChangeHeat()
     {
@@ -40,6 +41,7 @@ public class HeatControl : MonoBehaviour
     void Start()
     {
         FloatTipsScript = GameObject.Find("FloatTips").transform.Find("FloatTipsBase").GetComponent<FloatTips>();
+        playerStats = GameObject.Find("GameControl").GetComponent<PlayerStats>();
         InvokeRepeating("AddHeatByLevel", 0f, 0.1f);
     }
 
@@ -50,14 +52,14 @@ public class HeatControl : MonoBehaviour
         switch (HeatLevel % 3)
         {
             case 0:
-                PlayerStats.Money += 0.5;
+                playerStats.Money += 0.5;
                 break;
             case 1:
                 break;
             case 2:
-                if (PlayerStats.Money >= 0.5)
+                if (playerStats.Money >= 0.5)
                 {
-                    PlayerStats.Money -= 0.5;
+                    playerStats.Money -= 0.5;
                 }
                 else
                 {

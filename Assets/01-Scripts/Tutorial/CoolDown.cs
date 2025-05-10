@@ -26,6 +26,7 @@ public class CoolDown : MonoBehaviour
     public TurretBlueprint assignedCharacterPrefab; // 對應的角色
     public TMP_Text characterCountText; // UI 顯示派遣數量的 Text
     public TMP_Text characterTypeText; // UI 顯示角色類型的 Text
+    private PlayerStats playerStats;
     public void RemoveCoolDown()
     {
         CoolDownTime = 0;
@@ -34,6 +35,7 @@ public class CoolDown : MonoBehaviour
     void Start()
     {
         levelSettings = GameObject.Find("LevelSettings").GetComponent<LevelSettings>();
+        playerStats = GameObject.Find("GameControl").GetComponent<PlayerStats>();
         if (slotIndex < levelSettings.characterSets.Length)
         {
             assignedCharacterPrefab = levelSettings.characterSets[slotIndex].turretBlueprint;
@@ -79,10 +81,11 @@ public class CoolDown : MonoBehaviour
                 timer = 0;
             }
         }
-        if(characterCountText.text == "0"){
+        if (characterCountText.text == "0")
+        {
             MaskImage.fillAmount = 1;
         }
-        else if (PlayerStats.Money < assignedCharacterPrefab.cost)
+        else if (playerStats.Money < assignedCharacterPrefab.cost)
         {
             MaskImage.fillAmount = 1;
         }

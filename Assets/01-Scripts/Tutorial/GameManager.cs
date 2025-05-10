@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     private GameObject broadcastMessagePanel;
     bool isWaiting = false;
     public static bool isRestarted = false;
-
+    private PlayerStats playerStats;
     public void DoStageStoryMustPlayCheck()
     {
         if (isRestarted)
@@ -73,6 +73,7 @@ public class GameManager : MonoBehaviour
     {
         broadcastMessagePanel = GameObject.Find("GameControl/GameElement/BroadcastMessage");
         removeCharacterPanel = GameObject.Find("GameControl/InteractableGuide/RemoveCharacterPanel");
+        playerStats = GameObject.Find("GameControl").GetComponent<PlayerStats>();
         setRemoveCharacterPanelActive(false);
         SpeedControl.GetComponent<SpeedControl>().isForceNoSpeed = false;
         InvokeRepeating("WaitingPauseEffect", 0f, 0.1f);
@@ -161,11 +162,11 @@ public class GameManager : MonoBehaviour
 
     public void AddMoney(int money)
     {
-        PlayerStats.Money += money;
+        playerStats.Money += money;
     }
     public void SetMoney(int money)
     {
-        PlayerStats.Money = money;
+        playerStats.Money = money;
     }
     public void WaitingPauseEffect()
     {

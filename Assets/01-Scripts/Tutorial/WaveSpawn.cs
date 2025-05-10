@@ -36,7 +36,7 @@ public class WaveSpawn : MonoBehaviour
 
     [Header("下一波倒數")]
     public Text waveCountdownText;
-    public static int waveNumber = 0;
+    public int waveNumber = 0;
 
     [Header("路徑管理")]
     public PathSettings pathSettings; // 路徑管理器
@@ -57,7 +57,10 @@ public class WaveSpawn : MonoBehaviour
         waveNumber = 0;
         InvokeRepeating("UpdateEnemyCountText", 0f, 0.1f);
     }
-
+    void OnEnable()
+    {
+        playedMessages.Clear();
+    }
     private bool IsInfinityWaveActive()
     {
         if (waveNumber >= EnemyWaves.Length) return false;

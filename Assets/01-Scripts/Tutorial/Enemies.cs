@@ -42,12 +42,14 @@ public class Enemies : MonoBehaviour
     // 路徑管理
     private Transform[] movingPath;
     public int pathIndex;
+    private PlayerStats playerStats;
     void Start()
     {
         animator = GetComponent<Animator>();
         // ======= 湯底效果 =======
         StartHealth *= GameObject.Find("LevelSettings").GetComponent<LevelSettings>().EnemyHealthMultiplier;
         speedMultiplier *= GameObject.Find("LevelSettings").GetComponent<LevelSettings>().EnemyMovementMultiplier;
+        playerStats = GameObject.Find("GameControl").GetComponent<PlayerStats>();
         // =======================
         Health = StartHealth;
         InvokeRepeating("UpdateBlocker", 0f, 0.01f);
@@ -169,7 +171,7 @@ public class Enemies : MonoBehaviour
     void Die()
     {
         isDead = true;
-        PlayerStats.Money += GetMoney;
+        playerStats.Money += GetMoney;
         Destroy(gameObject);
         WaveSpawn.EnemiesAlive--;
         WaveSpawn.KilledEnemyCount++;

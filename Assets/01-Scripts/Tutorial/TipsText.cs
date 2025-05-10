@@ -14,7 +14,6 @@ public class TipsText : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // 保證在場景切換時不會銷毀
         }
         else
         {
@@ -22,14 +21,15 @@ public class TipsText : MonoBehaviour
             return;
         }
     }
+
+    void Start()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
     // Start is called before the first frame update
     public void ChangeText(string text)
     {
         TextElement.text = text;
-    }
-    void Start()
-    {
-
     }
 
     // Update is called once per frame
