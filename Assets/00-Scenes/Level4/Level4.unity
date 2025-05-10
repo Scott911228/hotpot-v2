@@ -6717,7 +6717,7 @@ PrefabInstance:
         type: 3}
       propertyPath: EnemyWaves.Array.data[0].Enemy.Array.data[2].Enemy
       value: 
-      objectReference: {fileID: 3235380681236260573, guid: a4265f8a0122e094495864ae5f53d91d,
+      objectReference: {fileID: 3235380681236260573, guid: 5568ed6afc8386447830c8f7532822e0,
         type: 3}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
@@ -6809,7 +6809,7 @@ PrefabInstance:
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: EnemyWaves.Array.data[0].Enemy.Array.data[2].spawnRate
-      value: 0.8
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
@@ -6879,7 +6879,7 @@ PrefabInstance:
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: EnemyWaves.Array.data[0].Enemy.Array.data[2].healthMultiplier
-      value: 0.3
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
