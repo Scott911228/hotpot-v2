@@ -40,7 +40,8 @@ public class CoolDown : MonoBehaviour
             transform.Find("DraggableCharacter").GetComponent<UnityEngine.UI.Image>().sprite = assignedCharacterPrefab.prefab.GetComponent<Character>().shopIcon;
             transform.Find("Price").GetComponent<TMP_Text>().text = assignedCharacterPrefab.cost.ToString();
         }
-        else{
+        else
+        {
             gameObject.SetActive(false);
         }
         MaskImage = transform.Find("MaskImage").GetComponent<UnityEngine.UI.Image>();
@@ -61,8 +62,8 @@ public class CoolDown : MonoBehaviour
     public void UpdateCharacterTypeUI()
     {
         if (characterTypeText == null || assignedCharacterPrefab.prefab == null) return;
-        if(assignedCharacterPrefab.prefab.GetComponent<Character>().characterType == "Road") characterTypeText.text = "地面";
-        else if(assignedCharacterPrefab.prefab.GetComponent<Character>().characterType == "Wall") characterTypeText.text = "高台";
+        if (assignedCharacterPrefab.prefab.GetComponent<Character>().characterType == "Road") characterTypeText.text = "地面";
+        else if (assignedCharacterPrefab.prefab.GetComponent<Character>().characterType == "Wall") characterTypeText.text = "高台";
     }
     // Update is called once per frame
     void Update()
@@ -71,13 +72,23 @@ public class CoolDown : MonoBehaviour
         {
             timer += Time.deltaTime;
             MaskImage.fillAmount = Mathf.Clamp01((CoolDownTime - timer) / CoolDownTime);
-
             if (timer >= CoolDownTime)
             {
                 isBuildable = true;
                 MaskImage.fillAmount = 0;
                 timer = 0;
             }
+        }
+        if(characterCountText.text == "0"){
+            MaskImage.fillAmount = 1;
+        }
+        else if (PlayerStats.Money < assignedCharacterPrefab.cost)
+        {
+            MaskImage.fillAmount = 1;
+        }
+        else if (isBuildable)
+        {
+            MaskImage.fillAmount = 0;
         }
     }
 
