@@ -216,7 +216,7 @@ public class WaveSpawn : MonoBehaviour
                 return;
             }
 
-            GameObject enemy = Instantiate(content.Enemy, pathData.spawnPoint.position, Quaternion.Euler(0, -90, 0));
+            GameObject enemy = Instantiate(content.Enemy, pathData.spawnPoint.position, Quaternion.Euler(20, -90, 0));
             Enemies enemyScript = enemy.GetComponent<Enemies>();
 
             // 確保敵人使用自己的路徑

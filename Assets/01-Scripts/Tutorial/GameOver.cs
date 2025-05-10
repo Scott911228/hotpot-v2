@@ -16,7 +16,6 @@ public class GameOver : MonoBehaviour
     }
     void Awake()
     {
-        roundsText.text = GameObject.Find("GameControl").GetComponent<PlayerStats>().Rounds.ToString();
         //myAnimator.SetTrigger("");
     }
 

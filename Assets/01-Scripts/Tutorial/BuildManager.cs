@@ -164,7 +164,7 @@ public class BuildManager : MonoBehaviour
             }
             // 成功建造
             playerStats.Money -= turretToBuild.cost;
-            GameObject turret = Instantiate(buildingPrefab, node.GetBuildPosition(), Quaternion.Euler(0, -90, 0));
+            GameObject turret = Instantiate(buildingPrefab, node.GetBuildPosition(), Quaternion.Euler(20, -90, 0));
             turret.GetComponent<Character>().firePoint.rotation = rotation;
             node.turret = turret;
             FloatTipsScript.DisplayTips("已派遣角色！剩餘熱量 " + math.floor(playerStats.Money).ToString());

@@ -56,7 +56,7 @@ public class Node : MonoBehaviour, IMouseInteractable
         turretBlueprint = GetTurretBlueprintDragging();
         buildManager.isBuilding = true;
 
-        GameObject turret = Instantiate(turretBlueprint.prefab, targetNode.GetBuildPosition(), Quaternion.identity);
+        GameObject turret = Instantiate(turretBlueprint.prefab, targetNode.GetBuildPosition(), Quaternion.Euler(20f, 0f, 0f));
         CanvasGroup canvasGroup = turret.GetComponent<CanvasGroup>();
 
         canvasGroup.alpha = 0f; // 隱藏血條（暫時）
@@ -77,7 +77,7 @@ public class Node : MonoBehaviour, IMouseInteractable
             {
                 Vector3 hitPoint = mouseRay.GetPoint(hitDist);
                 turret.transform.LookAt(hitPoint);
-                turret.transform.eulerAngles = new Vector3(0, Mathf.Round((turret.transform.eulerAngles.y - 90) / 90) * 90, 0);
+                turret.transform.eulerAngles = new Vector3(20, Mathf.Round((turret.transform.eulerAngles.y - 90) / 90) * 90, 0);
                 // 更新攻擊範圍顯示
                 AttackRotation = UpdateNodeColors(character);
                 turret.transform.eulerAngles = ForceCharacterRotation;
