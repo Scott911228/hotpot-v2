@@ -7074,7 +7074,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 37.799927
-    y: 116.899994
+    y: 114.899994
     width: 76.97
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -27585,7 +27585,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 12
   indentLevel: 0
-  storyText: "\u90A3\u9EBC\u86CB\u9903\uFF0C\u4F60\u4E5F\u4F86\u9806\u4FBF\u8B1B\u89E3\u4E00\u4E0B\u81EA\u5DF1\u7684\u6230\u9B25\u6A21\u5F0F\u5427\u3002"
+  storyText: "\u90A3\u9EBC\u89D2\u89D2\uFF0C\u4F60\u4E5F\u4F86\u9806\u4FBF\u8B1B\u89E3\u4E00\u4E0B\u81EA\u5DF1\u7684\u6230\u9B25\u6A21\u5F0F\u5427\u3002"
   description: 
   character: {fileID: 1932811003}
   portrait: {fileID: 0}

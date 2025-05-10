@@ -1794,8 +1794,10 @@ MonoBehaviour:
     y: -340
     width: 1114
     height: 859
-  selectedBlocks: []
-  selectedCommands: []
+  selectedBlocks:
+  - {fileID: 1266606334}
+  selectedCommands:
+  - {fileID: 1266606717}
   variables: []
   description: 
   stepPause: 0
@@ -2163,7 +2165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 505
   indentLevel: 0
-  storyText: "\u6700\u5F8C\uFF0C\u5C0F\u9AD8\u4F60\u4E5F\u4F86\u5427\uFF01\u6211\u548C\u86CB\u9903\u90FD\u5F88\u671F\u5F85\u80FD\u898B\u8B58\u898B\u8B58\u4F60\u7684\u80FD\u529B\uFF01"
+  storyText: "\u6700\u5F8C\uFF0C\u5C0F\u9AD8\u4F60\u4E5F\u4F86\u5427\uFF01\u6211\u548C\u89D2\u89D2\u90FD\u5F88\u671F\u5F85\u80FD\u898B\u8B58\u898B\u8B58\u4F60\u7684\u80FD\u529B\uFF01"
   description: 
   character: {fileID: 577082812}
   portrait: {fileID: 0}
@@ -2298,7 +2300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 503
   indentLevel: 0
-  storyText: "\u86CB\u9903\uFF0C\u8001\u6A23\u5B50\uFF0C\u6211\u7684\u9762\u524D\u5C31\u4EA4\u7D66\u4F60\u4E86\uFF01"
+  storyText: "\u89D2\u89D2\uFF0C\u8001\u6A23\u5B50\uFF0C\u6211\u7684\u9762\u524D\u5C31\u4EA4\u7D66\u4F60\u4E86\uFF01"
   description: 
   character: {fileID: 577082812}
   portrait: {fileID: 0}
@@ -2964,7 +2966,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 482
   indentLevel: 0
-  storyText: "-\u4E94\u5206\u9418\u5F8C \u6230\u5099\u96C6\u5408\u8655-"
+  storyText: "\u2500\u4E94\u5206\u9418\u5F8C \u6230\u5099\u96C6\u5408\u8655\u2500"
   description: 
   character: {fileID: 0}
   portrait: {fileID: 0}
@@ -5011,6 +5013,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6282111852667837678, guid: 2ff158ebbd163cf4187829bea9938465,
         type: 3}
+      propertyPath: nameText
+      value: "\u6443\u7D08"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6282111852667837678, guid: 2ff158ebbd163cf4187829bea9938465,
+        type: 3}
       propertyPath: portraitsFace
       value: 1
       objectReference: {fileID: 0}
@@ -5068,6 +5075,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7336689915909797573, guid: 2ff158ebbd163cf4187829bea9938465,
+        type: 3}
+      propertyPath: nameText
+      value: "\u6B50\u6BBF"
       objectReference: {fileID: 0}
     - target: {fileID: 7336689915909797573, guid: 2ff158ebbd163cf4187829bea9938465,
         type: 3}
