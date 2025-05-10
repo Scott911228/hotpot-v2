@@ -44,6 +44,7 @@ public class PauseMenu : MonoBehaviour
     public void GamePause()
     {
         GameObject.Find("GameControl").GetComponent<GameManager>().isGamePlaying = false;
+        speedControl = GameObject.Find("SpeedControl").GetComponent<SpeedControl>();
         speedControl.GetComponent<SpeedControl>().isForceNoSpeed = true;
         GameObject[] Enemies = GameObject.FindGameObjectsWithTag(enemyTag);
         GameObject[] Characters = GameObject.FindGameObjectsWithTag(characterTag);
