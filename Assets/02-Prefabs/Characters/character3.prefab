@@ -960,7 +960,7 @@ MonoBehaviour:
   isPaused: 0
   attackRadius: 1
   attackLength: 7
-  attackWidth: 5
+  attackWidth: 6
   attackHeight: 100
   attackDamage: 10
   showAttackRange: 1

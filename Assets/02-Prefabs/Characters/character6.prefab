@@ -2645,6 +2645,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 154786416774612831, guid: 364211a57bded0b438753feb8e52b9e1,
         type: 3}
+      propertyPath: barType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 154786416774612831, guid: 364211a57bded0b438753feb8e52b9e1,
+        type: 3}
       propertyPath: _healthBarGradient.ctime1
       value: 32768
       objectReference: {fileID: 0}

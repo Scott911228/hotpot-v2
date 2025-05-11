@@ -1862,8 +1862,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDead: 0
   isPaused: 0
-  attackRadius: 7
-  attackLength: 2
+  attackRadius: 8
+  attackLength: 1
   attackWidth: 1
   attackHeight: 100
   attackDamage: 120
@@ -2528,6 +2528,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6278839144209725821}
     m_Modifications:
+    - target: {fileID: 154786416774612831, guid: 364211a57bded0b438753feb8e52b9e1,
+        type: 3}
+      propertyPath: barType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 154786416774612831, guid: 364211a57bded0b438753feb8e52b9e1,
         type: 3}
       propertyPath: _healthBarGradient.ctime1

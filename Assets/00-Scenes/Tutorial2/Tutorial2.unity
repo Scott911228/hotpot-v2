@@ -2132,6 +2132,7 @@ GameObject:
   - component: {fileID: 214685017}
   - component: {fileID: 214685016}
   - component: {fileID: 214685015}
+  - component: {fileID: 214685019}
   m_Layer: 0
   m_Name: HealthBar
   m_TagString: Untagged
@@ -2182,6 +2183,7 @@ MonoBehaviour:
     m_ColorSpace: -1
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
+  barType: 0
 --- !u!114 &214685016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2239,6 +2241,18 @@ RectTransform:
   m_AnchoredPosition: {x: -0.00001248158, y: 0.000010006325}
   m_SizeDelta: {x: 115.9698, y: 12.896362}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &214685019
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 214685014}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &215539771 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7271703817546932988, guid: df25574933cf1d64885493e2a51dae71,
@@ -11726,6 +11740,7 @@ GameObject:
   - component: {fileID: 436653299}
   - component: {fileID: 436653298}
   - component: {fileID: 436653297}
+  - component: {fileID: 436653300}
   m_Layer: 0
   m_Name: SkillBarCanvas
   m_TagString: Untagged
@@ -11814,6 +11829,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 436653295}
   m_CullTransparentMesh: 0
+--- !u!225 &436653300
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436653295}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &448153610 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7271703817546932988, guid: df25574933cf1d64885493e2a51dae71,
@@ -16880,6 +16907,7 @@ GameObject:
   - component: {fileID: 1095014001}
   - component: {fileID: 1095014000}
   - component: {fileID: 1095013999}
+  - component: {fileID: 1095014002}
   m_Layer: 0
   m_Name: HealthBarCanvas
   m_TagString: Untagged
@@ -16968,6 +16996,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1095013997}
   m_CullTransparentMesh: 0
+--- !u!225 &1095014002
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1095013997}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1096068121 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7271703817546932988, guid: df25574933cf1d64885493e2a51dae71,
@@ -23051,6 +23091,7 @@ MonoBehaviour:
     m_ColorSpace: -1
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
+  barType: 0
 --- !u!114 &1913985498
 MonoBehaviour:
   m_ObjectHideFlags: 0

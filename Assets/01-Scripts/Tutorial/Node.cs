@@ -250,7 +250,7 @@ public class Node : MonoBehaviour, IMouseInteractable
     }
 
 
-    private void ResetAllNodeColors()
+    public void ResetAllNodeColors()
     {
         Node[] allNodes = FindObjectsOfType<Node>();
         foreach (Node node in allNodes)

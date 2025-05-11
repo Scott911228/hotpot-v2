@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5077625121942800789}
   - component: {fileID: 2152069280773423103}
   - component: {fileID: 154786416774612831}
+  - component: {fileID: 8803518125416284748}
   m_Layer: 5
   m_Name: HealthBar
   m_TagString: Untagged
@@ -119,6 +120,19 @@ MonoBehaviour:
     m_ColorSpace: -1
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
+  barType: 0
+--- !u!225 &8803518125416284748
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2969624942610593836}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &7031974726502445886
 GameObject:
   m_ObjectHideFlags: 0
@@ -131,6 +145,7 @@ GameObject:
   - component: {fileID: 7776696244732523714}
   - component: {fileID: 6931831348237708520}
   - component: {fileID: 1868679816755628663}
+  - component: {fileID: 2520920669901166432}
   m_Layer: 5
   m_Name: HealthBarCanvas
   m_TagString: Untagged
@@ -219,3 +234,15 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 9999
   m_TargetDisplay: 0
+--- !u!225 &2520920669901166432
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7031974726502445886}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0

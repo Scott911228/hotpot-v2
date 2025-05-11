@@ -52,6 +52,7 @@ public class Enemies : MonoBehaviour
         playerStats = GameObject.Find("GameControl").GetComponent<PlayerStats>();
         // =======================
         Health = StartHealth;
+        HealthBar.UpdateHealthBar(StartHealth, Health);
         InvokeRepeating("UpdateBlocker", 0f, 0.01f);
         InvokeRepeating("DamageEffectCheck", 0f, 0.4f);
         InvokeRepeating("MovementEffectCheck", 0f, 0.5f);

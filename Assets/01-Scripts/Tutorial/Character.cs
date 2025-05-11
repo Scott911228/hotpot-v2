@@ -76,8 +76,24 @@ public class Character : MonoBehaviour
                 colliderStartPos,
                 attackRadius);
 
+            //GameObject.FindGameObjectWithTag("Road").GetComponent<Node>().ResetAllNodeColors();
             foreach (Collider hitCollider in hitColliderSphere)
             {
+                // ========== 攻擊範圍 Debug ==========
+                //Node targetNode = hitCollider.GetComponent<Node>();
+                //if (targetNode != null)
+                //{
+                //    if (characterType != "Wall")
+                //    {
+                //        if (targetNode.tag == characterType) targetNode.GetComponent<Node>().ChangeNodeColor(targetNode, Color.yellow); // 將 Node 改為綠色
+                //    }
+                //    else
+                //    {
+                //        if (targetNode.tag == "Road") targetNode.GetComponent<Node>().ChangeNodeColor(targetNode, Color.yellow);
+                //    }
+                //}
+                // ========== 攻擊範圍 Debug ==========
+
                 if (hitCollider.gameObject.GetComponent<Node>() && DEBUG_MODE)
                 {
                     hitCollider.gameObject.GetComponent<Node>().GetComponent<Renderer>().material.color = Color.yellow;
@@ -137,19 +153,22 @@ public class Character : MonoBehaviour
 
             foreach (Collider hitCollider in hitColliderBox)
             {
-                /* // 攻擊範圍 Debug
-                Node targetNode = hitCollider.GetComponent<Node>();
-                if (targetNode != null)
-                {
-                    if (characterType != "Wall")
-                    {
-                        if (targetNode.tag == characterType) targetNode.GetComponent<Node>().ChangeNodeColor(targetNode, Color.yellow); // 將 Node 改為綠色
-                    }
-                    else
-                    {
-                        if (targetNode.tag == "Road") targetNode.GetComponent<Node>().ChangeNodeColor(targetNode, Color.yellow);
-                    }
-                }*/
+
+                // ========== 攻擊範圍 Debug ==========
+                //Node targetNode = hitCollider.GetComponent<Node>();
+                //if (targetNode != null)
+                //{
+                //    if (characterType != "Wall")
+                //    {
+                //        if (targetNode.tag == characterType) targetNode.GetComponent<Node>().ChangeNodeColor(targetNode, Color.yellow); // 將 Node 改為綠色
+                //    }
+                //    else
+                //    {
+                //        if (targetNode.tag == "Road") targetNode.GetComponent<Node>().ChangeNodeColor(targetNode, Color.yellow);
+                //    }
+                //}
+                // ========== 攻擊範圍 Debug ==========
+
                 if (characterClass == "Healer")
                 {
                     if (hitCollider.gameObject.GetComponent<Character>())
