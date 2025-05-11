@@ -4,6 +4,7 @@ using TMPro;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System;
 
 public class WaveSpawn : MonoBehaviour
 {
@@ -226,9 +227,18 @@ public class WaveSpawn : MonoBehaviour
                 Debug.LogError($"敵人 {enemy.name} 的路徑為空，請檢查 PathSettings 是否設置正確！");
                 return;
             }
-
             enemyScript.InitializePath(points);
+            if (content.minScale > 0 && content.maxScale > 0 && content.minScale <= content.maxScale)
+            {
+                float scaleMultiplier = UnityEngine.Random.Range(content.minScale, content.maxScale);
 
+                // 取得當前初始大小
+                Vector3 originalScale = enemy.transform.localScale;
+
+                // 應用倍率
+                Vector3 newScale = originalScale * scaleMultiplier;
+                enemy.transform.localScale = newScale;
+            }
             // 設定速度、血量、傷害
             if (content.healthMultiplier != 0)
             {

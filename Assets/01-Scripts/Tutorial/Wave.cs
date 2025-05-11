@@ -18,6 +18,9 @@ public class EnemyContent
     public int spawnCount;
     public float spawnRate;
     public float delayToNextContent;
+    [Header("敵人尺寸")]
+    public float minScale;
+    public float maxScale;
     [Header("敵人屬性加成")]
     public float damageMultiplier;
     public float healthMultiplier;

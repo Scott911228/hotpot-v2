@@ -1300,7 +1300,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 113370920}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: -0.12278779, y: 0.6963643, z: -0.12278779, w: -0.6963643}
   m_LocalPosition: {x: 37.5, y: 8.660001, z: -17}
   m_LocalScale: {x: 0.20083971, y: 0.20083971, z: 0.20083971}
   m_ConstrainProportionsScale: 0
@@ -1323,7 +1323,7 @@ Transform:
   - {fileID: 407982674}
   - {fileID: 931668481}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
+  m_LocalEulerAnglesHint: {x: 20, y: 270, z: 0}
 --- !u!1 &116566547
 GameObject:
   m_ObjectHideFlags: 0
@@ -4698,6 +4698,26 @@ PrefabInstance:
         type: 3}
       propertyPath: AchievementSets.Array.data[2].AchievementValueJudge
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: EnemyWaves.Array.data[1].Enemy.Array.data[0].maxScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: EnemyWaves.Array.data[1].Enemy.Array.data[0].minScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: EnemyWaves.Array.data[2].Enemy.Array.data[0].maxScale
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
+        type: 3}
+      propertyPath: EnemyWaves.Array.data[2].Enemy.Array.data[0].minScale
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 7670054164222320189, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
