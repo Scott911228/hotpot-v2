@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 902993246178548434}
   - component: {fileID: 902993246178548437}
   - component: {fileID: 902993246178548436}
+  - component: {fileID: 7600769754462802581}
   m_Layer: 0
   m_Name: BGPlane
   m_TagString: Untagged
@@ -31,7 +32,8 @@ Transform:
   m_LocalPosition: {x: -3.3667698, y: -17.090487, z: 16.62458}
   m_LocalScale: {x: 6.6072245, y: 1, z: 9.589054}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 902993246954016124}
   m_Father: {fileID: 902993247285053089}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!33 &902993246178548434
@@ -109,6 +111,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &7600769754462802581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 902993246178548439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dfe7a46d244ee248aef529e9b9e25d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &902993246319990650
 GameObject:
   m_ObjectHideFlags: 0
@@ -352,12 +366,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 902993246954016126}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.7966957, y: -14.709742, z: 13.706284}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0.44168282, y: 2.380745, z: -0.3576918}
+  m_LocalScale: {x: 0.10428555, y: 1, z: 0.15134944}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 902993247285053089}
+  m_Father: {fileID: 902993246178548435}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!328 &902993246954016127
 VideoPlayer:
@@ -423,7 +437,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 902993246178548435}
-  - {fileID: 902993246954016124}
   - {fileID: 902993246319990651}
   - {fileID: 902993246855725214}
   m_Father: {fileID: 0}

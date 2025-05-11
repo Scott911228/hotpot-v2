@@ -26,13 +26,17 @@ Shader "Custom/VideoColorTint"
             };
 
             sampler2D _MainTex;
+            float4 _MainTex_ST;   // Unity 自動生成的 Tiling 和 Offset 參數
             float4 _ColorTint;
 
             v2f vert (appdata_t v)
             {
                 v2f o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
-                o.uv = v.uv;
+
+                // 應用 Tiling 和 Offset
+                o.uv = TRANSFORM_TEX(v.uv, _MainTex);
+
                 return o;
             }
 
