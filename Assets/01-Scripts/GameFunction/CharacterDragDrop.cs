@@ -27,7 +27,6 @@ public class CharacterDragDrop : MonoBehaviour, IMouseInteractable
     private Vector3 originalScale;
     private float hoverScaleMultiplier = 1.1f; // 碰到時的放大倍率
     private bool isHovering = false;
-    private bool isInited = false;
     private static CharacterDragDrop currentHovered; // 靜態變量，唯一放大的物件
     void Start()
     {
@@ -118,11 +117,10 @@ public class CharacterDragDrop : MonoBehaviour, IMouseInteractable
                 // 禁用 `OnMouseEnterCustom()` 避免立即觸發縮放
                 newDragDrop.enabled = false;
 
-                // 強制設置原始縮放
-                newDragDrop.originalScale = newDragDrop.transform.localScale;
-                //newDragDrop.ResetScale();
-                transform.localScale = Vector3.zero;
-                transform.DOScale(originalScale, 0.5f).SetEase(Ease.OutBack);
+                transform.DOScale(originalScale * hoverScaleMultiplier, 0.2f).SetEase(Ease.OutBack).OnComplete(() =>
+                {
+                    newDragDrop.originalScale = newDragDrop.transform.localScale;
+                });
                 // 短暫延遲後啟用
                 StartCoroutine(EnableComponentAfterDelay(newDragDrop, 0.1f));
             }
@@ -149,7 +147,6 @@ public class CharacterDragDrop : MonoBehaviour, IMouseInteractable
     private IEnumerator InitMouseInAfterDelay(CharacterDragDrop newDragDrop, float delay)
     {
         yield return new WaitForSeconds(delay);
-        newDragDrop.isInited = true;
     }
 
     private IEnumerator EnableComponentAfterDelay(CharacterDragDrop newDragDrop, float delay)
@@ -227,7 +224,6 @@ public class CharacterDragDrop : MonoBehaviour, IMouseInteractable
     public void OnMouseEnterCustom()
     {
         if (isDragging) return;
-        if (!isInited) return;
         transform.DOScale(originalScale * hoverScaleMultiplier, 0.2f).SetEase(Ease.OutBack);
     }
 

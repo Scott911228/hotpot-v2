@@ -15524,8 +15524,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: -159.36316
-    y: 26.648933
+    x: -157.86316
+    y: 27.148933
     width: 151.95
     height: 40
   tint: {r: 0.84637827, g: 1, b: 0.5896226, a: 1}
@@ -16383,7 +16383,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parentBlock: {fileID: 1819084747}
   suppressBlockAutoSelect: 0
-  waitForFrames: 200
+  waitForFrames: 1
 --- !u!1 &1823319143
 GameObject:
   m_ObjectHideFlags: 1
