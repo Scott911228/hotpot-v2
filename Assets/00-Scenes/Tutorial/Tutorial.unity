@@ -7756,7 +7756,7 @@ PrefabInstance:
     - target: {fileID: 6499869828535564823, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
       propertyPath: selectedBlocks.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6499869828535564823, guid: 2200e26108a0af044a17b619e36318f9,
         type: 3}
@@ -16383,7 +16383,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parentBlock: {fileID: 1819084747}
   suppressBlockAutoSelect: 0
-  waitForFrames: 1
+  waitForFrames: 200
 --- !u!1 &1823319143
 GameObject:
   m_ObjectHideFlags: 1

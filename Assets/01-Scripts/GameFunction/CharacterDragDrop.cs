@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
 using UnityEngine.UIElements;
+using System.Collections;
 
 public class CharacterDragDrop : MonoBehaviour, IMouseInteractable
 {
@@ -26,6 +27,7 @@ public class CharacterDragDrop : MonoBehaviour, IMouseInteractable
     private Vector3 originalScale;
     private float hoverScaleMultiplier = 1.1f; // 碰到時的放大倍率
     private bool isHovering = false;
+    private bool isInited = false;
     private static CharacterDragDrop currentHovered; // 靜態變量，唯一放大的物件
     void Start()
     {
@@ -41,6 +43,7 @@ public class CharacterDragDrop : MonoBehaviour, IMouseInteractable
 
         // **重置縮放狀態，防止放大遺留**
         ResetScale();
+        StartCoroutine(InitMouseInAfterDelay(this, 1f));
     }
     private void OnMouseDown()
     {
@@ -112,10 +115,16 @@ public class CharacterDragDrop : MonoBehaviour, IMouseInteractable
 
             if (newDragDrop != null)
             {
-                newDragDrop.ResetScale();
+                // 禁用 `OnMouseEnterCustom()` 避免立即觸發縮放
+                newDragDrop.enabled = false;
 
-                // 更新 currentHovered 狀態為新生成物件
-                currentHovered = newDragDrop;
+                // 強制設置原始縮放
+                newDragDrop.originalScale = newDragDrop.transform.localScale;
+                //newDragDrop.ResetScale();
+                transform.localScale = Vector3.zero;
+                transform.DOScale(originalScale, 0.5f).SetEase(Ease.OutBack);
+                // 短暫延遲後啟用
+                StartCoroutine(EnableComponentAfterDelay(newDragDrop, 0.1f));
             }
         }
 
@@ -136,6 +145,17 @@ public class CharacterDragDrop : MonoBehaviour, IMouseInteractable
         speedControl.isForceSlowdown = false;
         gameElement.GetComponent<CanvasGroup>().alpha = 1.0f;
         SlideOut();
+    }
+    private IEnumerator InitMouseInAfterDelay(CharacterDragDrop newDragDrop, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        newDragDrop.isInited = true;
+    }
+
+    private IEnumerator EnableComponentAfterDelay(CharacterDragDrop newDragDrop, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        newDragDrop.enabled = true;
     }
 
     void Update()
@@ -207,6 +227,7 @@ public class CharacterDragDrop : MonoBehaviour, IMouseInteractable
     public void OnMouseEnterCustom()
     {
         if (isDragging) return;
+        if (!isInited) return;
         transform.DOScale(originalScale * hoverScaleMultiplier, 0.2f).SetEase(Ease.OutBack);
     }
 
